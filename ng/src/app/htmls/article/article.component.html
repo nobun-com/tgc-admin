@@ -1,0 +1,124 @@
+<md-card>
+   <md-card-content>
+  <div fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h3 class="mt-0" style="text-align: start;">{{pageTitle}}</h3>
+      </div>
+      <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+        <button md-raised-button color="primary"  (click)="backToArticleList()">Back To List</button>
+      </div>
+  </div>
+  </md-card-content>
+  <form [formGroup]="form">
+  <md-card-content>
+            <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
+            <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+              <input mdInput placeholder="Title"  [(ngModel)]="article.title" [formControl]="form.controls['title']" required>
+            </md-input-container>
+            <small *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched" class="mat-text-warn">You must include a center name.</small>
+        </div> 
+        <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
+            <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+            <input mdInput placeholder="Preview"  [(ngModel)]="article.preview" [formControl]="form.controls['preview']" required>
+            </md-input-container>
+            <small *ngIf="form.controls['preview'].hasError('required') && form.controls['preview'].touched" class="mat-text-warn">You must include a center name.</small>
+        </div>
+
+        <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+          <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+            <md-select  placeholder="Category" [(ngModel)]="article.category" [formControl]="form.controls['category']" required>
+                <md-option *ngFor="let category of categories" [value]="category">
+                  {{ category }}
+                </md-option>
+              </md-select>
+              <small *ngIf="form.controls['category'].hasError('required') && form.controls['category'].touched" class="mat-text-warn">You must include a center name.</small>
+      </div>  
+        </div>
+        <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
+            <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+              <input mdInput placeholder="Thumbnail Url" value="{{article.thumbnailUrl}}" [formControl]="form.controls['thumbnailUrl']" [(ngModel)]="article.thumbnailUrl" >
+            </md-input-container>
+            <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+                <input type="file" (change)="fileChangeEventForThumbnail($event)" [formControl]="form.controls['thumbnail']">
+                <img *ngIf="uploadThumbnail" src="{{article.thumbnailUrl}}" class="logo"/>
+            </div>
+        </div> 
+        <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
+            <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+            <input mdInput placeholder="Image Url" value="{{article.imageUrl}}" [(ngModel)]="article.imageUrl"  [formControl]="form.controls['imageUrl']" >
+            </md-input-container>
+            <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+                <input type="file" (change)="fileChangeEventForImage($event)" [formControl]="form.controls['image']">
+                <img *ngIf="uploadImage" src="{{article.imageUrl}}" class="logo"/>
+              </div>
+        </div>
+        <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
+          <md-input-container class="ml-xs mr-xs"  fxLayoutAlign="start center">
+              <input mdInput [mdDatepicker]="maxDatePicker" [(ngModel)]="article.postDate" placeholder="Posted Date" [formControl]="form.controls['postDate']" required>
+              <button mdSuffix [mdDatepickerToggle]="maxDatePicker"></button>
+          </md-input-container>
+          <small *ngIf="form.controls['postDate'].hasError('required') && form.controls['postDate'].touched" class="mat-text-warn">You must include a center name.</small>
+          <md-datepicker #maxDatePicker [touchUi]="touch"></md-datepicker>
+        </div>
+      <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
+        <md-checkbox [(ngModel)]="article.featured" name="featured" class="ml-xs mr-xs" [formControl]="form.controls['featured']">
+            Featured
+        </md-checkbox>
+        <md-checkbox [(ngModel)]="article.published" name="published" class="ml-xs mr-xs" [formControl]="form.controls['published']">
+            Published
+        </md-checkbox>
+      </div>  
+      
+    <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2"> 
+      <label class="ml-xs mr-xs"  fxLayoutAlign="start center">HTML Body:</label>    
+    </div>
+      <div class="toolbar border-none" id="toolbar-toolbar">
+        <span class="ql-formats">
+          <select class="ql-font">
+            <option selected=""></option>
+            <option value="serif"></option>
+            <option value="monospace"></option>
+          </select>
+          <select class="ql-size">
+            <option value="small"></option>
+            <option selected=""></option>
+            <option value="large"></option>
+            <option value="huge"></option>
+          </select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-bold"></button>
+          <button class="ql-italic"></button>
+          <button class="ql-underline"></button>
+          <button class="ql-strike"></button>
+        </span>
+        <span class="ql-formats">
+          <select class="ql-color"></select>
+          <select class="ql-background"></select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-list" value="ordered"></button>
+          <button class="ql-list" value="bullet"></button>
+          <select class="ql-align">
+            <option selected=""></option>
+            <option value="center"></option>
+            <option value="right"></option>
+            <option value="justify"></option>
+          </select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-link"></button>
+          <button class="ql-image"></button>
+        </span>
+      </div>
+      <hr class="ma-0">
+      <div id="editor-container" style="height: 400px;">
+    </div>   
+      </md-card-content>
+    <hr>
+      <md-card-actions>
+          <button md-raised-button color="primary" type="submit" (click)="createOrUpdateArticle()" [disabled]="!form.valid">Submit</button>
+        </md-card-actions>
+  </form>
+</md-card>
+   

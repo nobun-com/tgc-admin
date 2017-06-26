@@ -1,0 +1,434 @@
+<md-card>
+  <md-card-content>
+  <div fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h3 class="mt-0" style="text-align: start;">{{title}}</h3>
+      </div>
+      <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+        <button md-raised-button color="primary"  (click)="backToClassList()">Back To List</button>
+      </div>
+  </div>
+  </md-card-content>
+  <form [formGroup]="form" (ngSubmit)="validateForm(form.value,form.valid)">
+  <md-card-content>
+    <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+      <md-input-container class="ml-xs mr-xs" style="width: 30%;" fxLayoutAlign="start center">
+        <input mdInput placeholder="Class Name"  [formControl]="form.controls['className']" [(ngModel)]="classes.className">
+      </md-input-container>
+     <small *ngIf="form.controls['className'].hasError('required') && submitAttempt" class="mat-text-warn">You must include a class name.</small>
+    </div>
+    <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+    <div class="ml-xs mr-xs" style="width: 30%;" fxLayoutAlign="start center">
+       <md-select  placeholder="Center" [formControl]="form.controls['centerId']" [(ngModel)]="classes.centerId">
+          <md-option *ngFor="let center of centers" [value]="center.id">
+            {{ center.centerName }}
+          </md-option>
+        </md-select>
+    </div>
+     <small *ngIf="form.controls['centerId'].hasError('required') && submitAttempt" class="mat-text-warn">You must select center.</small>
+    </div>
+    <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+     <div class="ml-xs mr-xs" style="width: 30%;" fxLayoutAlign="start center">
+       <md-select  placeholder="Teachers" [formControl]="form.controls['teacherId']" [(ngModel)]="classes.teacherId" >
+          <md-option *ngFor="let teacher of teachers" [value]="teacher.id">
+            {{ teacher.firstName }}  {{ teacher.lastName }}
+          </md-option>
+        </md-select>
+    </div>
+     <small *ngIf="form.controls['teacherId'].hasError('required') && submitAttempt" class="mat-text-warn">You must select teacher.</small>
+    </div>
+     <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+        <md-input-container class="ml-xs mr-xs"  fxLayoutAlign="start center">
+            <input  mdInput placeholder="Min Age" [formControl]="form.controls['minAge']" [(ngModel)]="classes.minAge">
+        </md-input-container>
+     <small *ngIf="form.controls['minAge'].hasError('required') && submitAttempt" class="mat-text-warn">You must include a min age.</small>
+        
+        <md-input-container class="ml-xs mr-xs"  fxLayoutAlign="start center">
+            <input  mdInput placeholder="Max Age" [formControl]="form.controls['maxAge']" [(ngModel)]="classes.maxAge">
+        </md-input-container>
+     <small *ngIf="form.controls['minAge'].hasError('required') && submitAttempt" class="mat-text-warn">You must include a max age.</small>
+        
+     </div>
+    <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+        <md-input-container class="ml-xs mr-xs"  fxLayoutAlign="start center">
+            <input  mdInput placeholder="Max Slots" [formControl]="form.controls['maxSlots']" [(ngModel)]="classes.maxSlots">
+        </md-input-container>
+     <small *ngIf="form.controls['maxSlots'].hasError('required') && submitAttempt" class="mat-text-warn">You must include a max slots.</small>
+    </div>
+ <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+      <md-input-container class="ml-xs mr-xs" style="width: 20%;" fxLayoutAlign="start center">
+        <input mdInput placeholder="Fees" [formControl]="form.controls['fees']" [(ngModel)]="classes.fee">
+      </md-input-container>
+     <small *ngIf="form.controls['fees'].hasError('required') && submitAttempt" class="mat-text-warn">You must include a fees.</small>
+       
+    </div>
+    <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+      <md-input-container class="ml-xs mr-xs" fxLayoutAlign="start center">
+        <input mdInput [mdDatepicker]="minDatePicker" [formControl]="form.controls['startDate']" [(ngModel)]="classes.startDate" placeholder="Start Date">
+        <button mdSuffix [mdDatepickerToggle]="minDatePicker"></button>
+      </md-input-container>
+     <md-datepicker #minDatePicker [touchUi]="touch"></md-datepicker>
+     <small *ngIf="form.controls['startDate'].hasError('required') && submitAttempt" class="mat-text-warn">You must select start date.</small>
+    </div>
+    <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+     <md-radio-group [(ngModel)]="classes.endDateType"  [formControl]="form.controls['endDateType']" name="endDateType" [disabled]="isDisabled" [align]="isAlignEnd ? 'end' : 'start'" fxLayout="column" (change)="occAndEndDate(endDateType)">
+          <md-radio-button value="endDate">
+                <md-input-container class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                  <input mdInput [mdDatepicker]="maxDatePicker" [formControl]="form.controls['endDate']" [(ngModel)]="classes.endDate" placeholder="End Date">
+                  <button mdSuffix [mdDatepickerToggle]="maxDatePicker"></button>
+                </md-input-container>
+             <small *ngIf="form.controls['endDate'].hasError('required') && submitAttempt" class="mat-text-warn">You must select end date.</small>
+             <md-datepicker #maxDatePicker [touchUi]="touch"></md-datepicker>
+          </md-radio-button>        
+          <md-radio-button value="occurrence">
+                <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+                  <md-select  placeholder="Number Of Occurances" [formControl]="form.controls['occurrence']" [(ngModel)]="classes.occurrence" >
+                    <md-option *ngFor="let occurrence of occurrences;let rowId = index" [value]="rowId+1">
+                      {{ rowId + 1}}
+                    </md-option>
+                  </md-select>
+                </div> 
+             <small *ngIf="form.controls['occurrence'].hasError('required') && submitAttempt" class="mat-text-warn">You must select number of occurances.</small>
+          </md-radio-button>
+        </md-radio-group>
+    </div>
+
+     <md-radio-group [(ngModel)]="schedule" name="classType"  [formControl]="form.controls['schedule']" [disabled]="isDisabled" [align]="isAlignEnd ? 'end' : 'start'" fxLayout="column" (change)="DailyOrWeek(schedule)">
+          <md-radio-button value="Daily">Daily  
+           <div fxLayout="row" class="mb-2">
+              <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+                <div class="ml-xs mr-xs" style="width:50%;" fxLayoutAlign="start center">
+                </div> 
+                <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+                      <label>Start Time</label> <md-select  placeholder="HH"  [formControl]="form.controls['startTimeHH']" style="width: 50%;margin-left:10px;"  [(ngModel)]="frequencyMetadata.daily.startTimeHH" >
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+             <small *ngIf="form.controls['startTimeHH'].hasError('required') && form.controls['startTimeHH'].touched" class="mat-text-warn">You must include a start time hours.</small>
+                       <md-select  placeholder="MM" style="width: 50%;margin-right:10px;"  [formControl]="form.controls['startTimeMM']" [(ngModel)]="frequencyMetadata.daily.startTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+             <small *ngIf="form.controls['startTimeMM'].hasError('required') && form.controls['startTimeMM'].touched" class="mat-text-warn">You must include a end time minutes.</small>
+                 </div>
+                 <div class="ml-xs mr-xs" style="width: 40%;" fxLayoutAlign="start center">
+                     <label>End Time</label> <md-select  placeholder="HH" style="width: 50%;margin-left:10px;"  [formControl]="form.controls['endTimeHH']" [(ngModel)]="frequencyMetadata.daily.endTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+             <small *ngIf="form.controls['endTimeHH'].hasError('required') && form.controls['endTimeHH'].touched" class="mat-text-warn">You must include a end time hours.</small>
+                      
+                      <md-select  placeholder="MM" style="width: 50%;"  [formControl]="form.controls['endTimeMM']" [(ngModel)]="frequencyMetadata.daily.endTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+             <small *ngIf="form.controls['endTimeMM'].hasError('required') && form.controls['endTimeMM'].touched" class="mat-text-warn">You must include a end time minutes.</small>
+
+                </div>
+              </div>
+          </div>  
+        </md-radio-button>        
+          <md-radio-button value="Weekly">Weekly </md-radio-button>
+      </md-radio-group>  
+
+
+        <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+                 <div class="ml-xs mr-xs" style="width:5%;" fxLayoutAlign="start center">
+                </div>
+                 <div class="ml-xs mr-xs" style="width:15%;" fxLayoutAlign="start center">
+                      <label>Day</label>
+                </div>
+                <div class="ml-xs mr-xs" style="width: 20%;" fxLayoutAlign="center">
+                      <label>Start Time</label>                   
+                </div>
+                <div class="ml-xs mr-xs" style="width: 20%;" fxLayoutAlign="center">
+                     <label>End Time</label>
+                </div>                              
+        </div>       
+            <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+              <div class="ml-xs mr-xs" style="width:5%;" fxLayoutAlign="start center">
+                   <md-checkbox [(ngModel)]="week.monday"  [formControl]="form.controls['monday']"
+                      name="cb"
+                      color="primary"
+                      (change)="isIndeterminate = false"
+                      [indeterminate]="isIndeterminate"
+                      [align]="alignment">
+                   </md-checkbox>
+              </div>  
+              <div class="ml-xs mr-xs" style="width:15%;" fxLayoutAlign="start center">
+                   Monday
+              </div>   
+              <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"  [formControl]="form.controls['monStartTimeHH']" [(ngModel)]="weektime.monStartTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"  [formControl]="form.controls['monStartTimeMM']"[(ngModel)]="weektime.monStartTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+              </div>
+                 <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"  [formControl]="form.controls['monEndTimeHH']" [(ngModel)]="weektime.monEndTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"  [formControl]="form.controls['monEndTimeMM']" [(ngModel)]="weektime.monEndTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+                </div>
+              </div>
+            <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+              <div class="ml-xs mr-xs" style="width:5%;" fxLayoutAlign="start center">
+                   <md-checkbox [(ngModel)]="week.tuesday"  [formControl]="form.controls['tuesday']"
+                      name="cb"
+                      color="primary"
+                      (change)="isIndeterminate = false"
+                      [indeterminate]="isIndeterminate"
+                      [align]="alignment">
+                   </md-checkbox>
+              </div>  
+              <div class="ml-xs mr-xs" style="width:15%;" fxLayoutAlign="start center">
+                   Tuesday
+              </div>   
+              <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"  [formControl]="form.controls['tueStartTimeHH']"[(ngModel)]="weektime.tueStartTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"  [formControl]="form.controls['tueStartTimeMM']" [(ngModel)]="weektime.tueStartTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+              </div>
+                 <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"   [formControl]="form.controls['tueEndTimeHH']"[(ngModel)]="weektime.tueEndTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"  [formControl]="form.controls['tueEndTimeMM']"[(ngModel)]="weektime.tueEndTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+                </div>
+            </div>
+            <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+              <div class="ml-xs mr-xs" style="width:5%;" fxLayoutAlign="start center">
+                   <md-checkbox [(ngModel)]="week.wednesday"  [formControl]="form.controls['wednesday']"
+                      name="cb"
+                      color="primary"
+                      (change)="isIndeterminate = false"
+                      [indeterminate]="isIndeterminate"
+                      [align]="alignment">
+                   </md-checkbox>
+              </div>  
+              <div class="ml-xs mr-xs" style="width:15%;"  fxLayoutAlign="start center">
+                   Wednesday
+              </div>   
+              <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"  [formControl]="form.controls['wedStartTimeHH']"[(ngModel)]="weektime.wedStartTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"   [formControl]="form.controls['wedStartTimeMM']"[(ngModel)]="weektime.wedStartTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+              </div>
+                 <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"   [formControl]="form.controls['wedEndTimeHH']"[(ngModel)]="weektime.wedEndTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM" [formControl]="form.controls['wedEndTimeMM']" [(ngModel)]="weektime.wedEndTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+                </div>
+            </div>
+            <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+              <div class="ml-xs mr-xs" style="width:5%;" fxLayoutAlign="start center">
+                   <md-checkbox [(ngModel)]="week.thursday"  [formControl]="form.controls['thursday']"
+                      name="cb"
+                      color="primary"
+                      (change)="isIndeterminate = false"
+                      [indeterminate]="isIndeterminate"
+                      [align]="alignment">
+                   </md-checkbox>
+              </div>  
+              <div class="ml-xs mr-xs" style="width:15%;" fxLayoutAlign="start center">
+                   Thursday
+              </div>   
+              <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"  [formControl]="form.controls['thurStartTimeHH']" [(ngModel)]="weektime.thurStartTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"  [formControl]="form.controls['thurStartTimeMM']" [(ngModel)]="weektime.thurStartTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+              </div>
+                 <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"  [formControl]="form.controls['thurEndTimeHH']" [(ngModel)]="weektime.thurEndTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"  [formControl]="form.controls['thurEndTimeMM']" [(ngModel)]="weektime.thurEndTimeMM" >
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+                </div>
+            </div>
+            <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+              <div class="ml-xs mr-xs" style="width:5%;" fxLayoutAlign="start center">
+                   <md-checkbox [(ngModel)]="week.friday"  [formControl]="form.controls['friday']"
+                      name="cb"
+                      color="primary"
+                      (change)="isIndeterminate = false"
+                      [indeterminate]="isIndeterminate"
+                      [align]="alignment">
+                   </md-checkbox>
+              </div>  
+              <div class="ml-xs mr-xs"  style="width:15%;" fxLayoutAlign="start center">
+                   Friday
+              </div>   
+              <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"  [formControl]="form.controls['friStartTimeHH']" [(ngModel)]="weektime.friStartTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"  [formControl]="form.controls['friStartTimeMM']" [(ngModel)]="weektime.friStartTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+              </div>
+                 <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select  placeholder="HH"  [formControl]="form.controls['friEndTimeHH']" [(ngModel)]="weektime.friEndTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"  [formControl]="form.controls['friEndTimeMM']" [(ngModel)]="weektime.friEndTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+                </div>
+            </div>
+            <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+              <div class="ml-xs mr-xs"  style="width:5%;" fxLayoutAlign="start center">
+                   <md-checkbox [(ngModel)]="week.saturday"  [formControl]="form.controls['saturday']"
+                      name="cb"
+                      color="primary"
+                      (change)="isIndeterminate = false"
+                      [indeterminate]="isIndeterminate"
+                      [align]="alignment">
+                   </md-checkbox>
+              </div>  
+              <div class="ml-xs mr-xs" style="width:15%;"  fxLayoutAlign="start center">
+                   Saturday
+              </div>   
+              <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select placeholder="HH"  [formControl]="form.controls['satStartTimeHH']" [(ngModel)]="weektime.satStartTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select placeholder="MM" [formControl]="form.controls['satStartTimeMM']"  [(ngModel)]="weektime.satStartTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+              </div>
+                 <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select placeholder="HH"  [formControl]="form.controls['satEndTimeHH']"  [(ngModel)]="weektime.satEndTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select placeholder="MM"  [formControl]="form.controls['satEndTimeMM']" [(ngModel)]="weektime.satEndTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+                </div>
+            </div>
+            <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+              <div class="ml-xs mr-xs" style="width:5%;"fxLayoutAlign="start center">
+                   <md-checkbox [(ngModel)]="week.sunday"  [formControl]="form.controls['sunday']"
+                      name="cb"
+                      color="primary"
+                      (change)="isIndeterminate = false"
+                      [indeterminate]="isIndeterminate"
+                      [align]="alignment">
+                   </md-checkbox>
+              </div>  
+              <div class="ml-xs mr-xs" style="width:15%;"fxLayoutAlign="start center">
+                   Sunday
+              </div>   
+              <div class="ml-xs mr-xs" fxLayoutAlign="start center">
+                       <md-select placeholder="HH"  [formControl]="form.controls['sunStartTimeHH']" [(ngModel)]="weektime.sunStartTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select placeholder="MM"  [formControl]="form.controls['sunStartTimeMM']" [(ngModel)]="weektime.sunStartTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+              </div>
+                 <div class="ml-xs mr-xs"  fxLayoutAlign="start center">
+                       <md-select placeholder="HH"  [formControl]="form.controls['sunEndTimeHH']" [(ngModel)]="weektime.sunEndTimeHH">
+                        <md-option *ngFor="let hour of hours;let rowId = index" [value]="rowId">
+                          {{ rowId }}
+                        </md-option>
+                      </md-select>
+                      <md-select  placeholder="MM"  [formControl]="form.controls['sunEndTimeMM']" [(ngModel)]="weektime.sunEndTimeMM">
+                        <md-option *ngFor="let miniute of miniutes;" [value]="miniute">
+                          {{ miniute }}
+                        </md-option>
+                      </md-select>
+                </div>
+            </div>
+     <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+      <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+        <textarea mdInput placeholder="About" maxLength="300" class="demo-full-width"  [formControl]="form.controls['about']" [(ngModel)]="classes.about"
+                (keypress)="countAboutChars()"></textarea>
+        <md-hint align="end">{{aboutCharLeft}} / 300</md-hint>
+      </md-input-container>
+    </div>
+</md-card-content>
+<hr>
+   <md-card-actions >
+      <!--<button md-raised-button color="primary" fxLayoutAlign="start center" [disabled]="!form.valid" type="submit" (click)="createClasses()">Submit</button>-->
+      <button md-raised-button color="primary" fxLayoutAlign="start center" type="submit">Submit</button>
+    
+    </md-card-actions>
+  </form>
+</md-card>
+   

@@ -1,0 +1,69 @@
+<md-card>
+  <md-card-content>
+    <div fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h3 class="mt-0">Articles</h3>
+      </div>
+      <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+        <button md-raised-button color="primary"  (click)="createArticle()">Create Article</button>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+
+
+<ngx-datatable
+  class="material"
+  [rows]="rows"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="30"
+  [rowHeight]="'auto'"
+  [limit]="10">
+  <ngx-datatable-column name="title">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Title
+    </ng-template>
+    <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="preview">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Preview
+    </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="category">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Category
+    </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+  </ngx-datatable-column>
+  
+  <ngx-datatable-column name="postDate">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Posted Date
+    </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+  </ngx-datatable-column>
+
+ 
+   <ngx-datatable-column name="action">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Action
+    </ng-template>
+     <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+           <button md-mini-fab class="mr-1" color="primary" type="submit" (click)="editArticle(row)"><md-icon>edit</md-icon></button>
+           <button md-mini-fab class="mr-1" color="warn" type="submit" (click)="deleteArticle(row)"><md-icon>delete</md-icon></button>
+      </ng-template>
+  </ngx-datatable-column>
+ 
+ </ngx-datatable>

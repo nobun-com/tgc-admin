@@ -1,0 +1,48 @@
+<md-card>
+   <md-card-content>
+  <div fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h3 class="mt-0" style="text-align: start;">{{title}}</h3>
+      </div>
+      <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+        <button md-raised-button color="primary"  (click)="backToCouponList()">Back To List</button>
+      </div>
+  </div>
+  </md-card-content>
+  <form [formGroup]="form">
+  <md-card-content>
+
+    <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+      <md-input-container class="ml-xs mr-xs" style="width: 20%;">
+        <input mdInput placeholder="Coupon Code" [formControl]="form.controls['code']" [(ngModel)]="coupon.code">
+      </md-input-container>
+      <small *ngIf="form.controls['code'].hasError('required') && form.controls['code'].touched" class="mat-text-warn">You must include a code.</small>
+
+      <md-input-container class="ml-xs mr-xs" style="width: 20%;">
+        <input mdInput placeholder="Value" [formControl]="form.controls['value']" [(ngModel)]="coupon.value">
+      </md-input-container>
+      <small *ngIf="form.controls['value'].hasError('required') && form.controls['value'].touched" class="mat-text-warn">You must include value.</small>
+   </div>
+     <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
+      <md-input-container class="ml-xs mr-xs" fxLayoutAlign="start center">
+        <input mdInput [mdDatepicker]="minDatePicker" [formControl]="form.controls['startDate']" [(ngModel)]="coupon.startDate" placeholder="Start Date">
+        <button mdSuffix [mdDatepickerToggle]="minDatePicker"></button>
+      </md-input-container>
+     <md-datepicker #minDatePicker [touchUi]="touch"></md-datepicker>
+      <small *ngIf="form.controls['startDate'].hasError('required') && form.controls['startDate'].touched" class="mat-text-warn">You must select start date.</small>
+    <md-input-container class="ml-xs mr-xs" fxLayoutAlign="start center">
+        <input mdInput [mdDatepicker]="maxDatePicker" [formControl]="form.controls['expiryDate']" [(ngModel)]="coupon.expiryDate" placeholder="Expiry Date">
+        <button mdSuffix [mdDatepickerToggle]="maxDatePicker"></button>
+      </md-input-container>
+     <md-datepicker #maxDatePicker [touchUi]="touch"></md-datepicker>
+      <small *ngIf="form.controls['expiryDate'].hasError('required') && form.controls['expiryDate'].touched" class="mat-text-warn">You must select expiry date.</small>
+    </div>
+</md-card-content>
+<hr>
+
+   <md-card-actions>
+      <button md-raised-button color="primary" type="submit" (click)="createOrUpdateCoupon()" [disabled]="!form.valid">Submit</button>
+    </md-card-actions>
+  </form>
+</md-card>
+   
