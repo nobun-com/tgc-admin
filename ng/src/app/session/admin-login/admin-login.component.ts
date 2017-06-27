@@ -22,7 +22,7 @@ export class AdminLoginComponent implements OnInit {
       password : ''
     }
 
-     this.adminLoginService.logout();
+     //this.adminLoginService.logout();
   }
 
   ngOnInit() {
@@ -32,10 +32,7 @@ export class AdminLoginComponent implements OnInit {
     } );
   }
 
-  onSubmit() {
-    this.router.navigate ( [ '/dashboard' ] );
-  }
-
+  
   login() {
         this.loading = true;
         this.adminLoginService.login(this.admin)

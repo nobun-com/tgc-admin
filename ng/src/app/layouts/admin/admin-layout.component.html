@@ -23,7 +23,7 @@
       <md-icon>person</md-icon>
     </button>
     <md-menu #user="mdMenu" x-position="before">
-      <button md-menu-item>
+      <!--<button md-menu-item>
         <md-icon>settings</md-icon>
         Settings
       </button>
@@ -34,8 +34,8 @@
       <button md-menu-item>
         <md-icon>notifications_off</md-icon>
         Disable notifications
-      </button>
-      <button md-menu-item>
+      </button>-->
+      <button md-menu-item (click)="logout()">
         <md-icon>exit_to_app</md-icon>
         Sign Out
       </button>

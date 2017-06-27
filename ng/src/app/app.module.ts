@@ -14,6 +14,10 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { SharedModule } from './shared/shared.module';
+import { AuthGuard } from './common/index';
+import { AdminLoginService } from './session/admin-login/admin-login.service';
+import { Globals } from './session/globals';
+
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -40,7 +44,7 @@ export function createTranslateLoader(http: Http) {
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [ AuthGuard,AdminLoginService,Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,6 +12,10 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { LockscreenComponent } from './lockscreen/lockscreen.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminLoginService } from './admin-login/admin-login.service';
+import { Globals } from './globals';
+
 
 @NgModule({
   imports: [
@@ -25,6 +29,7 @@ import { SignupComponent } from './signup/signup.component';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule
+
   ],
   declarations: [
     NotFoundComponent,
@@ -32,7 +37,13 @@ import { SignupComponent } from './signup/signup.component';
     ForgotComponent,
     LockscreenComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    AdminLoginComponent
+  ],
+  providers: [
+    AdminLoginService,
+    Globals
+
   ]
 })
 

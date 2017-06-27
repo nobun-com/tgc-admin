@@ -177,7 +177,7 @@ const MENUITEMS = [
   // },
   {
     state: 'htmls',
-    name: 'Center',
+    name: 'Manage',
     type: 'sub',
     icon: 'looks_3',
     children: [
@@ -185,8 +185,7 @@ const MENUITEMS = [
       {state: 'teacher-list', name: 'Teachers'},
       {state: 'class-list', name: 'Classes'},
       {state: 'coupon-list', name: 'Coupons'},
-      {state: 'article-list', name: 'Articles'},
-      {state: 'admin-login', name: 'Admin Login'}
+      {state: 'article-list', name: 'Articles'}
     ]
    }
   // {

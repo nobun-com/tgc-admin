@@ -6,6 +6,7 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
 import * as Ps from 'perfect-scrollbar';
+import { AdminLoginService } from '../../session/admin-login/admin-login.service';
 
 @Component({
   selector: 'app-layout',
@@ -27,7 +28,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('sidemenu') sidemenu;
   @ViewChild('root') root;
 
-  constructor(private router: Router, public menuItems: MenuItems, public translate: TranslateService ) {
+  constructor(private router: Router, public menuItems: MenuItems, public translate: TranslateService ,private adminLoginService:AdminLoginService) {
     const browserLang: string = translate.getBrowserLang();
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
@@ -110,5 +111,11 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
         {state: 'timelmenuine', name: 'MENU'}
       ]
     });
+  }
+
+  logout(){
+    console.log("logout");
+    this.adminLoginService.logout();
+    this.router.navigate ( [ 'session/admin-login' ] );
   }
 }
