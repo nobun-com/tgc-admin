@@ -38,7 +38,7 @@ export function createTranslateLoader(http: Http) {
       deps: [Http]
     }),
     MaterialModule,
-    FlexLayoutModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
