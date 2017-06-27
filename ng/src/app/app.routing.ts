@@ -30,10 +30,10 @@ export const AppRoutes: Routes = [{
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule'
   }
-  // , {
-  //   path: 'charts',
-  //   loadChildren: './chartlib/chartlib.module#ChartlibModule'
-  // }
+   , {
+     path: 'charts',
+     loadChildren: './chartlib/chartlib.module#ChartlibModule'
+   }
   , {
     path: 'maps',
     loadChildren: './maps/maps.module#MapModule'

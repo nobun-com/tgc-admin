@@ -51,9 +51,6 @@ import { ArticleService } from './article/article.service';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { EditArticleComponent } from './article/edit-article.component';
 import { ArticleListService } from './article-list/article-list.service';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { AdminLoginService } from './admin-login/admin-login.service';
-
 import { InstancesListService } from './instances-list/instances-list.service';
 import {InstancesListComponent } from './instances-list/instances-list.component';
 
@@ -103,7 +100,6 @@ import 'hammerjs';
     ArticleComponent, 
     EditArticleComponent,
     ArticleListComponent,
-    AdminLoginComponent,
     InstancesListComponent
     
      ],
@@ -118,7 +114,6 @@ import 'hammerjs';
     CouponListService,
     ArticleService,
     ArticleListService,
-    AdminLoginService,
     InstancesListService,
     Globals
 

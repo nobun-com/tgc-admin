@@ -20,7 +20,6 @@ import { ArticleComponent } from './article/article.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { EditArticleComponent } from './article/edit-article.component';
 
-import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { InstancesListComponent } from './instances-list/instances-list.component';
 
 
@@ -88,10 +87,6 @@ export const HtmlsRoutes: Routes = [
     {
       path: 'edit-article/:id',
       component: EditArticleComponent
-    },
-    {
-      path: 'admin-login',
-      component: AdminLoginComponent
     },
     {
       path: 'instances-list/:id',
