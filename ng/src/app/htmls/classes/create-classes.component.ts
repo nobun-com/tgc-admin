@@ -432,6 +432,7 @@ getTeachers() {
 validateForm(classes,isValid){
   this.submitAttempt = true;
   if(isValid){
+      this.createClasses();
       console.log("form valid");
    }else{
      console.log("class name",classes.className);
