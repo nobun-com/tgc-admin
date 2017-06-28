@@ -54,7 +54,7 @@ import { ArticleListService } from './article-list/article-list.service';
 import { InstancesListService } from './instances-list/instances-list.service';
 import {InstancesListComponent } from './instances-list/instances-list.component';
 
-import { Globals } from './globals';
+import { Globals } from '../common/globals';
 
 
 import 'hammerjs';

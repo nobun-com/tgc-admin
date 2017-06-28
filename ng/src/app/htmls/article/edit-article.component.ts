@@ -6,7 +6,7 @@ import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ArticleService } from './article.service';
 import * as Quill from 'quill';
-import { Globals } from '../globals';
+import { Globals } from '../../common/globals';
 import { CentersService } from '../centers/centers.service';
 
 

@@ -7,7 +7,7 @@ import { Observable } from "rxjs/Rx";
 import { ArticleService } from './article.service';
 import { CentersService } from '../centers/centers.service';
 import * as Quill from 'quill';
-import { Globals } from '../globals';
+import { Globals } from '../../common/globals';
 
 @Component({
   selector: 'article',

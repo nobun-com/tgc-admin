@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { AdminLoginService } from './admin-login.service';
 import { CustomValidators } from 'ng2-validation';
-import { Globals } from '../globals';
+import { Globals } from '../../common/globals';
 
 @Component({
   selector: 'admin-login',
@@ -16,6 +16,7 @@ export class AdminLoginComponent implements OnInit {
   admin : any={};
   loading = false;
   error = '';
+
   constructor(private fb: FormBuilder, private router: Router,private adminLoginService:AdminLoginService) {
      this.admin ={
       email : '',
@@ -46,5 +47,7 @@ export class AdminLoginComponent implements OnInit {
                 }
             });
     }
+
+  
 
 }

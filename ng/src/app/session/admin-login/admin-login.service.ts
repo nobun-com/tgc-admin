@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { Observable } from "rxjs/Rx";
-import { Globals } from '../globals';
+import { Globals } from '../../common/globals';
 import 'rxjs/add/operator/map'
 
 @Injectable()
 export class AdminLoginService {
     public token: string;
     public user : any;
+  
+
     constructor(private http: Http,private globals : Globals) {
         // set token if saved in local storage
         //var currentUser = JSON.parse(localStorage.getItem('currentUser'));
