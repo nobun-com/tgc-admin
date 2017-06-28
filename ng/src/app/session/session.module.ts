@@ -14,7 +14,9 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminLoginService } from './admin-login/admin-login.service';
-import { Globals } from './globals';
+import { TeacherLoginComponent } from './teacher-login/teacher-login.component';
+import { TeacherLoginService } from './teacher-login/teacher-login.service';
+import { Globals } from '../common/globals';
 
 
 @NgModule({
@@ -38,10 +40,13 @@ import { Globals } from './globals';
     LockscreenComponent,
     SigninComponent,
     SignupComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    TeacherLoginComponent
+    
   ],
   providers: [
     AdminLoginService,
+    TeacherLoginService,
     Globals
 
   ]

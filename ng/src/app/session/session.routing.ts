@@ -7,6 +7,7 @@ import { LockscreenComponent } from './lockscreen/lockscreen.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { TeacherLoginComponent } from './teacher-login/teacher-login.component';
 
 
 export const SessionRoutes: Routes = [
@@ -33,6 +34,10 @@ export const SessionRoutes: Routes = [
     },{
       path: 'admin-login',
       component: AdminLoginComponent
-    }]
+    },{
+      path: 'teacher-login',
+      component: TeacherLoginComponent
+    }
+    ]
   }
 ];

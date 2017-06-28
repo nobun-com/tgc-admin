@@ -5,7 +5,7 @@ import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { CentersService } from './centers.service';
-import { Globals } from '../globals';
+import { Globals } from '../../common/globals';
 
 
 
