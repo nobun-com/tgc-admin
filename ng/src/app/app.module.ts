@@ -16,6 +16,7 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthGuard } from './common/index';
 import { AdminLoginService } from './session/admin-login/admin-login.service';
+import { TeacherLoginService } from './session/teacher-login/teacher-login.service';
 import { Globals } from './common/globals';
 
 
@@ -44,7 +45,7 @@ export function createTranslateLoader(http: Http) {
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [ AuthGuard,AdminLoginService,Globals],
+  providers: [ AuthGuard,AdminLoginService,TeacherLoginService,Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

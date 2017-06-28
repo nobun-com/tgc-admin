@@ -45,7 +45,7 @@ export const AppRoutes: Routes = [{
     loadChildren: './pages/pages.module#PagesModule'
   }, {
     path: 'htmls',
-    loadChildren: './htmls/htmls.module#HtmlsModule'
+    loadChildren: './htmls/htmls.module#HtmlsModule',
   }]
 }, {
   path: '',
@@ -60,5 +60,8 @@ export const AppRoutes: Routes = [{
 }, {
   path: 'admin-login',
   redirectTo: 'session/admin-login'
+},{
+  path: 'teacher-login',
+  redirectTo: 'session/teacher-login'
 }
 ];

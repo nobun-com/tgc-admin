@@ -24,6 +24,7 @@ export class AdminLoginService {
     return this.http.post(this.globals.SERVERADDRESS+'adminLogin', admin, options ).map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
+                admin = response.json() && response.json().admin;
                console.log(response.json());
                 if (token) {
                     // set token property
@@ -32,6 +33,10 @@ export class AdminLoginService {
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     //localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: token }));
                     Cookie.set('currentUser', JSON.stringify({ username: admin.email, token: token }));    
+                    Cookie.set('role', 'admin');    
+                    Cookie.set('userId', admin.id);    
+                    
+                    
                     // return true to indicate successful login
                     return true;
                 } else {
@@ -46,7 +51,9 @@ export class AdminLoginService {
         this.token = null;
         //localStorage.removeItem('currentUser');
         Cookie.delete('currentUser');
-    }
+        Cookie.delete('role');
+        Cookie.delete('userId');    
+    }   
     getUsers(): Observable<any> {
         // add authorization header with jwt token
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.token });

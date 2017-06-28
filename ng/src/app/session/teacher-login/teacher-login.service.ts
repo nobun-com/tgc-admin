@@ -10,6 +10,7 @@ export class TeacherLoginService {
     public token: string;
     public user : any;
     public loggedIn : boolean = false;
+    
 
     constructor(private http: Http,private globals : Globals) {
         // set token if saved in local storage
@@ -24,6 +25,7 @@ export class TeacherLoginService {
     return this.http.post(this.globals.SERVERADDRESS+'teacherLogin', teacher, options ).map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
+                teacher = response.json() && response.json().teacher;
                console.log(response.json());
                 if (token) {
                     // set token property
@@ -32,6 +34,10 @@ export class TeacherLoginService {
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     //localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: token }));
                     Cookie.set('currentUser', JSON.stringify({ username: teacher.email, token: token }));    
+                    Cookie.set('role', 'teacher');  
+                    Cookie.set('userId', teacher.id);    
+                      
+
                     // return true to indicate successful login
                     this.loggedIn = false;
                     return true;
@@ -47,6 +53,9 @@ export class TeacherLoginService {
         this.token = null;
         //localStorage.removeItem('currentUser');
         Cookie.delete('currentUser');
+        Cookie.delete('role');
+        Cookie.delete('userId');
+        
 
         this.loggedIn = false;
     }

@@ -7,6 +7,7 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 import * as Ps from 'perfect-scrollbar';
 import { AdminLoginService } from '../../session/admin-login/admin-login.service';
+import { TeacherLoginService } from '../../session/teacher-login/teacher-login.service';
 
 @Component({
   selector: 'app-layout',
@@ -25,10 +26,11 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   compactSidebar: boolean;
   currentLang = 'en';
   currentUser : any = JSON.parse(Cookie.get('currentUser'));
+  role : string = Cookie.get('role') 
   @ViewChild('sidemenu') sidemenu;
   @ViewChild('root') root;
 
-  constructor(private router: Router, public menuItems: MenuItems, public translate: TranslateService ,private adminLoginService:AdminLoginService) {
+  constructor(private router: Router, public menuItems: MenuItems, public translate: TranslateService ,private adminLoginService:AdminLoginService,private teacherLoginService:TeacherLoginService) {
     const browserLang: string = translate.getBrowserLang();
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
@@ -115,7 +117,14 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   logout(){
     console.log("logout");
-    this.adminLoginService.logout();
-    this.router.navigate ( [ 'session/admin-login' ] );
+    if(this.role=='admin'){
+        this.adminLoginService.logout();
+        this.router.navigate ( [ 'session/admin-login' ] );
+    }else{
+        this.teacherLoginService.logout();
+        this.router.navigate ( [ 'session/teacher-login' ] );
+    }
+
+    
   }
 }

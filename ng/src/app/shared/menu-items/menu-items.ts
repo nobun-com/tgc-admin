@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 export interface BadgeItem {
   type: string;
@@ -20,7 +21,24 @@ export interface Menu {
   children?: ChildrenItems[];
 }
 
-const MENUITEMS = [
+const TEACHERMENUITEMS = [
+  {
+    state: '/',
+    name: 'HOME',
+    type: 'link',
+    icon: 'explore'
+  },
+  {
+    state: 'htmls',
+    name: 'Manage',
+    type: 'sub',
+    icon: 'looks_3',
+    children: [
+      {state: 'class-list', name: 'Classes'}
+    ]
+   }
+];
+  const ADMINMENUITEMS = [
   {
     state: '/',
     name: 'HOME',
@@ -196,13 +214,21 @@ const MENUITEMS = [
   // }
 ];
 
+
 @Injectable()
 export class MenuItems {
+  role : string =Cookie.get('role') 
   getAll(): Menu[] {
-    return MENUITEMS;
+    if(this.role=='admin')
+      return ADMINMENUITEMS;
+    else
+      return TEACHERMENUITEMS
   }
 
   add(menu: Menu) {
-    MENUITEMS.push(menu);
+    if(this.role=='admin')
+      ADMINMENUITEMS.push(menu);
+    else
+      TEACHERMENUITEMS.push(menu);
   }
 }
