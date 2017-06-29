@@ -1,6 +1,10 @@
-import { Component,OnInit } from '@angular/core';
-import { ClassListService } from './classes-list.service';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Component, OnInit,Input, ChangeDetectionStrategy  } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { CustomValidators } from 'ng2-validation';
+import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { Observable } from "rxjs/Rx";
+import { ClassesListService } from './classes-list.service';
 
 
 @Component({
@@ -8,10 +12,10 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
   templateUrl: './classes-list.component.html',
   styleUrls: ['./classes-list.component.scss']
 })
-export class ClassListComponent {
+export class ClassesListComponent {
   rows = [];
 
-  constructor(private _classListService: ClassListService,private _router :Router) {
+  constructor(private _classListService: ClassesListService,private _router :Router) {
    
   }
 
@@ -31,15 +35,15 @@ getClasses() {
   }
   
 getInstances(obj: any){
-  this._router.navigate(['/htmls/instances-list',obj.id]);
+  this._router.navigate(['/instances-list',obj.id]);
 }
 
 editClass(classes) {     
-     this._router.navigate(['/htmls/edit-classes',classes.id]);
+     this._router.navigate(['/classes/edit-classes',classes.id]);
 }
 
 createClass(){
-  this._router.navigate(['/htmls/create-classes']);
+  this._router.navigate(['/classes/create-classes']);
 }
  
 deleteClass(obj: any) {

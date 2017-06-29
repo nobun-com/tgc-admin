@@ -35,7 +35,7 @@ ngOnInit() {
   )
 }
   backToClassList(){
-  this._router.navigate(['/htmls/class-list']);
+  this._router.navigate(['/classes-list']);
 }
 
 }

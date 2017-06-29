@@ -98,7 +98,7 @@ createOrUpdateCenter() {
     this._centerService.createCenter(this.center).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/htmls/center-list']);
+         this._router.navigate(['/centers-list']);
          return true;
        },
        error => {
@@ -122,7 +122,7 @@ createOrUpdateCenter() {
  
 
  backToCenterList(){
-  this._router.navigate(['/htmls/center-list']);
+  this._router.navigate(['/centers-list']);
 }
 
  

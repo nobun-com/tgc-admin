@@ -6,7 +6,7 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 
 @Injectable()
-export class ClassListService {
+export class ClassesListService {
 role : string = Cookie.get('role'); 
 userId : string = Cookie.get('userId'); 
 constructor(private http:Http,private globals : Globals) {

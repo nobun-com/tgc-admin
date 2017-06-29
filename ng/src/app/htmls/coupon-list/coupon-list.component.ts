@@ -32,11 +32,11 @@ getCoupons() {
 
 
    editCoupon(coupon) {   
-     this._router.navigate(['/htmls/edit-coupon',coupon.code]);
+     this._router.navigate(['/coupon/edit-coupon',coupon.code]);
   }
 
   createCoupon(){
-    this._router.navigate(['/htmls/create-coupon']);
+    this._router.navigate(['/coupon/coupon']);
   }
  
   deleteCoupon(coupon) {

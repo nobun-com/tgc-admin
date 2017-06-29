@@ -6,7 +6,7 @@ import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ClassesService } from './create-classes.service';
 import { TeacherListService } from '../teacher-list/teacher-list.service';
-import { ClassListService } from '../classes-list/classes-list.service';
+import { ClassesListService } from '../classes-list/classes-list.service';
 import { CentersListService } from '../centers-list/centers-list.service';
 import { ExtraValidators } from './extraValidators.component';
 
@@ -39,7 +39,7 @@ export class EditClassesComponent {
 
   
 // Center CURD Operation  
-  constructor(private fb: FormBuilder,private activatedRoute: ActivatedRoute,private _teacherListService: TeacherListService,private _classService: ClassesService,private _classListService: ClassListService,private _router :Router, private _centerService: CentersListService) {
+  constructor(private fb: FormBuilder,private activatedRoute: ActivatedRoute,private _teacherListService: TeacherListService,private _classService: ClassesService,private _classListService: ClassesListService,private _router :Router, private _centerService: CentersListService) {
      this.title = "Update Class";
      this.week = {};
      this.weektime = {};

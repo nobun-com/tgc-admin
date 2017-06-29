@@ -29,12 +29,10 @@ export const AppRoutes: Routes = [{
   }, {
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule'
-  }
-   , {
+  },{
      path: 'charts',
      loadChildren: './chartlib/chartlib.module#ChartlibModule'
-   }
-  , {
+  }, {
     path: 'maps',
     loadChildren: './maps/maps.module#MapModule'
   }, {
@@ -44,9 +42,40 @@ export const AppRoutes: Routes = [{
     path: 'pages',
     loadChildren: './pages/pages.module#PagesModule'
   }, {
-    path: 'htmls',
-    loadChildren: './htmls/htmls.module#HtmlsModule',
-  }]
+    path: 'centers',
+    loadChildren: './htmls/centers/centers.module#CentersModule',
+  }, {
+    path: 'centers-list',
+    loadChildren: './htmls/centers-list/centers-list.module#CentersListModule',
+  }, {
+    path: 'teacher',
+    loadChildren: './htmls/teacher/teacher.module#TeacherModule',
+  }, {
+    path: 'teacher-list',
+    loadChildren: './htmls/teacher-list/teacher-list.module#TeacherListModule',
+  }, {
+    path: 'instances-list/:id',
+    loadChildren: './htmls/instances-list/instances-list.module#InstancesListModule',
+  }, {
+    path: 'classes',
+    loadChildren: './htmls/classes/classes.module#ClassesModule',
+  }, {
+    path: 'classes-list',
+    loadChildren: './htmls/classes-list/classes-list.module#ClassesListModule',
+  }, {
+    path: 'coupon',
+    loadChildren: './htmls/coupon/coupon.module#CouponModule',
+  }, {
+    path: 'coupon-list',
+    loadChildren: './htmls/coupon-list/coupon-list.module#CouponListModule',
+  }, {
+    path: 'article',
+    loadChildren: './htmls/article/article.module#ArticleModule',
+  }, {
+    path: 'article-list',
+    loadChildren: './htmls/article-list/article-list.module#ArticleListModule',
+  }
+  ]
 }, {
   path: '',
   component: AuthLayoutComponent,

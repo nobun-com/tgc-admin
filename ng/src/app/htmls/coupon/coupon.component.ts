@@ -49,7 +49,7 @@ createOrUpdateCoupon() {
     this._couponService.createCoupon(this.coupon).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/htmls/coupon-list']);
+         this._router.navigate(['/coupon-list']);
          return true;
        },
        error => {
@@ -60,7 +60,7 @@ createOrUpdateCoupon() {
   }
 
    backToCouponList(){
-  this._router.navigate(['/htmls/coupon-list']);
+  this._router.navigate(['/coupon-list']);
 }
 
  }

@@ -91,7 +91,7 @@ createOrUpdateArticle() {
     this._articleService.createArticle(this.article).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/htmls/article-list']);
+         this._router.navigate(['/article-list']);
          return true;
        },
        error => {
@@ -122,6 +122,6 @@ createOrUpdateArticle() {
      });
   }
   backToArticleList(){
-    this._router.navigate(['/htmls/article-list']);
+    this._router.navigate(['/article-list']);
   }
  }

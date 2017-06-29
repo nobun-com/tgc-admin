@@ -1,12 +1,12 @@
 import { Component, OnInit,Input, ChangeDetectionStrategy  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ClassesService } from './create-classes.service';
-import { TeacherListService } from '../teacher-list/teacher-list.service';
 import { CentersListService } from '../centers-list/centers-list.service';
+import { TeacherListService } from '../teacher-list/teacher-list.service';
 import { ExtraValidators } from './extraValidators.component';
 
 
@@ -64,12 +64,11 @@ export class CreateClassesComponent implements OnInit{
 
  public form: FormGroup;
   ngOnInit() {
-
-   this.occurrences = Array(50).fill('');
-   this.miniutes = [0,15,30,45];
-   this.hours = Array(25).fill('');
-   this.getTeachers();
    this.getCenters();
+   this.getTeachers();
+   this.occurrences = Array(50).fill('');
+   this.hours = Array(25).fill('');
+   this.miniutes = [0,15,30,45];
 
     this.form = this.fb.group({
        className:['',Validators.required],
@@ -513,7 +512,7 @@ createClasses() {
 
    this._classesService.createClasses(this.classes).subscribe(
       data => { 
-        this._router.navigate(['/htmls/class-list']);
+        this._router.navigate(['/classes-list']);
          return true; 
     },
       err => { console.log("error") }
@@ -527,7 +526,7 @@ createClasses() {
   }
 
   backToClassList(){
-  this._router.navigate(['/htmls/class-list']);
+  this._router.navigate(['/classes-list']);
 }
 
  }

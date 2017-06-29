@@ -55,7 +55,7 @@ createOrUpdateTeacher() {
     this._teacherService.createTeacher(this.teacher).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/htmls/teacher-list']);
+         this._router.navigate(['/teacher-list']);
          return true;
        },
        error => {
@@ -67,7 +67,7 @@ createOrUpdateTeacher() {
 
 
    backToTeacherList(){
-    this._router.navigate(['/htmls/teacher-list']);
+    this._router.navigate(['/teacher-list']);
   }
 
  }

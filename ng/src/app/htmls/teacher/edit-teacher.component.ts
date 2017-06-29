@@ -71,7 +71,7 @@ getTeacher(teacherId){
     this._teacherService.updateTeacher(this.teacher).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/htmls/teacher-list']);
+         this._router.navigate(['/teacher-list']);
          return true;
        },
        error => {
@@ -82,7 +82,7 @@ getTeacher(teacherId){
   }
 
    backToTeacherList(){
-    this._router.navigate(['/htmls/teacher-list']);
+    this._router.navigate(['/teacher-list']);
   }
  
  }

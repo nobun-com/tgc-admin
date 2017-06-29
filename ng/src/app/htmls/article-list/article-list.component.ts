@@ -32,11 +32,11 @@ getArticles() {
 
 
    editArticle(article) {   
-     this._router.navigate(['/htmls/edit-article',article.id]);
+     this._router.navigate(['/article/edit-article',article.id]);
   }
 
   createArticle(){
-    this._router.navigate(['/htmls/create-article']);
+    this._router.navigate(['/article/article']);
   }
  
   deleteArticle(article) {

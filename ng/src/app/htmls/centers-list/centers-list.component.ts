@@ -32,11 +32,11 @@ getCenters() {
 
 
 editCenter(center) {     
-     this._router.navigate(['/htmls/edit-center',center.id]);
+     this._router.navigate(['/centers/edit-centers',center.id]);
 }
 
 createCenter(){
-  this._router.navigate(['/htmls/create-center']);
+  this._router.navigate(['/centers/centers']);
 }
  
 deleteCenter(center) {

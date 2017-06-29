@@ -65,7 +65,7 @@ getCoupon(couponId){
     this._couponService.updateCoupon(this.coupon).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/htmls/coupon-list']);
+         this._router.navigate(['/coupon-list']);
          return true;
        },
        error => {
@@ -76,7 +76,7 @@ getCoupon(couponId){
   }
 
    backToCouponList(){
-  this._router.navigate(['/htmls/coupon-list']);
+  this._router.navigate(['/coupon-list']);
 }
  
  }

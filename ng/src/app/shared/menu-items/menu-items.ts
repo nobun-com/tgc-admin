@@ -26,25 +26,52 @@ const TEACHERMENUITEMS = [
     state: '/',
     name: 'HOME',
     type: 'link',
-    icon: 'explore'
+    icon: 'none'
   },
   {
-    state: 'htmls',
-    name: 'Manage',
-    type: 'sub',
-    icon: 'looks_3',
-    children: [
-      {state: 'class-list', name: 'Classes'}
-    ]
-   }
+    state: 'classes-list',
+    name: 'Manage Classes',
+    icon: 'none',
+    type: 'link'
+  }
 ];
   const ADMINMENUITEMS = [
   {
     state: '/',
     name: 'HOME',
-    type: 'link',
-    icon: 'explore'
+    icon: 'none',
+    type: 'link'
   },
+  {
+    state: 'centers-list',
+    name: 'Manage Centers',
+    icon: 'none',
+    type: 'link'
+  },
+  {
+    state: 'teacher-list',
+    name: 'Manage Teacher',
+    icon: 'none',
+    type: 'link'
+  },
+  {
+    state: 'classes-list',
+    name: 'Manage Classes',
+    icon: 'none',
+    type: 'link'
+  },
+  {
+    state: 'coupon-list',
+    name: 'Manage Coupons',
+    icon: 'none',
+    type: 'link'
+  },
+  {
+    state: 'article-list',
+    name: 'Manage Articles',
+    icon: 'none',
+    type: 'link'
+  }
   // {
   //   state: 'apps',
   //   name: 'APPS',
@@ -193,19 +220,19 @@ const TEACHERMENUITEMS = [
   //     {state: 'lockscreen', name: 'LOCKSCREEN'},
   //   ]
   // },
-  {
-    state: 'htmls',
-    name: 'Manage',
-    type: 'sub',
-    icon: 'looks_3',
-    children: [
-      {state: 'center-list', name: 'Centers'},
-      {state: 'teacher-list', name: 'Teachers'},
-      {state: 'class-list', name: 'Classes'},
-      {state: 'coupon-list', name: 'Coupons'},
-      {state: 'article-list', name: 'Articles'}
-    ]
-   }
+  // {
+  //   state: 'htmls',
+  //   name: 'Manage',
+  //   type: 'sub',
+  //   icon: 'looks_3',
+  //   children: [
+  //     {state: 'center-list', name: 'Centers'},
+  //     {state: 'teacher-list', name: 'Teachers'},
+  //     {state: 'class-list', name: 'Classes'},
+  //     {state: 'coupon-list', name: 'Coupons'},
+  //     {state: 'article-list', name: 'Articles'}
+  //   ]
+  //  }
   // {
   //   state: 'http://primer.nyasha.me/docs',
   //   name: 'DOCS',

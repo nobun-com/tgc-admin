@@ -81,6 +81,7 @@ getCenter(centerId){
         this.center = data;
         this.getDistricts(data.address.area);
         this.uploadFile = true;
+        this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
         console.log(this.center.logoName);
       },
       err =>{
@@ -115,7 +116,7 @@ getDistricts(selectedArea){
     this._centerService.updateCenter(this.center).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/htmls/center-list']);
+         this._router.navigate(['/centers-list']);
          return true;
        },
        error => {
@@ -139,7 +140,7 @@ getDistricts(selectedArea){
  
  
  backToCenterList(){
-  this._router.navigate(['/htmls/center-list']);
+  this._router.navigate(['/centers-list']);
 }
 
  }

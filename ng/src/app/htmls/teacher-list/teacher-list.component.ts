@@ -32,11 +32,11 @@ getTeachers() {
 
 
    editTeacher(teacher) {   
-     this._router.navigate(['/htmls/edit-teacher',teacher.id]);
+     this._router.navigate(['/teacher/edit-teacher',teacher.id]);
   }
 
   createTeacher(){
-    this._router.navigate(['/htmls/create-teacher']);
+    this._router.navigate(['/teacher/teacher']);
   }
  
   deleteTeacher(teacher) {
