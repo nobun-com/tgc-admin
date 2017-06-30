@@ -17,7 +17,6 @@ import { CentersService } from '../centers/centers.service';
 })
 export class EditArticleComponent {
 
-  
    article : any;
    title : string;
    pageTitle: any;
@@ -32,7 +31,7 @@ export class EditArticleComponent {
 
 // Center CURD Operation  
  constructor(private fb: FormBuilder,private globals : Globals,private _centerService: CentersService,private _articleService: ArticleService,private activatedRoute: ActivatedRoute,private _router :Router) {
-       this.title = "Update Article";
+       this.pageTitle = "Update Article";
      this.article={
        title:'',
        preview:'',
@@ -115,7 +114,7 @@ getCategory(){
     this._articleService.updateArticle(this.article).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/htmls/article-list']);
+         this._router.navigate(['/article-list']);
          return true;
        },
        error => {
@@ -146,7 +145,7 @@ getCategory(){
   }
 
   backToArticleList(){
-    this._router.navigate(['/htmls/article-list']);
+    this._router.navigate(['/article-list']);
   }
  
  }

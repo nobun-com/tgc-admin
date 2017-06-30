@@ -1,6 +1,6 @@
 import { Component, OnInit,Input, ChangeDetectionStrategy  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";

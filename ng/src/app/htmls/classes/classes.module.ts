@@ -25,8 +25,6 @@ import { ClassesRoutes } from './classes.routing';
 import { CreateClassesComponent } from './create-classes.component';
 import { EditClassesComponent } from './edit-classes.component';
 import { ClassesService } from './create-classes.service';
-import { CentersListService } from '../centers-list/centers-list.service';
-import { TeacherListService } from '../teacher-list/teacher-list.service';
 import { ClassesListService } from '../classes-list/classes-list.service';
 import { Globals } from '../../common/globals';
 import 'hammerjs';
@@ -62,9 +60,6 @@ import 'hammerjs';
      ],
   providers: [
     ClassesService,
-    CentersListService,
-    TeacherListService,
-    ClassesListService,
     Globals
   ]
 })

@@ -1,12 +1,10 @@
 import { Component, OnInit,Input, ChangeDetectionStrategy  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params} from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ClassesService } from './create-classes.service';
-import { CentersListService } from '../centers-list/centers-list.service';
-import { TeacherListService } from '../teacher-list/teacher-list.service';
 import { ExtraValidators } from './extraValidators.component';
 
 
@@ -21,9 +19,9 @@ export class CreateClassesComponent implements OnInit{
    classes : any;
    center_error:Boolean = false;
    title: string;
+   centers: any;
    teachers : any;
    occurrences : any;
-   centers: any;
    hrs: any;
    mins: any;
    week: any;
@@ -37,7 +35,7 @@ export class CreateClassesComponent implements OnInit{
    submitAttempt : boolean =false;
   
 // Center CURD Operation  
-  constructor(private fb: FormBuilder,private _teacherListService: TeacherListService,private _classesService: ClassesService,private _router :Router, private _centerService: CentersListService) {
+  constructor(private fb: FormBuilder,private _classesService: ClassesService,private _router :Router) {
      this.title = "Create New Class";
      this.week = {};
      this.weektime = {};
@@ -69,7 +67,6 @@ export class CreateClassesComponent implements OnInit{
    this.occurrences = Array(50).fill('');
    this.hours = Array(25).fill('');
    this.miniutes = [0,15,30,45];
-
     this.form = this.fb.group({
        className:['',Validators.required],
        teacherId : ['', Validators.required],
@@ -409,22 +406,22 @@ clearWeek(){
 }
 
 getCenters(){
-  this._centerService.getCenters().subscribe(
+    console.log("in get center");
+  this._classesService.getCenters().subscribe(
       data => { 
-        console.log(data);
         this.centers = data;
     },
-      err => { console.log("error") }
+      err => { console.log("error",err) }
   );
 }
 
 
 getTeachers() {
-    this._teacherListService.getTeachers().subscribe(
+    this._classesService.getTeachers().subscribe(
       data => { 
         this.teachers = data;
     },
-      err => { console.log("error") }
+      err => { console.log("error",err) }
     );
 }
 

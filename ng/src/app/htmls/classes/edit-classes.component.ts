@@ -5,9 +5,6 @@ import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ClassesService } from './create-classes.service';
-import { TeacherListService } from '../teacher-list/teacher-list.service';
-import { ClassesListService } from '../classes-list/classes-list.service';
-import { CentersListService } from '../centers-list/centers-list.service';
 import { ExtraValidators } from './extraValidators.component';
 
 
@@ -16,7 +13,7 @@ import { ExtraValidators } from './extraValidators.component';
   templateUrl: './create-classes.component.html' ,
   styleUrls: ['./create-classes.component.scss']
 })
-export class EditClassesComponent {
+export class EditClassesComponent implements OnInit{
 
    classes : any;
    center_error:Boolean = false;
@@ -39,7 +36,7 @@ export class EditClassesComponent {
 
   
 // Center CURD Operation  
-  constructor(private fb: FormBuilder,private activatedRoute: ActivatedRoute,private _teacherListService: TeacherListService,private _classService: ClassesService,private _classListService: ClassesListService,private _router :Router, private _centerService: CentersListService) {
+  constructor(private fb: FormBuilder,private activatedRoute: ActivatedRoute,private _classService: ClassesService,private _router :Router) {
      this.title = "Update Class";
      this.week = {};
      this.weektime = {};
@@ -58,25 +55,24 @@ export class EditClassesComponent {
        maxAge:0,
        maxSlots:0
      }
+   
+   this.getCenters();
+   this.getTeachers();
+   this.occurrences = Array(50).fill('');
+   this.miniutes = [0,15,30,45];
+   this.hours = Array(25).fill('');
    }
  public form: FormGroup;
 
 
 ngOnInit() {
-   this.occurrences = Array(50).fill('');
-   this.miniutes = [0,15,30,45];
-   this.hours = Array(25).fill('');
-   this.getTeachers();
-   this.getCenters();
-
-
     this.activatedRoute.params.subscribe((params: Params) => {
         let classId = params['id'];
           this.getClass(classId);
       });
 
 
- this.form = this.fb.group({
+    this.form = this.fb.group({
        className:['',Validators.required],
        teacherId : ['', Validators.required],
        centerId : ['', Validators.required],
@@ -414,7 +410,7 @@ clearWeek(){
 }
 
 getCenters(){
-  this._centerService.getCenters().subscribe(
+  this._classService.getCenters().subscribe(
       data => { 
         console.log(data);
         this.centers = data;
@@ -425,7 +421,7 @@ getCenters(){
 
 
 getTeachers() {
-    this._teacherListService.getTeachers().subscribe(
+    this._classService.getTeachers().subscribe(
       data => { 
         console.log(data);
         this.teachers = data;
@@ -435,84 +431,83 @@ getTeachers() {
 }
 
 createClasses() {
-   if(this.schedule != "Daily"){
+    if(this.schedule != "Daily"){
       this.obj = {};
       this.obj.weekly={};
       if(this.week.monday){
-        this.obj.weekly = {
-           Mon:{
+        this.obj.weekly.Mon = {
              startTime: (this.weektime.monStartTimeHH * 60) + this.weektime.monStartTimeMM ,
              endTime: (this.weektime.monEndTimeHH * 60) +  this.weektime.monEndTimeMM
            }
         }
-      }
+      
 
       if(this.week.tuesday){
-        this.obj.weekly = {
-           Tue:{
+        this.obj.weekly.Tue = {
              startTime: (this.weektime.tueStartTimeHH * 60) + this.weektime.tueStartTimeMM ,
              endTime: (this.weektime.tueEndTimeHH * 60) +  this.weektime.tueEndTimeMM
            }
         }
-      }
+      
 
       if(this.week.wednesday){
-        this.obj.weekly = {
-           Wed:{
+        this.obj.weekly.Wed={
              startTime: (this.weektime.wedStartTimeHH * 60) + this.weektime.wedStartTimeMM ,
              endTime: (this.weektime.wedEndTimeHH * 60) +  this.weektime.wedEndTimeMM
            }
         }
-      }
+      
 
       if(this.week.thursday){
-        this.obj.weekly = {
-           Thurs:{
+        this.obj.weekly.Thu={
               startTime: (this.weektime.thurStartTimeHH * 60) + this.weektime.thurStartTimeMM ,
              endTime: (this.weektime.thurEndTimeHH * 60) +  this.weektime.thurEndTimeMM
            }
         }
-      }
 
       if(this.week.friday){
-        this.obj.weekly = {
-           Fri:{
+        this.obj.weekly.Fri={
               startTime: (this.weektime.friStartTimeHH * 60) + this.weektime.friStartTimeMM ,
              endTime: (this.weektime.friEndTimeHH * 60) +  this.weektime.friEndTimeMM
            }
         }
-      }
 
       if(this.week.saturday){
-        this.obj.weekly = {
-           Satur:{
+        this.obj.weekly.Sat={
               startTime: (this.weektime.satStartTimeHH * 60) + this.weektime.satStartTimeMM ,
              endTime: (this.weektime.satEndTimeHH * 60) +  this.weektime.satEndTimeMM
            }
         }
-      }
 
       if(this.week.sunday){
-        this.obj.weekly = {
-           Sun:{
+        this.obj.weekly.Sun={
               startTime: (this.weektime.sunStartTimeHH * 60) + this.weektime.sunStartTimeMM ,
               endTime: (this.weektime.sunEndTimeHH * 60) +  this.weektime.sunEndTimeMM
            }
         }
-      }
+      
       this.classes.frequency = "Weekly";
       this.classes.frequencyMetadata = JSON.stringify(this.obj);
    }else{
+      this.obj = {};
+      this.obj.daily={};
      this.classes.frequency = "Daily";
-      this.frequencyMetadata.daily={
-              startTime: (this.frequencyMetadata.daily.StartTimeHH * 60) + this.frequencyMetadata.daily.StartTimeMM ,
-              endTime: (this.frequencyMetadata.daily.EndTimeHH * 60) +  this.frequencyMetadata.daily.EndTimeMM
+      this.obj.daily = { 
+              startTime: (this.frequencyMetadata.daily.startTimeHH * 60) + this.frequencyMetadata.daily.startTimeMM ,
+              endTime: (this.frequencyMetadata.daily.endTimeHH * 60) +  this.frequencyMetadata.daily.endTimeMM
            }
-     //this.classes.frequencyMetadata = JSON.stringify(this.frequencyMetadata); 
+     this.classes.frequencyMetadata = JSON.stringify(this.obj); 
    }
 
-   console.log(this.classes);
 
+   this._classService.createClasses(this.classes).subscribe(
+      data => { 
+        this._router.navigate(['/classes-list']);
+         return true; 
+    },
+      err => { console.log("error") }
+    );
+ 
   
 }
  
@@ -608,6 +603,7 @@ backToClassList(){
 validateForm(classes,isValid){
   this.submitAttempt = true;
   if(isValid){
+      this.createClasses();
       console.log("form valid");
    }else{
      console.log("class name",classes.className);

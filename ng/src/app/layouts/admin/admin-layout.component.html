@@ -1,27 +1,28 @@
 <div class="app" #root="$implicit" dir="ltr" [ngClass]="{'app-dark': dark, 'boxed': boxed, 'collapsed-sidebar': collapseSidebar, 'compact-sidebar': compactSidebar}">
   <md-toolbar class="main-header" color="primary">
-    <button (click)="sidemenu.toggle()" md-icon-button>
+      <button (click)="sidemenu.toggle()" md-icon-button>
       <md-icon>menu</md-icon>
     </button>
     <div class="branding">
       <!--<div class="logo"></div>-->
       <div>TGC</div>
     </div>
-    <div class="search-bar" fxFlex>
+    <span class="example-spacer" style="flex: 1 1 auto;"></span>
+    <!--<div class="search-bar" fxFlex>
       <form class="search-form" fxShow="false" fxShow.gt-xs>
         <md-icon>search</md-icon>
         <input type="text" placeholder="Search" autofocus="true" />
       </form>
-    </div>
+    </div>-->
     <button appToggleFullscreen md-icon-button>
-      <md-icon>fullscreen</md-icon>
+      <md-icon class="example-icon" style="padding: 0 14px;">fullscreen</md-icon>
     </button>
     <!--<button (click)="end.toggle()" md-icon-button class="ml-xs overflow-visible">
       <md-icon>notifications</md-icon>
       <span class="notification-label">5</span>
     </button>-->
     <button [md-menu-trigger-for]="user" md-icon-button class="ml-xs">
-      <md-icon>person</md-icon>
+      <md-icon class="example-icon">person</md-icon>
     </button>
     <md-menu #user="mdMenu" x-position="before">
       <!--<button md-menu-item>
