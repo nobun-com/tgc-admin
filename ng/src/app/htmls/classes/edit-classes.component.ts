@@ -120,222 +120,264 @@ ngOnInit() {
                 Validators.required
             ),])],
 
-      monday: ['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.schedule.value !== 'Daily',
-                Validators.required
-            ),])],
-      monEndTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.monday.value === true,
-                Validators.required
-            ),])],
-      monEndTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.monday.value === true,
-                Validators.required
-            ),])],
-      monStartTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.monday.value === true,
-                Validators.required
-            ),])],
-      monStartTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.monday.value === true,
-                Validators.required
-            ),])],
+      //   monday: ['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.schedule.value !== 'Daily',
+    //             Validators.required
+    //         ),])],
+    //   monEndTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.monday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   monEndTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.monday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   monStartTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.monday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   monStartTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.monday.value === true,
+    //             Validators.required
+    //         ),])],
 
-      tuesday: ['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.schedule.value !== 'Daily',
-                Validators.required
-            ),])],
-      tueEndTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.tuesday.value === true,
-                Validators.required
-            ),])],
-      tueEndTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.tuesday.value === true,
-                Validators.required
-            ),])],
-      tueStartTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.tuesday.value === true,
-                Validators.required
-            ),])],
-      tueStartTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.tuesday.value === true,
-                Validators.required
-            ),])],
+    //   tuesday: ['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.schedule.value !== 'Daily',
+    //             Validators.required
+    //         ),])],
+    //   tueEndTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.tuesday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   tueEndTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.tuesday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   tueStartTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.tuesday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   tueStartTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.tuesday.value === true,
+    //             Validators.required
+    //         ),])],
 
-      wednesday: ['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.schedule.value !== 'Daily',
-                Validators.required
-            ),])],
-      wedEndTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.wednesday.value === true,
-                Validators.required
-            ),])],
-      wedEndTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.wednesday.value === true,
-                Validators.required
-            ),])],
-      wedStartTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.wednesday.value === true,
-                Validators.required
-            ),])],
-      wedStartTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.wednesday.value === true,
-                Validators.required
-            ),])],
+    //   wednesday: ['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.schedule.value !== 'Daily',
+    //             Validators.required
+    //         ),])],
+    //   wedEndTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.wednesday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   wedEndTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.wednesday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   wedStartTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.wednesday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   wedStartTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.wednesday.value === true,
+    //             Validators.required
+    //         ),])],
 
-      thursday: ['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.schedule.value !== 'Daily',
-                Validators.required
-            ),])],
-      thurEndTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.thursday.value === true,
-                Validators.required
-            ),])],
-      thurEndTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.thursday.value === true,
-                Validators.required
-            ),])],
-      thurStartTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.thursday.value === true,
-                Validators.required
-            ),])],
-      thurStartTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.thursday.value === true,
-                Validators.required
-            ),])],
+    //   thursday: ['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.schedule.value !== 'Daily',
+    //             Validators.required
+    //         ),])],
+    //   thurEndTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.thursday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   thurEndTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.thursday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   thurStartTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.thursday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   thurStartTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.thursday.value === true,
+    //             Validators.required
+    //         ),])],
       
-      friday: ['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.schedule.value !== 'Daily',
-                Validators.required
-            ),])],
-      friEndTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.friday.value === true,
-                Validators.required
-            ),])],
-      friEndTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.friday.value === true,
-                Validators.required
-            ),])],
-      friStartTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.friday.value === true,
-                Validators.required
-            ),])],
-      friStartTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.friday.value === true,
-                Validators.required
-            ),])],
+    //   friday: ['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.schedule.value !== 'Daily',
+    //             Validators.required
+    //         ),])],
+    //   friEndTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.friday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   friEndTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.friday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   friStartTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.friday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   friStartTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.friday.value === true,
+    //             Validators.required
+    //         ),])],
     
-      saturday: ['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.schedule.value !== 'Daily',
-                Validators.required
-            ),])],
-      satEndTimeHH: ['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.saturday.value === true,
-                Validators.required
-            ),])],
-      satEndTimeMM: ['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.saturday.value === true,
-                Validators.required
-            ),])],
-      satStartTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.saturday.value === true,
-                Validators.required
-            ),])],
-      satStartTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.saturday.value === true,
-                Validators.required
-            ),])],
+    //   saturday: ['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.schedule.value !== 'Daily',
+    //             Validators.required
+    //         ),])],
+    //   satEndTimeHH: ['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.saturday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   satEndTimeMM: ['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.saturday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   satStartTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.saturday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   satStartTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.saturday.value === true,
+    //             Validators.required
+    //         ),])],
       
-      sunday: ['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.schedule.value !== 'Daily',
-                Validators.required
-            ),])],
-      sunEndTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.sunday.value === true,
-                Validators.required
-            ),])],
-      sunEndTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.sunday.value === true,
-                Validators.required
-            ),])],
-      sunStartTimeHH:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.sunday.value === true,
-                Validators.required
-            ),])],
-      sunStartTimeMM:['',
-        Validators.compose([
-            ExtraValidators.conditional(
-                group => group.controls.sunday.value === true,
-                Validators.required
-            ),])],
+    //   sunday: ['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.schedule.value !== 'Daily',
+    //             Validators.required
+    //         ),])],
+    //   sunEndTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.sunday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   sunEndTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.sunday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   sunStartTimeHH:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.sunday.value === true,
+    //             Validators.required
+    //         ),])],
+    //   sunStartTimeMM:['',
+    //     Validators.compose([
+    //         ExtraValidators.conditional(
+    //             group => group.controls.sunday.value === true,
+    //             Validators.required
+    //         ),])],
+     monday: [],
+    tuesday: [],
+    wednesday: [],
+    thursday: [],
+    friday: [],
+    saturday: [],
+    sunday: [],
+    sunEndTimeHH:[],
+    sunEndTimeMM:[],
+    sunStartTimeHH:[],
+    sunStartTimeMM:[],
+    
+    satEndTimeHH: [],
+    satEndTimeMM: [],
+    satStartTimeHH:[],
+    satStartTimeMM:[],
+    
+    friEndTimeHH:[],
+    friEndTimeMM:[],
+    friStartTimeHH:[],
+    friStartTimeMM:[],
+  
+    thurEndTimeHH:[],
+    thurEndTimeMM:[],
+    thurStartTimeHH:[],
+    thurStartTimeMM:[],
+ 
+    wedEndTimeHH:[],
+    wedEndTimeMM:[],
+    wedStartTimeHH:[],
+    wedStartTimeMM:[],
+
+
+    tueEndTimeHH:[],
+    tueEndTimeMM:[],
+    tueStartTimeHH:[],
+    tueStartTimeMM:[],
+
+    monEndTimeHH:[],
+    monEndTimeMM:[],
+    monStartTimeHH:[],
+    monStartTimeMM:[],
        about:[],
       
     });
@@ -521,11 +563,11 @@ createClasses() {
         console.log("class=",data);
         this.classes = data;
 
-        if(this.classes.endDateType == 'endDateType')
+        if(this.classes.occurrence)
         {
-          this.classes.endDateType='endDate';
+          this.classes.endDateType='occurrence';
         }else{
-          this.classes.endDateType='occurance';
+          this.classes.endDateType='endDate';
         }
         
         this.metaData = JSON.parse(data.frequencyMetadata);
@@ -596,7 +638,7 @@ createClasses() {
   )
 }
 backToClassList(){
-  this._router.navigate(['/htmls/class-list']);
+  this._router.navigate(['/classes-list']);
 }
 
 
