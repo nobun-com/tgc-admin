@@ -23,7 +23,6 @@ ngOnInit() {
 getArticles() {
     this._articleListService.getArticles().subscribe(
       data => { 
-        console.log(data);
         this.rows = data;
       },
       err => { console.log("error") }

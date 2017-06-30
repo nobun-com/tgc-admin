@@ -40,8 +40,8 @@
     <ng-template let-column="column" ngx-datatable-header-template>
         Start Date
     </ng-template>
-      <ng-template let-value="value" ngx-datatable-cell-template>
-        {{value}}
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        {{value | date:'dd-MM-yyyy'}}
       </ng-template>
   </ngx-datatable-column>
   
@@ -49,8 +49,8 @@
     <ng-template let-column="column" ngx-datatable-header-template>
         Expiry Date
     </ng-template>
-      <ng-template let-value="value" ngx-datatable-cell-template>
-        {{value}}
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        {{value | date:'dd-MM-yyyy'}}
       </ng-template>
   </ngx-datatable-column>
   

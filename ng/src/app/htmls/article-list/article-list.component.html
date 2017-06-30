@@ -51,7 +51,7 @@
         Posted Date
     </ng-template>
       <ng-template let-value="value" ngx-datatable-cell-template>
-        {{value}}
+        {{value | date:'dd-MM-yyyy'}}
       </ng-template>
   </ngx-datatable-column>
 

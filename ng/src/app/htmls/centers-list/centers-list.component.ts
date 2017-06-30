@@ -23,7 +23,6 @@ ngOnInit() {
 getCenters() {
     this._centerListService.getCenters().subscribe(
       data => { 
-        console.log(data);
         this.rows = data;
       },
       err => { console.log("error") }

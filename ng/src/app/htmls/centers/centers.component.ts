@@ -77,15 +77,13 @@ getAreaAndDistrict()
       data => { 
         this.objAreaAndDistrict = data;
          this.areas=data.allAreas;
-        console.log(data);}, 
+       }, 
       err => { console.log("error"); }
     );
 }
 
 // get Districts method on change of area
 getDistricts(selectedArea){
-  console.log(selectedArea);
-  console.log(this.objAreaAndDistrict[selectedArea]);
   this.districts= this.objAreaAndDistrict[selectedArea];
 }
 
@@ -110,7 +108,6 @@ createOrUpdateCenter() {
 
   fileChangeEvent(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
-    console.log(this.fileToUpload);
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.center.logoName = res;
        this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
