@@ -29,7 +29,7 @@
         <md-input-container style="width: 100%" class="ml-xs mr-xs" style="width: 100%;">
           <input mdInput placeholder="Address Line 1"  [(ngModel)]="center.address.addressLine1" [formControl]="form.controls['addressLine1']" type="text" required>
         </md-input-container>
-        <small *ngIf="form.controls['addressLine1'].hasError('required') && form.controls['addressLine1'].touched" class="mat-text-warn">You must include phone number.</small>
+        <small *ngIf="form.controls['addressLine1'].hasError('required') && form.controls['addressLine1'].touched" class="mat-text-warn">You must include address line 1.</small>
  
          <md-input-container class="ml-xs mr-xs" style="width: 100%;">
           <input mdInput placeholder="Address Line 2"  [(ngModel)]="center.address.addressLine2" [formControl]="form.controls['addressLine2']"/>
@@ -48,26 +48,26 @@
       </div>
       
       <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-       <md-select placeholder="District" [(ngModel)]="center.address.district" [formControl]="form.controls['district']" required>
+       <md-select placeholder="District" [(ngModel)]="center.address.district" [formControl]="form.controls['district']" required  (change)="changeDistrict()">
           <md-option *ngFor="let district of districts" [value]="district">
             {{ district }}
           </md-option>
         </md-select>
-        <small *ngIf="form.controls['district'].hasError('required') && form.controls['district'].touched" class="mat-text-warn">You must select district.</small>
+        <small *ngIf="isAreaChanged && form.controls['area'].touched" class="mat-text-warn">You must select district.</small>
       </div>
       
     </div>
      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
       <md-input-container class="ml-xs mr-xs" style="width: 100%;">
         <textarea mdInput placeholder="Amenities" maxLength="300" class="demo-full-width" [(ngModel)]="center.amenities"
-                (keypress)="countAmenitiesChars()" [formControl]="form.controls['amenities']"></textarea>
+                (keyup)="countAmenitiesChars()" [formControl]="form.controls['amenities']"></textarea>
         <md-hint align="end">{{amenitiesCharLeft}} / 300</md-hint>
       </md-input-container>
     </div>
      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
       <md-input-container class="ml-xs mr-xs" style="width: 100%;">
         <textarea mdInput placeholder="About" maxLength="300" class="demo-full-width" [(ngModel)]="center.about"
-                (keypress)="countAboutChars()" [formControl]="form.controls['about']"></textarea>
+                (keyup)="countAboutChars()" [formControl]="form.controls['about']"></textarea>
         <md-hint align="end">{{aboutCharLeft}} / 300</md-hint>
       </md-input-container>
     </div>

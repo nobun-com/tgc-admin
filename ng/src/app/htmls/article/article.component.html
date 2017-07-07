@@ -15,13 +15,13 @@
             <md-input-container class="ml-xs mr-xs" style="width: 100%;">
               <input mdInput placeholder="Title"  [(ngModel)]="article.title" [formControl]="form.controls['title']" required>
             </md-input-container>
-            <small *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched" class="mat-text-warn">You must include a center name.</small>
+            <small *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched" class="mat-text-warn">You must include a title.</small>
         </div> 
         <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
             <md-input-container class="ml-xs mr-xs" style="width: 100%;">
             <input mdInput placeholder="Preview"  [(ngModel)]="article.preview" [formControl]="form.controls['preview']" required>
             </md-input-container>
-            <small *ngIf="form.controls['preview'].hasError('required') && form.controls['preview'].touched" class="mat-text-warn">You must include a center name.</small>
+            <small *ngIf="form.controls['preview'].hasError('required') && form.controls['preview'].touched" class="mat-text-warn">You must include a preview.</small>
         </div>
 
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
@@ -31,7 +31,7 @@
                   {{ category }}
                 </md-option>
               </md-select>
-              <small *ngIf="form.controls['category'].hasError('required') && form.controls['category'].touched" class="mat-text-warn">You must include a center name.</small>
+              <small *ngIf="form.controls['category'].hasError('required') && form.controls['category'].touched" class="mat-text-warn">You must include a category.</small>
       </div>  
         </div>
         <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
@@ -57,7 +57,7 @@
               <input mdInput [mdDatepicker]="maxDatePicker" [(ngModel)]="article.postDate" placeholder="Posted Date" [formControl]="form.controls['postDate']" required>
               <button mdSuffix [mdDatepickerToggle]="maxDatePicker"></button>
           </md-input-container>
-          <small *ngIf="form.controls['postDate'].hasError('required') && form.controls['postDate'].touched" class="mat-text-warn">You must include a center name.</small>
+          <small *ngIf="form.controls['postDate'].hasError('required') && form.controls['postDate'].touched" class="mat-text-warn">You must include a post date.</small>
           <md-datepicker #maxDatePicker [touchUi]="touch"></md-datepicker>
         </div>
       <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">

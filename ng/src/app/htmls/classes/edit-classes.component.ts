@@ -5,7 +5,7 @@ import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ClassesService } from './create-classes.service';
-import { ExtraValidators } from './extraValidators.component';
+import { ExtraValidators } from '../../common/extraValidators.component';
 
 
 @Component({
@@ -542,7 +542,7 @@ createClasses() {
    }
 
 
-   this._classService.createClasses(this.classes).subscribe(
+   this._classService.updateClasses(this.classes).subscribe(
       data => { 
         this._router.navigate(['/classes-list']);
          return true; 

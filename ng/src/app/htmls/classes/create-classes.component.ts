@@ -5,7 +5,7 @@ import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ClassesService } from './create-classes.service';
-import { ExtraValidators } from './extraValidators.component';
+import { ExtraValidators } from '../../common/extraValidators.component';
 
 
 
@@ -471,9 +471,7 @@ validateForm(classes,isValid){
   this.submitAttempt = true;
   if(isValid){
       this.createClasses();
-      console.log("form valid");
    }else{
-     console.log("class name",classes.className);
     console.log("form not valid");
   }
 

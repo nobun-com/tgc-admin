@@ -6,7 +6,7 @@ import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { CentersService } from './centers.service';
 import { Globals } from '../../common/globals';
-
+import { ExtraValidators } from '../../common/extraValidators.component';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class EditCentersComponent implements OnInit{
    amenitiesCharLeft : any;
    fileToUpload: Array<File>;
    uploadFile : boolean = false;
-   
+    isAreaChanged = false;
 
 // Center CURD Operation  
   constructor(private fb: FormBuilder,private globals : Globals,private _centerService: CentersService,private activatedRoute: ActivatedRoute,private _router :Router) {
@@ -104,8 +104,7 @@ getAreaAndDistrict()
 
 // get Districts method on change of area
 getDistricts(selectedArea){
-  console.log(selectedArea);
-  console.log(this.objAreaAndDistrict[selectedArea]);
+  this.isAreaChanged = true;
   this.districts= this.objAreaAndDistrict[selectedArea];
 }
 
@@ -128,7 +127,6 @@ getDistricts(selectedArea){
 
   fileChangeEvent(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
-    console.log(this.fileToUpload);
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.center.logoName = res;
        this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
@@ -141,6 +139,10 @@ getDistricts(selectedArea){
  
  backToCenterList(){
   this._router.navigate(['/centers-list']);
+}
+
+changeDistrict(){
+  this.isAreaChanged = false;
 }
 
  }

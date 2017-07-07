@@ -418,7 +418,7 @@
      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
       <md-input-container class="ml-xs mr-xs" style="width: 100%;">
         <textarea mdInput placeholder="About" maxLength="300" class="demo-full-width"  [formControl]="form.controls['about']" [(ngModel)]="classes.about"
-                (keypress)="countAboutChars()"></textarea>
+                (keyup)="countAboutChars()"></textarea>
         <md-hint align="end">{{aboutCharLeft}} / 300</md-hint>
       </md-input-container>
     </div>

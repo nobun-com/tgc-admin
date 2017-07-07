@@ -21,7 +21,7 @@ createClasses(classes) {
     return this.http.post(this.globals.SERVERADDRESS+'createClass', classes, options ).map((res: Response) => res.json());
   }
 
-   updateClasse(classes) {
+   updateClasses(classes) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     console.log(classes);

@@ -6,7 +6,7 @@ import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { CentersService } from './centers.service';
 import { Globals } from '../../common/globals';
-
+import { ExtraValidators } from '../../common/extraValidators.component';
 
 
 @Component({
@@ -26,9 +26,9 @@ export class CentersComponent implements OnInit{
    amenitiesCharLeft : any;
    fileToUpload: Array<File>;
    uploadFile : boolean = false;
-   
+   form: FormGroup;
+   isAreaChanged = false;
 
-// Center CURD Operation  
   constructor(private fb: FormBuilder,private globals : Globals,private _centerService: CentersService,private _router :Router) {
      this.title = "Create New Center";
      this.uploadFile = false;
@@ -47,7 +47,6 @@ export class CentersComponent implements OnInit{
      }
    }
 
-  public form: FormGroup;
 
 ngOnInit() {
     this.form = this.fb.group({
@@ -84,12 +83,15 @@ getAreaAndDistrict()
 
 // get Districts method on change of area
 getDistricts(selectedArea){
+   this.isAreaChanged = true;
   this.districts= this.objAreaAndDistrict[selectedArea];
 }
 
+changeDistrict(){
+  this.isAreaChanged = false;
+}
 
-// Center CURD Methods
- 
+
 
 createOrUpdateCenter() {
    

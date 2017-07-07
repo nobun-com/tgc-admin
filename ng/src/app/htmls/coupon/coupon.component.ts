@@ -25,9 +25,9 @@ export class CouponComponent {
   ngOnInit() {
     this.form = this.fb.group({
       code: [null, Validators.compose([Validators.required])],
-      value: [null, Validators.compose([Validators.required])],
-      startDate: [null, Validators.compose([Validators.required])],
-      expiryDate: [null, Validators.compose([Validators.required])]
+      value: [null, Validators.compose([Validators.required,CustomValidators.number])],
+      startDate: [null, Validators.compose([Validators.required,CustomValidators.date])],
+      expiryDate: [null, Validators.compose([Validators.required,CustomValidators.date])]
     });
   } 
 
