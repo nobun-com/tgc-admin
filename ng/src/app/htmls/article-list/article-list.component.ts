@@ -4,7 +4,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 
 
 @Component({
-  selector: 'app-table-paging',
+  selector: 'article-list',
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.scss']
 })
