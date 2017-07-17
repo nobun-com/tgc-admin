@@ -44,4 +44,4 @@ import 'hammerjs';
   ]
 })
 
-export class ArticleListModule {}
+export class ArticleListModule{}
