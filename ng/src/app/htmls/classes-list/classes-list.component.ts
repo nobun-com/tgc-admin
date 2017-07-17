@@ -27,7 +27,6 @@ ngOnInit() {
 getClasses() {
     this._classListService.getClasses().subscribe(
       data => { 
-        console.log(data);
         this.rows = data;
       },
       err => { console.log("error") }
@@ -48,15 +47,13 @@ createClass(){
  
 deleteClass(obj: any) {
     if (confirm("Are you sure you want to delete " + obj.className + "?")) {
-      console.log(obj.id);
       this._classListService.deleteClass(obj.id).subscribe(
          data => {
-           console.log(obj.id);
            this.getClasses();
            return true;
          },
          error => {
-           console.error("Error deleting food!");
+           console.error("error");
          }
       );
     }

@@ -20,10 +20,11 @@ export class EditCouponComponent {
    coupon : any;
    title:any;
    public form: FormGroup;
+   canEdit =true;
 
 
      constructor(private fb: FormBuilder,private _couponService: CouponService,private _router :Router,private activatedRoute: ActivatedRoute) {
-     this.title = "Create New Coupon";
+     this.title = "Update Coupon";
      this.coupon={
        code:'',
        value:0,
@@ -51,7 +52,6 @@ ngOnInit() {
 getCoupon(couponId){
   this._couponService.getById(couponId).subscribe(
       data=>{
-        console.log("coupon=",data);
         this.coupon = data;
       },
       err =>{
@@ -69,7 +69,7 @@ getCoupon(couponId){
          return true;
        },
        error => {
-         console.error("Error saving food!");
+         console.error("error");
          return Observable.throw(error);
        }
     );

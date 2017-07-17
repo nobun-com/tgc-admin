@@ -64,7 +64,6 @@ ngOnInit() {
      // subscribe to router event
     this.activatedRoute.params.subscribe((params: Params) => {
         let centerId = params['id'];
-        console.log(centerId);
           this.getCenter(centerId);
       });
   }
@@ -82,7 +81,6 @@ getCenter(centerId){
         this.getDistricts(data.address.area);
         this.uploadFile = true;
         this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
-        console.log(this.center.logoName);
       },
       err =>{
         console.log("error")
@@ -97,7 +95,7 @@ getAreaAndDistrict()
       data => { 
         this.objAreaAndDistrict = data;
          this.areas=data.allAreas;
-        console.log(data);}, 
+      }, 
       err => { console.log("error"); }
     );
 }
@@ -111,7 +109,6 @@ getDistricts(selectedArea){
 
 
  createOrUpdateCenter() {
-   console.log("hii");
     this._centerService.updateCenter(this.center).subscribe(
        data => {
          // refresh the list
@@ -119,7 +116,7 @@ getDistricts(selectedArea){
          return true;
        },
        error => {
-         console.error("Error saving food!");
+         console.error("error");
          return Observable.throw(error);
        }
     );

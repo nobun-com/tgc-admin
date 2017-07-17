@@ -1,0 +1,77 @@
+<md-card>
+   <md-card-content>
+  <div fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h3 class="mt-0" style="text-align: start;">{{pageTitle}}</h3>
+      </div>
+      <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+        <button md-raised-button color="primary"  (click)="backToPromoList()">Back To List</button>
+      </div>
+  </div>
+  </md-card-content>
+  <form [formGroup]="form">
+  <md-card-content>
+        <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+          <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+            <md-select  placeholder="Center" [formControl]="form.controls['centerOneId']" [(ngModel)]="promo.centerOneId" required>
+              <md-option *ngFor="let center of centers" [value]="center.id">
+                {{ center.centerName }}
+              </md-option>
+            </md-select>
+              <small *ngIf="form.controls['centerOneId'].hasError('required') && form.controls['centerOneId'].touched" class="mat-text-warn">You must include a center.</small>
+          </div>  
+          <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+            <input type="file" (change)="promoImageOne($event)" [formControl]="form.controls['promoImageOne']">
+            <img *ngIf="uploadPromoImageOne" src="{{promoImageOneUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+          </div>
+        </div>
+         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+          <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+           <md-select  placeholder="Center" [formControl]="form.controls['centerTwoId']" [(ngModel)]="promo.centerTwoId" required>
+              <md-option *ngFor="let center of centers" [value]="center.id">
+                {{ center.centerName }}
+              </md-option>
+            </md-select>
+              <small *ngIf="form.controls['centerTwoId'].hasError('required') && form.controls['centerTwoId'].touched" class="mat-text-warn">You must include a center.</small>
+          </div>  
+         <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+            <input type="file" (change)="promoImageTwo($event)" [formControl]="form.controls['promoImageTwo']">
+            <img *ngIf="uploadPromoImageTwo" src="{{promoImageTwoUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+          </div>
+        </div> 
+        <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+          <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+            <md-select  placeholder="Center" [formControl]="form.controls['centerThreeId']" [(ngModel)]="promo.centerThreeId" required>
+              <md-option *ngFor="let center of centers" [value]="center.id">
+                {{ center.centerName }}
+              </md-option>
+            </md-select>
+              <small *ngIf="form.controls['centerThreeId'].hasError('required') && form.controls['centerThreeId'].touched" class="mat-text-warn">You must include a center.</small>
+          </div>  
+         <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+            <input type="file" (change)="promoImageThree($event)" [formControl]="form.controls['promoImageThree']">
+            <img *ngIf="uploadPromoImageThree" src="{{promoImageThreeUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+          </div>
+        </div> 
+        <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+          <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+            <md-select  placeholder="Center" [formControl]="form.controls['centerFourId']" [(ngModel)]="promo.centerFourId" required>
+              <md-option *ngFor="let center of centers" [value]="center.id">
+                {{ center.centerName }}
+              </md-option>
+            </md-select>
+              <small *ngIf="form.controls['centerFourId'].hasError('required') && form.controls['centerFourId'].touched" class="mat-text-warn">You must include a center.</small>
+          </div>  
+           <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+            <input type="file" (change)="promoImageFour($event)" [formControl]="form.controls['promoImageFour']">
+            <img *ngIf="uploadPromoImageFour" src="{{promoImageFourUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+          </div>
+        </div>
+      </md-card-content>
+    <hr>
+      <md-card-actions>
+          <button md-raised-button color="primary" type="submit" (click)="createOrUpdatePromo()" [disabled]="!form.valid">Submit</button>
+        </md-card-actions>
+  </form>
+</md-card>
+   

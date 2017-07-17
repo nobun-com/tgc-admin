@@ -102,7 +102,7 @@ createOrUpdateCenter() {
          return true;
        },
        error => {
-         console.error("Error saving food!");
+         console.error("error");
          return Observable.throw(error);
        }
     );

@@ -71,6 +71,12 @@ const TEACHERMENUITEMS = [
     name: 'Manage Articles',
     icon: 'none',
     type: 'link'
+  },
+  {
+    state: 'promo-list',
+    name: 'Manage Promos',
+    icon: 'none',
+    type: 'link'
   }
   // {
   //   state: 'apps',

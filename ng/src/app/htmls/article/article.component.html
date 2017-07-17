@@ -36,20 +36,20 @@
         </div>
         <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
             <md-input-container class="ml-xs mr-xs" style="width: 100%;">
-              <input mdInput placeholder="Thumbnail Url" value="{{article.thumbnailUrl}}" [formControl]="form.controls['thumbnailUrl']" [(ngModel)]="article.thumbnailUrl" >
+              <input mdInput placeholder="Thumbnail Url" value="{{article.thumbnailUrl}}" [readonly]="true" [formControl]="form.controls['thumbnailUrl']" [(ngModel)]="article.thumbnailUrl" >
             </md-input-container>
             <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
                 <input type="file" (change)="fileChangeEventForThumbnail($event)" [formControl]="form.controls['thumbnail']">
-                <img *ngIf="uploadThumbnail" src="{{article.thumbnailUrl}}" class="logo"/>
+                <img *ngIf="uploadThumbnail" src="{{article.thumbnailUrl}}" class="logo" style="width: 120px;height: 100px;"/>
             </div>
         </div> 
         <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
             <md-input-container class="ml-xs mr-xs" style="width: 100%;">
-            <input mdInput placeholder="Image Url" value="{{article.imageUrl}}" [(ngModel)]="article.imageUrl"  [formControl]="form.controls['imageUrl']" >
+            <input mdInput placeholder="Image Url" value="{{article.imageUrl}}" [readonly]="true" [(ngModel)]="article.imageUrl"  [formControl]="form.controls['imageUrl']" >
             </md-input-container>
             <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
                 <input type="file" (change)="fileChangeEventForImage($event)" [formControl]="form.controls['image']">
-                <img *ngIf="uploadImage" src="{{article.imageUrl}}" class="logo"/>
+                <img *ngIf="uploadImage" src="{{article.imageUrl}}" class="logo" style="width: 120px;height: 100px;"/>
               </div>
         </div>
         <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">

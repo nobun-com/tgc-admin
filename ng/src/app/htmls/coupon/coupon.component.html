@@ -14,7 +14,7 @@
 
     <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
       <md-input-container class="ml-xs mr-xs" style="width: 20%;">
-        <input mdInput placeholder="Coupon Code" [formControl]="form.controls['code']" [(ngModel)]="coupon.code" required>
+        <input mdInput placeholder="Coupon Code" [readonly]="canEdit" [formControl]="form.controls['code']" [(ngModel)]="coupon.code" required>
       </md-input-container>
       <small *ngIf="form.controls['code'].hasError('required') && form.controls['code'].touched" class="mat-text-warn">You must include a code.</small>
 

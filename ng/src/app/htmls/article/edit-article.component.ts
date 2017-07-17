@@ -81,7 +81,6 @@ ngOnInit() {
 getArticle(articleId){
   this._articleService.getById(articleId).subscribe(
       data=>{
-        console.log("article=",data);
         this.article = data;
          this.uploadThumbnail = true;
          this.uploadImage = true;
@@ -97,7 +96,6 @@ getArticle(articleId){
 getCategory(){
   this._articleService.getCategory().subscribe(
       data => { 
-        console.log(data);
         this.categories = data;
     },
       err => { console.log("error") }
@@ -118,14 +116,13 @@ getCategory(){
          return true;
        },
        error => {
-         console.error("Error saving food!");
+         console.error("error");
          return Observable.throw(error);
        }
     );
   }
    fileChangeEventForThumbnail(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
-    console.log(this.fileToUpload);
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.uploadThumbnail = true;
        this.article.thumbnailUrl= this.globals.SERVERADDRESS+"getImage/"+res;
@@ -135,7 +132,6 @@ getCategory(){
   }
    fileChangeEventForImage(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
-    console.log(this.fileToUpload);
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.article.imageUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        this.uploadImage = true;

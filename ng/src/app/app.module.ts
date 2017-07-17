@@ -18,6 +18,8 @@ import { AuthGuard } from './common/index';
 import { AdminLoginService } from './session/admin-login/admin-login.service';
 import { TeacherLoginService } from './session/teacher-login/teacher-login.service';
 import { Globals } from './common/globals';
+import { ConfirmDialogComponent } from './htmls/confirm-dialog/confirm-dialog.component';
+
 
 
 export function createTranslateLoader(http: Http) {
@@ -28,7 +30,8 @@ export function createTranslateLoader(http: Http) {
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ export function createTranslateLoader(http: Http) {
     FlexLayoutModule
   ],
   providers: [ AuthGuard,AdminLoginService,TeacherLoginService,Globals],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmDialogComponent]
 })
 export class AppModule { }

@@ -76,6 +76,12 @@ export const AppRoutes: Routes = [{
   }, {
     path: 'article-list',
     loadChildren: './htmls/article-list/article-list.module#ArticleListModule',
+  }, {
+    path: 'promo',
+    loadChildren: './htmls/promo/promo.module#PromoModule',
+  }, {
+    path: 'promo-list',
+    loadChildren: './htmls/promo-list/promo-list.module#PromoListModule',
   }
   ]
 }, {

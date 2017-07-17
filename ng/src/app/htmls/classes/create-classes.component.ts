@@ -21,6 +21,7 @@ export class CreateClassesComponent implements OnInit{
    title: string;
    centers: any;
    teachers : any;
+   categories : any;
    occurrences : any;
    hrs: any;
    mins: any;
@@ -47,6 +48,7 @@ export class CreateClassesComponent implements OnInit{
      this.classes={
        className:'',
        teacherId : '',
+       categoryId : '',
        startDate : '',
        endDate : '',
        endDateType : '',
@@ -64,6 +66,7 @@ export class CreateClassesComponent implements OnInit{
   ngOnInit() {
    this.getCenters();
    this.getTeachers();
+   this.getCategories();
    this.occurrences = Array(50).fill('');
    this.hours = Array(25).fill('');
    this.miniutes = [0,15,30,45];
@@ -71,6 +74,7 @@ export class CreateClassesComponent implements OnInit{
        className:['',Validators.required],
        teacherId : ['', Validators.required],
        centerId : ['', Validators.required],
+       categoryId : ['', Validators.required],
        minAge:['',Validators.required],
        maxAge:['', Validators.required],
        maxSlots:['', Validators.required],
@@ -448,10 +452,18 @@ clearWeek(){
 }
 
 getCenters(){
-    console.log("in get center");
   this._classesService.getCenters().subscribe(
       data => { 
         this.centers = data;
+    },
+      err => { console.log("error",err) }
+  );
+}
+
+getCategories(){
+  this._classesService.getCategories().subscribe(
+      data => { 
+        this.categories = data;
     },
       err => { console.log("error",err) }
   );

@@ -19,7 +19,7 @@ export class CouponComponent {
 
    coupon : any;
    title: any;
-   
+   canEdit = false;
  
    public form: FormGroup;
   ngOnInit() {
@@ -53,7 +53,7 @@ createOrUpdateCoupon() {
          return true;
        },
        error => {
-         console.error("Error saving food!");
+         console.error("error");
          return Observable.throw(error);
        }
     );

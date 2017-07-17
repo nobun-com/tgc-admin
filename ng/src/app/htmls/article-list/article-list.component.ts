@@ -40,10 +40,8 @@ getArticles() {
  
   deleteArticle(article) {
     if (confirm("Are you sure you want to delete " + article.title + "?")) {
-      console.log(article.id);
       this._articleListService.deleteArticle(article.id).subscribe(
          data => {
-           console.log(article.id);
            this.getArticles();
            return true;
          },

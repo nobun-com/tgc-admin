@@ -27,7 +27,6 @@ ngOnInit() {
   this._instancesListService.getInstances(classId).subscribe(
       data=>{
         this.rows= data;
-        console.log(this.rows);
       },
       err =>{
         console.log("error")

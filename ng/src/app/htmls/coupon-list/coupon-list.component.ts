@@ -23,7 +23,6 @@ ngOnInit() {
 getCoupons() {
     this._couponListService.getCoupons().subscribe(
       data => { 
-        console.log(data);
         this.rows = data;
       },
       err => { console.log("error") }
@@ -41,15 +40,13 @@ getCoupons() {
  
   deleteCoupon(coupon) {
     if (confirm("Are you sure you want to delete " + coupon.code + "?")) {
-      console.log(coupon);
       this._couponListService.deleteCoupon(coupon.code).subscribe(
          data => {
-           console.log(coupon.id);
            this.getCoupons();
            return true;
          },
          error => {
-           console.error("Error deleting food!");
+           console.error("error");
          }
       );
     }

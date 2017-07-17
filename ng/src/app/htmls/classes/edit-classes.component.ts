@@ -19,6 +19,7 @@ export class EditClassesComponent implements OnInit{
    center_error:Boolean = false;
    title: string;
    teachers : any;
+   categories : any;
    occurrences : any;
    centers: any;
    hrs: any;
@@ -46,6 +47,7 @@ export class EditClassesComponent implements OnInit{
      this.classes={
        className:'',
        teacherId : '',
+       categoryId : '',
        startDate : '',
        endDate : '',
        occurrence : '',
@@ -76,6 +78,7 @@ ngOnInit() {
        className:['',Validators.required],
        teacherId : ['', Validators.required],
        centerId : ['', Validators.required],
+       categoryId : ['', Validators.required],
        minAge:['',Validators.required],
        maxAge:['', Validators.required],
        maxSlots:['', Validators.required],
@@ -454,8 +457,15 @@ clearWeek(){
 getCenters(){
   this._classService.getCenters().subscribe(
       data => { 
-        console.log(data);
         this.centers = data;
+    },
+      err => { console.log("error") }
+  );
+}
+getCategories(){
+  this._classService.getCategories().subscribe(
+      data => { 
+        this.categories = data;
     },
       err => { console.log("error") }
   );
@@ -560,7 +570,6 @@ createClasses() {
   getClass(classId){
   this._classService.getById(classId).subscribe(
       data=>{
-        console.log("class=",data);
         this.classes = data;
 
         if(this.classes.occurrence)
@@ -646,9 +655,7 @@ validateForm(classes,isValid){
   this.submitAttempt = true;
   if(isValid){
       this.createClasses();
-      console.log("form valid");
    }else{
-     console.log("class name",classes.className);
     console.log("form not valid");
   }
 

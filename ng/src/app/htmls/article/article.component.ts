@@ -75,7 +75,6 @@ export class ArticleComponent implements OnInit{
 getCategory(){
   this._articleService.getCategory().subscribe(
       data => { 
-        console.log(data);
         this.categories = data;
     },
       err => { console.log("error") }
@@ -95,7 +94,7 @@ createOrUpdateArticle() {
          return true;
        },
        error => {
-         console.error("Error saving food!");
+         console.error("error");
          return Observable.throw(error);
        }
     );
@@ -103,7 +102,6 @@ createOrUpdateArticle() {
 
    fileChangeEventForThumbnail(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
-    console.log(this.fileToUpload);
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.uploadThumbnail = true;
        this.article.thumbnailUrl= this.globals.SERVERADDRESS+"getImage/"+res;
@@ -113,7 +111,6 @@ createOrUpdateArticle() {
   }
    fileChangeEventForImage(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
-    console.log(this.fileToUpload);
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.article.imageUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        this.uploadImage = true;

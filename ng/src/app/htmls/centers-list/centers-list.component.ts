@@ -40,15 +40,13 @@ createCenter(){
  
 deleteCenter(center) {
     if (confirm("Are you sure you want to delete " + center.centerName + "?")) {
-      console.log(center.id);
       this._centerListService.deleteCenter(center.id).subscribe(
          data => {
-           console.log(center.id);
            this.getCenters();
            return true;
          },
          error => {
-           console.error("Error deleting food!");
+           console.error("error");
          }
       );
     }

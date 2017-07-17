@@ -26,8 +26,6 @@
         </md-select>
     </div>
      <small *ngIf="form.controls['centerId'].hasError('required') && submitAttempt" class="mat-text-warn">You must select center.</small>
-    </div>
-    <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
      <div class="ml-xs mr-xs" style="width: 30%;" fxLayoutAlign="start center">
        <md-select  placeholder="Teachers" [formControl]="form.controls['teacherId']" [(ngModel)]="classes.teacherId" >
           <md-option *ngFor="let teacher of teachers" [value]="teacher.id">
@@ -36,6 +34,16 @@
         </md-select>
     </div>
      <small *ngIf="form.controls['teacherId'].hasError('required') && submitAttempt" class="mat-text-warn">You must select teacher.</small>
+    </div>
+    <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+     <div class="ml-xs mr-xs" style="width: 30%;" fxLayoutAlign="start center">
+       <md-select  placeholder="Category" [formControl]="form.controls['categoryId']" [(ngModel)]="classes.categoryId" >
+          <md-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.category }}
+          </md-option>
+        </md-select>
+    </div>
+     <small *ngIf="form.controls['categoryId'].hasError('required') && submitAttempt" class="mat-text-warn">You must select category.</small>
     </div>
      <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
         <md-input-container class="ml-xs mr-xs"  fxLayoutAlign="start center">

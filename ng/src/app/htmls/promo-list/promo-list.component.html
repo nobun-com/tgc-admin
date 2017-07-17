@@ -1,0 +1,42 @@
+<md-card>
+  <md-card-content>
+    <div fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h3 class="mt-0">Promos</h3>
+      </div>
+      <div *ngIf="canCreate" fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+        <button md-raised-button color="primary"  (click)="createPromo()">Create Promo</button>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+
+
+<ngx-datatable
+  class="material"
+  [rows]="rows"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="30"
+  [rowHeight]="'auto'"
+  [limit]="10">
+  
+  <ngx-datatable-column name="createdTime">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Created Time
+    </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value | date:'dd-MM-yyyy'}}
+      </ng-template>
+  </ngx-datatable-column>
+   <ngx-datatable-column name="action">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Action
+    </ng-template>
+     <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+           <button md-mini-fab class="mr-1" color="primary" type="submit" (click)="editPromo(row)"><md-icon>edit</md-icon></button>
+           <button md-mini-fab class="mr-1" color="warn" type="submit" (click)="deletePromo(row)"><md-icon>delete</md-icon></button>
+      </ng-template>
+  </ngx-datatable-column>
+ 
+ </ngx-datatable>

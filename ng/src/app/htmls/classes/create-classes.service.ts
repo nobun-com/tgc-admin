@@ -38,4 +38,8 @@ createClasses(classes) {
     return this.http.get(this.globals.SERVERADDRESS+'getAllTeachers').map((res:Response) => res.json());
 }
 
+ getCategories() {
+    return this.http.get(this.globals.SERVERADDRESS+'getAllClassesCategories').map((res:Response) => res.json());
+}
+
 } 

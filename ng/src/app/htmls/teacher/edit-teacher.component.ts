@@ -56,7 +56,6 @@ export class EditTeacherComponent implements OnInit{
 getTeacher(teacherId){
   this._teacherService.getById(teacherId).subscribe(
       data=>{
-        console.log("teacher=",data);
         this.teacher = data;
         this.teacher.confirmPassword=this.teacher.password;
       },
@@ -75,7 +74,7 @@ getTeacher(teacherId){
          return true;
        },
        error => {
-         console.error("Error saving food!");
+         console.error("error");
          return Observable.throw(error);
        }
     );

@@ -23,7 +23,6 @@ ngOnInit() {
 getTeachers() {
     this._teacherListService.getTeachers().subscribe(
       data => { 
-        console.log(data);
         this.rows = data;
       },
       err => { console.log("error") }
@@ -41,15 +40,13 @@ getTeachers() {
  
   deleteTeacher(teacher) {
     if (confirm("Are you sure you want to delete " + teacher.firstName + "?")) {
-      console.log(teacher.id);
       this._teacherListService.deleteTeacher(teacher.id).subscribe(
          data => {
-           console.log(teacher.id);
            this.getTeachers();
            return true;
          },
          error => {
-           console.error("Error deleting food!");
+           console.error("error");
          }
       );
     }
