@@ -27,7 +27,6 @@ export class BookingListComponent {
 applyFilterOnTable(fromDate,toDate){
   this.params.fromDate=fromDate;
   this.params.toDate=toDate;
-con
   this._bookingListService.getBookingsByDate(this.params).subscribe(
       data => { 
         this.rows = data;
