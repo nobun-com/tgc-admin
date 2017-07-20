@@ -21,7 +21,7 @@ export interface Menu {
   children?: ChildrenItems[];
 }
 
-const TEACHERMENUITEMS = [
+const EDUCATORMENUITEMS = [
   {
     state: '/',
     name: 'HOME',
@@ -49,8 +49,8 @@ const TEACHERMENUITEMS = [
     type: 'link'
   },
   {
-    state: 'teacher-list',
-    name: 'Manage Teacher',
+    state: 'educator-list',
+    name: 'Manage Educator',
     icon: 'none',
     type: 'link'
   },
@@ -75,6 +75,12 @@ const TEACHERMENUITEMS = [
   {
     state: 'promo-list',
     name: 'Manage Promos',
+    icon: 'none',
+    type: 'link'
+  },
+  {
+    state: 'booking-list',
+    name: 'Manage Bookings',
     icon: 'none',
     type: 'link'
   }
@@ -255,13 +261,13 @@ export class MenuItems {
     if(this.role=='admin')
       return ADMINMENUITEMS;
     else
-      return TEACHERMENUITEMS
+      return EDUCATORMENUITEMS
   }
 
   add(menu: Menu) {
     if(this.role=='admin')
       ADMINMENUITEMS.push(menu);
     else
-      TEACHERMENUITEMS.push(menu);
+      EDUCATORMENUITEMS.push(menu);
   }
 }

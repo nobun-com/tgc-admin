@@ -4,17 +4,17 @@ import { Observable } from "rxjs/Rx";
 import { Globals } from '../../common/globals';
 
 @Injectable()
-export class TeacherListService {
+export class EducatorListService {
 
 constructor(private http:Http,private globals : Globals) {
     }
 
 
 // Uses http.get() to load a single JSON file
-getTeachers() {
+getEducators() {
     return this.http.get(this.globals.SERVERADDRESS+'getAllTeachers').map((res:Response) => res.json());
 }
- deleteTeacher(teacherId) {
+ deleteEducator(teacherId) {
     return this.http.delete(this.globals.SERVERADDRESS+'deleteTeacher/' + teacherId);
   }
 

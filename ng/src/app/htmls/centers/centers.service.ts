@@ -22,14 +22,12 @@ getAreaAndDistrict() {
 createCenter(center) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(center);
     return this.http.post(this.globals.SERVERADDRESS+'createCenter', center, options ).map((res: Response) => res.json());
   }
 
   updateCenter(center) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(center);
     return this.http.put(this.globals.SERVERADDRESS+'updateCenter', center, options ).map((res: Response) => res.json());
   }
 

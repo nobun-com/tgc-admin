@@ -4,26 +4,26 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
-import { TeacherService } from './teacher.service';
+import { EducatorService } from './educator.service';
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
 
 @Component({
-  selector: 'edit-teacher',
-  templateUrl: './teacher.component.html' ,
-  styleUrls: ['./teacher.component.scss']
+  selector: 'edit-educator',
+  templateUrl: './educator.component.html' ,
+  styleUrls: ['./educator.component.scss']
 })
-export class EditTeacherComponent implements OnInit{
+export class EditEducatorComponent implements OnInit{
 
-   teacher : any;
+   educator : any;
    title: any;
    
   public form: FormGroup;
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: [null, Validators.compose([Validators.required])],
+      fname: [null, Validators.compose([Validators.required])],
       lname: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, CustomValidators.email])],
       phone: [null, Validators.compose([Validators.required,CustomValidators.number,CustomValidators.rangeLength([10, 10])])],
@@ -33,15 +33,15 @@ export class EditTeacherComponent implements OnInit{
     });
 
     this.activatedRoute.params.subscribe((params: Params) => {
-        let teacherId = params['id'];
-          this.getTeacher(teacherId);
+        let educatorId = params['id'];
+          this.getEducator(educatorId);
       });
   }
 
 // Center CURD Operation  
- constructor(private fb: FormBuilder,private _teacherService: TeacherService,private activatedRoute: ActivatedRoute,private _router :Router) {
-       this.title = "Update Teacher";
-     this.teacher={
+ constructor(private fb: FormBuilder,private _educatorService: EducatorService,private activatedRoute: ActivatedRoute,private _router :Router) {
+       this.title = "Update Educator";
+     this.educator={
        firstName:'',
        lastName:'',
        email : '',
@@ -53,11 +53,11 @@ export class EditTeacherComponent implements OnInit{
      }
    
 
-getTeacher(teacherId){
-  this._teacherService.getById(teacherId).subscribe(
+getEducator(educatorId){
+  this._educatorService.getById(educatorId).subscribe(
       data=>{
-        this.teacher = data;
-        this.teacher.confirmPassword=this.teacher.password;
+        this.educator = data;
+        this.educator.confirmPassword=this.educator.password;
       },
       err =>{
         console.log("error")
@@ -65,12 +65,12 @@ getTeacher(teacherId){
   )
 }
 
- createOrUpdateTeacher() {
+ createOrUpdateEducator() {
    
-    this._teacherService.updateTeacher(this.teacher).subscribe(
+    this._educatorService.updateEducator(this.educator).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/teacher-list']);
+         this._router.navigate(['/educator-list']);
          return true;
        },
        error => {
@@ -80,8 +80,8 @@ getTeacher(teacherId){
     );
   }
 
-   backToTeacherList(){
-    this._router.navigate(['/teacher-list']);
+   backToEducatorList(){
+    this._router.navigate(['/educator-list']);
   }
  
  }

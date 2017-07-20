@@ -14,8 +14,8 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminLoginService } from './admin-login/admin-login.service';
-import { TeacherLoginComponent } from './teacher-login/teacher-login.component';
-import { TeacherLoginService } from './teacher-login/teacher-login.service';
+import { EducatorLoginComponent } from './educator-login/educator-login.component';
+import { EducatorLoginService } from './educator-login/educator-login.service';
 import { Globals } from '../common/globals';
 
 
@@ -41,12 +41,12 @@ import { Globals } from '../common/globals';
     SigninComponent,
     SignupComponent,
     AdminLoginComponent,
-    TeacherLoginComponent
+    EducatorLoginComponent
     
   ],
   providers: [
     AdminLoginService,
-    TeacherLoginService,
+    EducatorLoginService,
     Globals
 
   ]

@@ -18,7 +18,6 @@ getClasses() {
    if(this.role=='admin'){
         return this.http.get(this.globals.SERVERADDRESS+'getAllClasses').map((res:Response) => res.json());
    }else{
-       console.log("user",this.userId);
         return this.http.get(this.globals.SERVERADDRESS+'getAllClassesByTeacher/'+this.userId).map((res:Response) => res.json());
    }
 }

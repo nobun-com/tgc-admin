@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DashboardService } from './dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,10 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
 
   rows = [];
-
+  activeClassesCount = 0;
+  bookingsCount = 0;
+  centersCount = 0;
+  teachersCount = 0;
   // Shared chart options
   globalChartOptions: any = {
     responsive: true,
@@ -175,8 +179,9 @@ export class DashboardComponent {
     subject: 'Brunch this weekend?',
   }, ];
 
-  constructor() {
+  constructor(private dashboardService : DashboardService) {
     this.fetch((data) => { this.rows = data; });
+    this.getDashboardData();
   }
 
   // project table
@@ -188,4 +193,18 @@ export class DashboardComponent {
     };
     req.send();
   }
+
+
+  getDashboardData(){
+  this.dashboardService.getDashBoardData().subscribe(
+      data => { 
+        //console.log(data);
+         this.activeClassesCount = data.activeClassesCount;
+         this.bookingsCount = data.bookingsCount;
+         this.centersCount = data.centersCount;
+         this.teachersCount = data.teachersCount;
+    },
+      err => { console.log("error") }
+  );
+}
 }

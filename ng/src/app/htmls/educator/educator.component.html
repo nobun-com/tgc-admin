@@ -6,7 +6,7 @@
         <h3 class="mt-0" style="text-align: start;">{{title}}</h3>
       </div>
       <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
-        <button md-raised-button color="primary"  (click)="backToTeacherList()">Back To List</button>
+        <button md-raised-button color="primary"  (click)="backToEducatorList()">Back To List</button>
       </div>
   </div>
   </md-card-content>
@@ -15,12 +15,12 @@
 
       <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
           <md-input-container class="ml-xs mr-xs" style="width: 100%;">
-            <input mdInput placeholder="First name" [formControl]="form.controls['fname']" [(ngModel)]="teacher.firstName" required>
+            <input mdInput placeholder="First name" [formControl]="form.controls['fname']" [(ngModel)]="educator.firstName" required>
           </md-input-container>
           <small *ngIf="form.controls['fname'].hasError('required') && form.controls['fname'].touched" class="mat-text-warn">You must include a first name.</small>
           
           <md-input-container class="ml-xs mr-xs" style="width: 100%;">
-          <input mdInput placeholder="Last name" [formControl]="form.controls['lname']" [(ngModel)]="teacher.lastName" required>
+          <input mdInput placeholder="Last name" [formControl]="form.controls['lname']" [(ngModel)]="educator.lastName" required>
           </md-input-container>
           <small *ngIf="form.controls['lname'].hasError('required') && form.controls['lname'].touched" class="mat-text-warn">You must include a last name.</small>
       </div>
@@ -28,14 +28,14 @@
 
       <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
         <md-input-container style="width: 100%" class="ml-xs mr-xs" style="width: 100%;">
-          <input mdInput placeholder="Phone number"  type="text" required number [(ngModel)]="teacher.phone" [formControl]="form.controls['phone']">
+          <input mdInput placeholder="Phone number"  type="text" required number [(ngModel)]="educator.phone" [formControl]="form.controls['phone']">
         </md-input-container>
         <small *ngIf="form.controls['phone'].hasError('required') && form.controls['phone'].touched" class="mat-text-warn">You must include phone number.</small>
         <small *ngIf="form.controls['phone'].hasError('rangeLength') && form.controls['phone'].touched" class="mat-text-warn">Phone number should be 10 digit.</small>
         <small *ngIf="form.controls['phone'].hasError('number') && form.controls['phone'].touched" class="mat-text-warn">Phone number should be only numbers.</small>
  
         <md-input-container class="ml-xs mr-xs" style="width: 100%;">
-          <input mdInput placeholder="Email address" [formControl]="form.controls['email']" type="email" [(ngModel)]="teacher.email" required>
+          <input mdInput placeholder="Email address" [formControl]="form.controls['email']" type="email" [(ngModel)]="educator.email" required>
         </md-input-container>
         <small *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="mat-text-warn">You must include an email address.</small>
         <small *ngIf="form.controls['email'].errors?.email && form.controls['email'].touched" class="mat-text-warn">You must include a valid email address.</small>
@@ -44,7 +44,7 @@
 
      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
         <label>Gender</label>
-    	  <md-radio-group [formControl]="form.controls['gender']" [(ngModel)]="teacher.gender"  class="ml-xs mr-xs" required>
+    	  <md-radio-group [formControl]="form.controls['gender']" [(ngModel)]="educator.gender"  class="ml-xs mr-xs" required>
       	  <md-radio-button value="Male">Male</md-radio-button>
       	  <md-radio-button value="Female">Female</md-radio-button>
       	</md-radio-group>
@@ -54,12 +54,12 @@
        
      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
        <md-input-container  class="ml-xs mr-xs" style="width: 100%;">
-          <input mdInput placeholder="Password" [formControl]="form.controls['password']" type="password" [(ngModel)]="teacher.password" required>
+          <input mdInput placeholder="Password" [formControl]="form.controls['password']" type="password" [(ngModel)]="educator.password" required>
         </md-input-container>
         <small *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="mat-text-warn">You must include password.</small>
          
         <md-input-container class="ml-xs mr-xs" style="width: 100%;">
-          <input mdInput placeholder="Confirm Password" [formControl]="form.controls['confirmPassword']" type="password"  [(ngModel)]="teacher.confirmPassword" required>
+          <input mdInput placeholder="Confirm Password" [formControl]="form.controls['confirmPassword']" type="password"  [(ngModel)]="educator.confirmPassword" required>
         </md-input-container>
         <small *ngIf="form.controls['confirmPassword'].hasError('required') && form.controls['confirmPassword'].touched" class="mat-text-warn">You must include confirm password.</small>
         <small *ngIf="form.controls['confirmPassword'].errors?.equalTo" class="mat-text-warn">Passwords do not math.</small>
@@ -67,7 +67,7 @@
   </md-card-content>
 <hr>
     <md-card-actions>
-      <button md-raised-button color="primary" type="submit" (click)="createOrUpdateTeacher()" [disabled]="!form.valid">Submit</button>
+      <button md-raised-button color="primary" type="submit" (click)="createOrUpdateEducator()" [disabled]="!form.valid">Submit</button>
     </md-card-actions>
   </form>
 </md-card>

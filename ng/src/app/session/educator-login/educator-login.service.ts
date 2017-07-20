@@ -6,7 +6,7 @@ import { Globals } from '../../common/globals';
 import 'rxjs/add/operator/map'
 
 @Injectable()
-export class TeacherLoginService {
+export class EducatorLoginService {
     public token: string;
     public user : any;
     public loggedIn : boolean = false;
@@ -26,7 +26,6 @@ export class TeacherLoginService {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
                 teacher = response.json() && response.json().teacher;
-               console.log(response.json());
                 if (token) {
                     // set token property
                     this.token = token;
@@ -34,7 +33,7 @@ export class TeacherLoginService {
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     //localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: token }));
                     Cookie.set('currentUser', JSON.stringify({ username: teacher.email, token: token }));    
-                    Cookie.set('role', 'teacher');  
+                    Cookie.set('role', 'educator');  
                     Cookie.set('userId', teacher.id);    
                       
 

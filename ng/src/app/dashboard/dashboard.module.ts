@@ -9,6 +9,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
+import { DashboardService } from './dashboard.service';
+import { Globals } from '../common/globals';
+
 
 @NgModule({
   imports: [
@@ -24,7 +27,11 @@ import { DashboardRoutes } from './dashboard.routing';
     NgxDatatableModule,
     FlexLayoutModule
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [ DashboardComponent ],
+  providers: [
+    DashboardService,
+    Globals
+  ]
 })
 
 export class DashboardModule {}

@@ -16,7 +16,7 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthGuard } from './common/index';
 import { AdminLoginService } from './session/admin-login/admin-login.service';
-import { TeacherLoginService } from './session/teacher-login/teacher-login.service';
+import { EducatorLoginService } from './session/educator-login/educator-login.service';
 import { Globals } from './common/globals';
 import { ConfirmDialogComponent } from './htmls/confirm-dialog/confirm-dialog.component';
 
@@ -48,7 +48,7 @@ export function createTranslateLoader(http: Http) {
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [ AuthGuard,AdminLoginService,TeacherLoginService,Globals],
+  providers: [ AuthGuard,AdminLoginService,EducatorLoginService,Globals],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmDialogComponent]
 })

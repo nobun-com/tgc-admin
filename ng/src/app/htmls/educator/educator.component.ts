@@ -4,21 +4,21 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
-import { TeacherService } from './teacher.service';
+import { EducatorService } from './educator.service';
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
 
 
 @Component({
-  selector: 'teacher',
-  templateUrl: './teacher.component.html' ,
-  styleUrls: ['./teacher.component.scss']
+  selector: 'educator',
+  templateUrl: './educator.component.html' ,
+  styleUrls: ['./educator.component.scss']
 })
 
-export class TeacherComponent implements OnInit{
+export class EducatorComponent implements OnInit{
 
-   teacher : any;
+   educator : any;
    title: any;
    
   public form: FormGroup;
@@ -35,9 +35,9 @@ export class TeacherComponent implements OnInit{
   }
 
 // Center CURD Operation  
-  constructor(private fb: FormBuilder,private _teacherService: TeacherService,private _router :Router) {
-     this.title = "Create New Teacher";
-     this.teacher={
+  constructor(private fb: FormBuilder,private _educatorService: EducatorService,private _router :Router) {
+     this.title = "Create New Educator";
+     this.educator={
        firstName:'',
        lastName:'',
        email : '',
@@ -50,12 +50,12 @@ export class TeacherComponent implements OnInit{
    
 
 
-createOrUpdateTeacher() {
+createOrUpdateEducator() {
    
-    this._teacherService.createTeacher(this.teacher).subscribe(
+    this._educatorService.createEducator(this.educator).subscribe(
        data => {
          // refresh the list
-         this._router.navigate(['/teacher-list']);
+         this._router.navigate(['/educator-list']);
          return true;
        },
        error => {
@@ -66,8 +66,8 @@ createOrUpdateTeacher() {
   }
 
 
-   backToTeacherList(){
-    this._router.navigate(['/teacher-list']);
+   backToEducatorList(){
+    this._router.navigate(['/educator-list']);
   }
 
  }

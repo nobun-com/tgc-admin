@@ -1,13 +1,13 @@
-<!--<div fxLayout="row" fxLayoutWrap="wrap">
+<div fxLayout="row" fxLayoutWrap="wrap">
   <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
     <md-card class="card-widget mat-teal">
       <div md-card-widget>
         <div md-card-float-icon>
-          <md-icon>local_offer</md-icon>
+          <!--<md-icon>local_offer</md-icon>-->
         </div>
         <div class="pl-0">
-          <h5 md-card-widget-title>103</h5>
-          <p>Campaigns</p>
+          <h5 md-card-widget-title>{{centersCount}}</h5>
+          <p>Centers</p>
         </div>
       </div>
     </md-card>
@@ -16,11 +16,11 @@
     <md-card class="card-widget mat-purple">
       <div md-card-widget>
         <div md-card-float-icon>
-          <md-icon>phone</md-icon>
+          <!--<md-icon>phone</md-icon>-->
         </div>
         <div class="pl-0">
-          <h5 md-card-widget-title>230</h5>
-          <p>Customers</p>
+          <h5 md-card-widget-title>{{teachersCount}}</h5>
+          <p>Educators</p>
         </div>
       </div>
     </md-card>
@@ -29,11 +29,11 @@
     <md-card class="card-widget mat-red">
       <div md-card-widget>
         <div md-card-float-icon>
-          <md-icon>notifications</md-icon>
+          <!--<md-icon>notifications</md-icon>-->
         </div>
         <div class="pl-0">
-          <h5 md-card-widget-title>323</h5>
-          <p>Queries</p>
+          <h5 md-card-widget-title>{{activeClassesCount}}</h5>
+          <p>Classes</p>
         </div>
       </div>
     </md-card>
@@ -42,11 +42,11 @@
     <md-card class="card-widget mat-indigo">
       <div md-card-widget>
         <div md-card-float-icon>
-          <md-icon>email</md-icon>
+          <!--<md-icon>email</md-icon>-->
         </div>
         <div class="pl-0">
-          <h5 md-card-widget-title>870</h5>
-          <p>Opens</p>
+          <h5 md-card-widget-title>{{bookingsCount}}</h5>
+          <p>Bookings</p>
         </div>
       </div>
     </md-card>
@@ -54,8 +54,8 @@
 </div>
 
 <div fxLayout="row" fxLayoutWrap="wrap">
-	<div fxFlex.gt-sm="33.33%" fxFlex="100">
-		<md-card>
+	<div fxFlex.gt-sm="50%" fxFlex="100">
+		<!--<md-card>
       <md-card-subtitle fxLayout="row" fxLayoutAlign="start center">
         Revenue &nbsp; <span class="font-weight-bold mat-text-primary">+458,90</span>
         <span fxFlex></span>
@@ -82,7 +82,7 @@
         </button>
       </md-menu>
 			<md-card-content>
-        <canvas height="200" baseChart class="chart"
+        <canvas height="150" baseChart class="chart"
           [datasets]="barChartData"
           [labels]="barChartLabels"
           [options]="barChartOptions"
@@ -90,9 +90,9 @@
           [legend]="barChartLegend"
           [chartType]="barChartType"></canvas>
       </md-card-content>
-		</md-card>
+		</md-card>-->
 	</div>
-	<div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="50" fxFlex="100">
+	<!--<div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="50" fxFlex="100">
 		<md-card>
       <md-card-subtitle fxLayout="row" fxLayoutAlign="start center">
         Yearly Sales &nbsp; <span class="font-weight-bold mat-text-warn">-46,68</span>
@@ -166,10 +166,10 @@
           [chartType]="bubbleChartType"></canvas>
       </md-card-content>
 		</md-card>
-	</div>
+	</div>-->
 </div>
 
-<div fxLayout="row" fxLayoutWrap="wrap">
+<!--<div fxLayout="row" fxLayoutWrap="wrap">
   <div fxFlex.gt-sm="66.66%" fxFlex="100">
     <ngx-datatable
       class="material"
@@ -211,9 +211,9 @@
       </md-list>
     </md-card>
   </div>
-</div>
+</div>-->
 
-<div fxLayout="row" fxLayoutWrap="wrap">
+<!--<div fxLayout="row" fxLayoutWrap="wrap">
   <div fxFlex.gt-md="50" fxFlex="100">
     <md-card>
       <div fxLayout="row" fxLayoutAlign="center center" class="mr-1">

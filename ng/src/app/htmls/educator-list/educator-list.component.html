@@ -2,10 +2,10 @@
   <md-card-content>
     <div fxLayout="row"  fxLayoutWrap="wrap">
       <div fxFlex.gt-xs="50" fxFlex="100">
-        <h3 class="mt-0">Teachers</h3>
+        <h3 class="mt-0">Educators</h3>
       </div>
       <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
-        <button md-raised-button color="primary"  (click)="createTeacher()">Create Teacher</button>
+        <button md-raised-button color="primary"  (click)="createEducator()">Create Educator</button>
       </div>
     </div>
   </md-card-content>
@@ -68,8 +68,8 @@
         Action
     </ng-template>
      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-            <button md-mini-fab class="mr-1" color="primary" type="submit" (click)="editTeacher(row)"><md-icon>edit</md-icon></button>
-            <button md-mini-fab class="mr-1" color="warn" type="submit" (click)="deleteTeacher(row)"><md-icon>delete</md-icon></button>
+            <button md-mini-fab class="mr-1" color="primary" type="submit" (click)="editEducator(row)"><md-icon>edit</md-icon></button>
+            <button md-mini-fab class="mr-1" color="warn" type="submit" (click)="deleteEducator(row)"><md-icon>delete</md-icon></button>
       </ng-template>
   </ngx-datatable-column>
  

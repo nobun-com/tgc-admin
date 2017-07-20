@@ -12,9 +12,9 @@ import {
 import { TreeModule } from 'angular-tree-component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { TeacherListRoutes } from './teacher-list.routing';
-import { TeacherListComponent } from './teacher-list.component';
-import { TeacherListService } from './teacher-list.service';
+import { EducatorListRoutes } from './educator-list.routing';
+import { EducatorListComponent } from './educator-list.component';
+import { EducatorListService } from './educator-list.service';
 import { Globals } from '../../common/globals';
 
 
@@ -23,7 +23,7 @@ import 'hammerjs';
 
 @NgModule({
   imports: [    
-    RouterModule.forChild(TeacherListRoutes),
+    RouterModule.forChild(EducatorListRoutes),
     CommonModule,
     MdCardModule,
     MdIconModule,
@@ -36,12 +36,12 @@ import 'hammerjs';
     HttpModule
    ],
   declarations: [   
-    TeacherListComponent
+    EducatorListComponent
      ],
   providers: [
-    TeacherListService,
+    EducatorListService,
     Globals
   ]
 })
 
-export class TeacherListModule {}
+export class EducatorListModule {}

@@ -12,14 +12,14 @@
             <div fxLayout="column" fxLayoutAlign="space-around">
               <div class="pb-1">
                 <md-input-container style="width: 100%">
-                  <input mdInput placeholder="Email" [formControl]="form.controls['uname']" type="email" [(ngModel)]="teacher.email">
+                  <input mdInput placeholder="Email" [formControl]="form.controls['uname']" type="email" [(ngModel)]="educator.email">
                 </md-input-container>
                 <small *ngIf="form.controls['uname'].hasError('required') && form.controls['uname'].touched" class="mat-text-warn">Username is required.</small>
                 <small *ngIf="form.controls['uname'].errors?.email && form.controls['uname'].touched"  >You must include a valid email address.</small>
               </div>
               <div class="pb-1">
                 <md-input-container style="width: 100%">
-                  <input mdInput type="password" placeholder="Password" [formControl]="form.controls['password']"  [(ngModel)]="teacher.password">
+                  <input mdInput type="password" placeholder="Password" [formControl]="form.controls['password']"  [(ngModel)]="educator.password">
                 </md-input-container>
                 <small *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="mat-text-warn">Password is required.</small>
               </div>

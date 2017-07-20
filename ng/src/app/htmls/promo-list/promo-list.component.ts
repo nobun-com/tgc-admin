@@ -12,7 +12,6 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 })
 export class PromoListComponent {
   rows = [];
-  canCreate =true;
 
   constructor(private _promoListService: PromoListService,private _router :Router,public dialog: MdDialog) {
    
@@ -28,9 +27,10 @@ getPromos() {
       data => { 
         this.rows = data;
         if(this.rows.length > 0){
-          this.canCreate=false;
+        var id=data[0].id;
+          this._router.navigate(['/promo/edit-promo',id]);
         }else{
-          this.canCreate=true;
+          this._router.navigate(['/promo/promo']);
         }
       },
       err => { console.log("error") }

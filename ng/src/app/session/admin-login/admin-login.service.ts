@@ -25,7 +25,6 @@ export class AdminLoginService {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
                 admin = response.json() && response.json().admin;
-               console.log(response.json());
                 if (token) {
                     // set token property
                     this.token = token;

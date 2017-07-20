@@ -1,0 +1,83 @@
+<md-card>
+  <md-card-content>
+    <div fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h3 class="mt-0">Bookings</h3>
+      </div>
+      <div fxFlex.gt-xs="20" fxFlex="100" class="text-sm-right text-xs-left">
+        <input mdInput [mdDatepicker]="minDatePicker"  placeholder="From Date" #fromDate >
+        <button mdSuffix [mdDatepickerToggle]="minDatePicker"></button>
+       <md-datepicker #minDatePicker [touchUi]="touch"></md-datepicker>
+     </div>
+    
+     <div fxFlex.gt-xs="20" fxFlex="100" class="text-sm-right text-xs-left">
+        <input mdInput [mdDatepicker]="maxDatePicker" placeholder="To Date" #toDate>
+        <button mdSuffix [mdDatepickerToggle]="maxDatePicker"></button>
+        <md-datepicker #maxDatePicker [touchUi]="touch" ></md-datepicker>
+     </div>
+      <div fxFlex.gt-xs="10" fxFlex="100" class="text-sm-right text-xs-left">
+        <button md-raised-button md-button-sm color="primary" class="mr-1" (click)="applyFilterOnTable(fromDate.value,toDate.value);" style="margin-left: 20px;">Submit</button>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+
+<ngx-datatable
+  class="material"
+  [rows]="rows"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="30"
+  [rowHeight]="'auto'"
+  [limit]="10">
+  <ngx-datatable-column name="className">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Class Name
+    </ng-template>
+    <ng-template let-value="row[1]" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="bookingDate">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Booking Date
+    </ng-template>
+     <ng-template let-value="row[0]" ngx-datatable-cell-template>
+       {{value | date:'dd-MM-yyyy'}}
+      </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="endDate">
+    <ng-template let-column="row" ngx-datatable-header-template>
+        User
+    </ng-template>
+     <ng-template let-value="row[4]" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+  </ngx-datatable-column>fees
+   <ngx-datatable-column name="row">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Fees
+    </ng-template>
+     <ng-template let-value="row[5]" ngx-datatable-cell-template>
+       {{value}}
+      </ng-template>
+  </ngx-datatable-column>
+   <ngx-datatable-column name="coupon">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Coupon
+    </ng-template>
+     <ng-template let-value="row[6]" ngx-datatable-cell-template>
+       {{value}}
+      </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="totalPaid">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Total Paid
+    </ng-template>
+     <ng-template let-value="row[7]" ngx-datatable-cell-template>
+       {{value}}
+      </ng-template>
+  </ngx-datatable-column>
+ 
+ </ngx-datatable>

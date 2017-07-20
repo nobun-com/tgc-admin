@@ -4,23 +4,21 @@ import { Observable } from "rxjs/Rx";
 import { Globals } from '../../common/globals';
 
 @Injectable()
-export class TeacherService {
+export class EducatorService {
 
 constructor(private http:Http,private globals : Globals) {
     }
 
 
-createTeacher(teacher) {
+createEducator(teacher) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(teacher);
     return this.http.post(this.globals.SERVERADDRESS+'createTeacher', teacher, options ).map((res: Response) => res.json());
   }
 
-  updateTeacher(teacher) {
+  updateEducator(teacher) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(teacher);
     return this.http.put(this.globals.SERVERADDRESS+'updateTeacher', teacher, options ).map((res: Response) => res.json());
   }
 

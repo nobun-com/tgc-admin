@@ -45,43 +45,46 @@ export const AppRoutes: Routes = [{
   // }
   , {
     path: 'centers',
-    loadChildren: './htmls/centers/centers.module#CentersModule',
+    loadChildren: './htmls/centers/centers.module#CentersModule'
   }, {
     path: 'centers-list',
-    loadChildren: './htmls/centers-list/centers-list.module#CentersListModule',
+    loadChildren: './htmls/centers-list/centers-list.module#CentersListModule'
   }, {
-    path: 'teacher',
-    loadChildren: './htmls/teacher/teacher.module#TeacherModule',
+    path: 'educator',
+    loadChildren: './htmls/educator/educator.module#EducatorModule'
   }, {
-    path: 'teacher-list',
-    loadChildren: './htmls/teacher-list/teacher-list.module#TeacherListModule',
+    path: 'educator-list',
+    loadChildren: './htmls/educator-list/educator-list.module#EducatorListModule'
   }, {
     path: 'instances-list/:id',
-    loadChildren: './htmls/instances-list/instances-list.module#InstancesListModule',
+    loadChildren: './htmls/instances-list/instances-list.module#InstancesListModule'
   }, {
     path: 'classes',
-    loadChildren: './htmls/classes/classes.module#ClassesModule',
+    loadChildren: './htmls/classes/classes.module#ClassesModule'
   }, {
     path: 'classes-list',
-    loadChildren: './htmls/classes-list/classes-list.module#ClassesListModule',
+    loadChildren: './htmls/classes-list/classes-list.module#ClassesListModule'
   }, {
     path: 'coupon',
-    loadChildren: './htmls/coupon/coupon.module#CouponModule',
+    loadChildren: './htmls/coupon/coupon.module#CouponModule'
   }, {
     path: 'coupon-list',
-    loadChildren: './htmls/coupon-list/coupon-list.module#CouponListModule',
+    loadChildren: './htmls/coupon-list/coupon-list.module#CouponListModule'
   }, {
     path: 'article',
-    loadChildren: './htmls/article/article.module#ArticleModule',
+    loadChildren: './htmls/article/article.module#ArticleModule'
   }, {
     path: 'article-list',
-    loadChildren: './htmls/article-list/article-list.module#ArticleListModule',
+    loadChildren: './htmls/article-list/article-list.module#ArticleListModule'
   }, {
     path: 'promo',
-    loadChildren: './htmls/promo/promo.module#PromoModule',
+    loadChildren: './htmls/promo/promo.module#PromoModule'
   }, {
     path: 'promo-list',
-    loadChildren: './htmls/promo-list/promo-list.module#PromoListModule',
+    loadChildren: './htmls/promo-list/promo-list.module#PromoListModule'
+  }, {
+    path: 'booking-list',
+    loadChildren: './htmls/booking-list/booking-list.module#BookingListModule'
   }
   ]
 }, {
@@ -98,7 +101,7 @@ export const AppRoutes: Routes = [{
   path: 'admin-login',
   redirectTo: 'session/admin-login'
 },{
-  path: 'teacher-login',
-  redirectTo: 'session/teacher-login'
+  path: 'educator-login',
+  redirectTo: 'session/educator-login'
 }
 ];

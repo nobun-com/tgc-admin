@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
-import { TeacherLoginService } from './teacher-login.service';
+import { EducatorLoginService } from './educator-login.service';
 import { CustomValidators } from 'ng2-validation';
 import { Globals } from '../../common/globals';
 
 @Component({
-  selector: 'teacher-login',
-  templateUrl: './teacher-login.component.html',
-  styleUrls: ['./teacher-login.component.scss']
+  selector: 'educator-login',
+  templateUrl: './educator-login.component.html',
+  styleUrls: ['./educator-login.component.scss']
 })
-export class TeacherLoginComponent implements OnInit {
+export class EducatorLoginComponent implements OnInit {
 
   public form: FormGroup;
-  teacher : any={};
+  educator : any={};
   loading = false;
   error = '';
 
-  constructor(private fb: FormBuilder, private router: Router,private teacherLoginService:TeacherLoginService) {
-     this.teacher ={
+  constructor(private fb: FormBuilder, private router: Router,private educatorLoginService:EducatorLoginService) {
+     this.educator ={
       email : '',
       password : ''
     }
@@ -36,7 +36,7 @@ export class TeacherLoginComponent implements OnInit {
   
   login() {
         this.loading = true;
-        this.teacherLoginService.login(this.teacher)
+        this.educatorLoginService.login(this.educator)
             .subscribe(result => {
                 if (result === true) {
                     // this.router.navigate(['/']);
