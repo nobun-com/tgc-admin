@@ -27,7 +27,8 @@ export class EditArticleComponent {
    public quill ;
    public editorContents : string;
    public categories : any;
-;
+   thumbnails='';
+   images='';
 
 // Center CURD Operation  
  constructor(private fb: FormBuilder,private globals : Globals,private _centerService: CentersService,private _articleService: ArticleService,private activatedRoute: ActivatedRoute,private _router :Router) {
@@ -84,6 +85,8 @@ getArticle(articleId){
         this.article = data;
          this.uploadThumbnail = true;
          this.uploadImage = true;
+         this.images= this.globals.SERVERADDRESS+"getImage/"+ this.article.imageUrl;
+         this.thumbnails= this.globals.SERVERADDRESS+"getImage/"+ this.article.thumbnailUrl;
          this.quill.root.innerHTML=this.article.body;
         //this.quill.setContents(this.article.body);
       },
@@ -125,7 +128,9 @@ getCategory(){
     this.fileToUpload = <Array<File>> fileInput.target.files;
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.uploadThumbnail = true;
-       this.article.thumbnailUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.article.thumbnailUrl= res;
+       this.thumbnails= this.globals.SERVERADDRESS+"getImage/"+res;
+       
      }, (err) => {
        console.log("error");
      });
@@ -133,8 +138,10 @@ getCategory(){
    fileChangeEventForImage(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
-       this.article.imageUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        this.uploadImage = true;
+       this.article.imageUrl= res;
+       this.images= this.globals.SERVERADDRESS+"getImage/"+res;
+       
      }, (err) => {
        console.log("error");
      });

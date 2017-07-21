@@ -60,6 +60,7 @@ export class EditClassesComponent implements OnInit{
    
    this.getCenters();
    this.getTeachers();
+   this.getCategories();
    this.occurrences = Array(50).fill('');
    this.miniutes = [0,15,30,45];
    this.hours = Array(25).fill('');

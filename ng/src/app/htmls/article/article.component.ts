@@ -26,7 +26,8 @@ export class ArticleComponent implements OnInit{
    public quill ;
    public editorContents : string;
    public categories : any;
-
+   thumbnails='';
+   images='';
   ngOnInit() {
     this.getCategory();
 
@@ -104,7 +105,8 @@ createOrUpdateArticle() {
     this.fileToUpload = <Array<File>> fileInput.target.files;
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.uploadThumbnail = true;
-       this.article.thumbnailUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.article.thumbnailUrl= res;
+       this.thumbnails= this.globals.SERVERADDRESS+"getImage/"+res;
      }, (err) => {
        console.log("error");
      });
@@ -112,8 +114,9 @@ createOrUpdateArticle() {
    fileChangeEventForImage(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
-       this.article.imageUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        this.uploadImage = true;
+       this.article.imageUrl= res;
+       this.images= this.globals.SERVERADDRESS+"getImage/"+res;
      }, (err) => {
        console.log("error");
      });

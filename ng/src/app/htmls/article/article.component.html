@@ -40,7 +40,7 @@
             </md-input-container>
             <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
                 <input type="file" (change)="fileChangeEventForThumbnail($event)" [formControl]="form.controls['thumbnail']">
-                <img *ngIf="uploadThumbnail" src="{{article.thumbnailUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+                <img *ngIf="uploadThumbnail" src="{{thumbnails}}" class="logo" style="width: 120px;height: 100px;"/>
             </div>
         </div> 
         <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
@@ -49,7 +49,7 @@
             </md-input-container>
             <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
                 <input type="file" (change)="fileChangeEventForImage($event)" [formControl]="form.controls['image']">
-                <img *ngIf="uploadImage" src="{{article.imageUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+                <img *ngIf="uploadImage" src="{{images}}" class="logo" style="width: 120px;height: 100px;"/>
               </div>
         </div>
         <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">

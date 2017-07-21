@@ -77,10 +77,10 @@ countAmenitiesChars() {
 getCenter(centerId){
   this._centerService.getById(centerId).subscribe(
       data=>{
-        this.center = data;
         this.getDistricts(data.address.area);
         this.uploadFile = true;
         this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
+        this.center = data;
       },
       err =>{
         console.log("error")
