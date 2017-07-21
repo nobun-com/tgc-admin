@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
 import { DashboardService } from './dashboard.service';
 import { Globals } from '../common/globals';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { Globals } from '../common/globals';
     MdMenuModule,
     ChartsModule,
     NgxDatatableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgxChartsModule
   ],
   declarations: [ DashboardComponent ],
   providers: [
