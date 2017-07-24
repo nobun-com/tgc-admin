@@ -44,9 +44,9 @@ export class DashboardComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  onSelect(event) {
-    console.log(event);
-  }
+  // onSelect(event) {
+  //   console.log(event);
+  // }
 
   rows = [];
   activeClassesCount = 0;
@@ -82,7 +82,6 @@ export class DashboardComponent implements OnInit {
            this.single.push(this.obj);
          }
                   
-         console.log(this.single);
          this.isDataAvailable=true;
     },
       err => { console.log("error") }

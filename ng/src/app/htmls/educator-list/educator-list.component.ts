@@ -46,6 +46,7 @@ getEducators() {
            return true;
          },
          error => {
+           alert("Can't Delete! It is in use.");
            console.error("error");
          }
       );

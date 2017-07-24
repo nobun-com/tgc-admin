@@ -32,7 +32,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private router: Router, public menuItems: MenuItems, public translate: TranslateService ,private adminLoginService:AdminLoginService,private educatorLoginService:EducatorLoginService) {
     const browserLang: string = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');    
   }
 
   ngOnInit(): void {

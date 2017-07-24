@@ -80,7 +80,10 @@ getCenter(centerId){
         this.getDistricts(data.address.area);
         this.uploadFile = true;
         this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
-        this.center = data;
+
+      setTimeout(()=>{  
+          this.center = data;
+        }, 1000);
       },
       err =>{
         console.log("error")

@@ -12,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfirmDialogRoutes } from './confirm-dialog.routing';
-import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { Globals } from '../../common/globals';
 import 'hammerjs';
 
@@ -31,9 +30,6 @@ import 'hammerjs';
     ReactiveFormsModule,
     HttpModule
    ],
-  declarations: [
-    ConfirmDialogComponent
-     ],
   providers: [
     Globals
   ]

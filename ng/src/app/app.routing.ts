@@ -12,38 +12,6 @@ export const AppRoutes: Routes = [{
     path: '',
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   }, {
-    path: 'apps',
-    loadChildren: './apps/apps.module#AppsModule'
-  }
-  // , {
-  //   path: 'widgets',
-  //   loadChildren: './widgets/widgets.module#WidgetsModule'
-  // }, {
-  //   path: 'material',
-  //   loadChildren: './material/material.module#MaterialComponentsModule'
-  // }, {
-  //   path: 'ecommerce',
-  //   loadChildren: './ecommerce/ecommerce.module#EcommerceModule'
-  // }, {
-  //   path: 'forms',
-  //   loadChildren: './forms/forms.module#FormModule'
-  // }, {
-  //   path: 'tables',
-  //   loadChildren: './tables/tables.module#TablesModule'
-  // },{
-  //    path: 'charts',
-  //    loadChildren: './chartlib/chartlib.module#ChartlibModule'
-  // }, {
-  //   path: 'maps',
-  //   loadChildren: './maps/maps.module#MapModule'
-  // }, {
-  //   path: 'dragndrop',
-  //   loadChildren: './dragndrop/dragndrop.module#DragndropModule'
-  // }, {
-  //   path: 'pages',
-  //   loadChildren: './pages/pages.module#PagesModule'
-  // }
-  , {
     path: 'centers',
     loadChildren: './htmls/centers/centers.module#CentersModule'
   }, {

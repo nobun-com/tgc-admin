@@ -62,7 +62,7 @@
           <input mdInput placeholder="Confirm Password" [formControl]="form.controls['confirmPassword']" type="password"  [(ngModel)]="educator.confirmPassword" required>
         </md-input-container>
         <small *ngIf="form.controls['confirmPassword'].hasError('required') && form.controls['confirmPassword'].touched" class="mat-text-warn">You must include confirm password.</small>
-        <small *ngIf="form.controls['confirmPassword'].errors?.equalTo" class="mat-text-warn">Passwords do not math.</small>
+        <small *ngIf="form.controls['confirmPassword'].errors?.equalTo" class="mat-text-warn">Passwords do not match.</small>
       </div>
   </md-card-content>
 <hr>
