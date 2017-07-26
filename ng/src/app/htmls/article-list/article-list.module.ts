@@ -17,7 +17,6 @@ import { ArticleListComponent } from './article-list.component';
 import { ArticleListService } from './article-list.service';
 import { Globals } from '../../common/globals';
 
-
 import 'hammerjs';
 
 

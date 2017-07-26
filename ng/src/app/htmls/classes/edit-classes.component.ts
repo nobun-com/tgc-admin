@@ -6,6 +6,7 @@ import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ClassesService } from './create-classes.service';
 import { ExtraValidators } from '../../common/extraValidators.component';
+import * as Quill from 'quill';
 
 
 @Component({
@@ -22,6 +23,8 @@ export class EditClassesComponent implements OnInit{
    categories : any;
    occurrences : any;
    centers: any;
+   public quill ;
+   public editorContents : string;
    hrs: any;
    mins: any;
    week: any;
@@ -55,20 +58,32 @@ export class EditClassesComponent implements OnInit{
        about:'',
        minAge:0,
        maxAge:0,
-       maxSlots:0
+       maxSlots:0,
+       importantNotes : ''
      }
-   
+   }
+ public form: FormGroup;
+
+
+ngOnInit() {
+
    this.getCenters();
    this.getTeachers();
    this.getCategories();
    this.occurrences = Array(50).fill('');
    this.miniutes = [0,15,30,45];
    this.hours = Array(25).fill('');
-   }
- public form: FormGroup;
 
-
-ngOnInit() {
+   //    const quill = new Quill('#editor-container', {
+      this.quill = new Quill('#editor-container', {
+        modules: {
+          toolbar: {
+            container: '#toolbar-toolbar'
+          }
+        },
+        placeholder: 'Compose an epic...',
+        theme: 'snow'
+      });
     this.activatedRoute.params.subscribe((params: Params) => {
         let classId = params['id'];
           this.getClass(classId);
@@ -85,6 +100,7 @@ ngOnInit() {
        maxSlots:['', Validators.required],
        fees:['', Validators.required],
        startDate : ['',Validators.required],
+       importantNotes : [],
        endDateType :  ['', Validators.required],
        endDate : ['',
         Validators.compose([
@@ -540,10 +556,12 @@ createClasses() {
         }
       
       this.classes.frequency = "Weekly";
+      this.classes.importantNotes=this.quill.root.innerHTML;
       this.classes.frequencyMetadata = JSON.stringify(this.obj);
    }else{
       this.obj = {};
       this.obj.daily={};
+      this.classes.importantNotes=this.quill.root.innerHTML;
      this.classes.frequency = "Daily";
       this.obj.daily = { 
               startTime: (this.frequencyMetadata.daily.startTimeHH * 60) + this.frequencyMetadata.daily.startTimeMM ,
@@ -572,7 +590,7 @@ createClasses() {
   this._classService.getById(classId).subscribe(
       data=>{
         this.classes = data;
-
+        this.quill.root.innerHTML=this.classes.importantNotes;
         if(this.classes.occurrence)
         {
           this.classes.endDateType='occurrence';

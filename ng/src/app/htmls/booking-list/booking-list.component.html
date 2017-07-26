@@ -7,14 +7,14 @@
       <div fxFlex.gt-xs="25" fxFlex="100" class="text-sm-right text-xs-left">
         <input mdInput [mdDatepicker]="minDatePicker"  placeholder="From Date" #fromDate >
         <button mdSuffix [mdDatepickerToggle]="minDatePicker"></button>
-       <md-datepicker #minDatePicker [touchUi]="touch"></md-datepicker>
      </div>
+       <md-datepicker #minDatePicker [touchUi]="touch"></md-datepicker>
     
      <div fxFlex.gt-xs="25" fxFlex="100" class="text-sm-right text-xs-left">
         <input mdInput [mdDatepicker]="maxDatePicker" placeholder="To Date" #toDate>
         <button mdSuffix [mdDatepickerToggle]="maxDatePicker"></button>
-        <md-datepicker #maxDatePicker [touchUi]="touch" ></md-datepicker>
      </div>
+        <md-datepicker #maxDatePicker [touchUi]="touch" ></md-datepicker>
       <div fxFlex.gt-xs="10" fxFlex="100" class="text-sm-right text-xs-left">
         <button md-raised-button md-button-sm color="primary" class="mr-1" (click)="applyFilterOnTable(fromDate.value,toDate.value);" style="margin-left: 20px;">Submit</button>
       </div>

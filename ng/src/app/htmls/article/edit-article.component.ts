@@ -65,7 +65,7 @@ ngOnInit() {
           this.getArticle(articleId);
       });
 
-       this.form = this.fb.group({
+      this.form = this.fb.group({
       title: [null, Validators.compose([Validators.required])],
       preview: [null, Validators.compose([Validators.required])],
       category: [null, Validators.required],

@@ -5,6 +5,7 @@ import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ClassesService } from './create-classes.service';
+import * as Quill from 'quill';
 import { ExtraValidators } from '../../common/extraValidators.component';
 
 
@@ -17,6 +18,8 @@ import { ExtraValidators } from '../../common/extraValidators.component';
 export class CreateClassesComponent implements OnInit{
 
    classes : any;
+   public quill ;
+   public editorContents : string;
    center_error:Boolean = false;
    title: string;
    centers: any;
@@ -57,7 +60,8 @@ export class CreateClassesComponent implements OnInit{
        about:'',
        minAge:'',
        maxAge:'',
-       maxSlots:''
+       maxSlots:'',
+       importantNotes : ''
      }
    }
 
@@ -67,6 +71,19 @@ export class CreateClassesComponent implements OnInit{
    this.getCenters();
    this.getTeachers();
    this.getCategories();
+
+
+//    const quill = new Quill('#editor-container', {
+     this.quill = new Quill('#editor-container', {
+      modules: {
+        toolbar: {
+          container: '#toolbar-toolbar'
+        }
+      },
+      placeholder: 'Compose an epic...',
+      theme: 'snow'
+    });
+
    this.occurrences = Array(50).fill('');
    this.hours = Array(25).fill('');
    this.miniutes = [0,15,30,45];
@@ -79,6 +96,7 @@ export class CreateClassesComponent implements OnInit{
        maxAge:['', Validators.required],
        maxSlots:['', Validators.required],
        fees:['', Validators.required],
+       importantNotes : [],
        startDate : ['',Validators.required],
        endDateType :  ['', Validators.required],
        endDate : ['',
@@ -546,11 +564,13 @@ createClasses() {
         }
       
       this.classes.frequency = "Weekly";
+      this.classes.importantNotes=this.quill.root.innerHTML;
       this.classes.frequencyMetadata = JSON.stringify(this.obj);
    }else{
       this.obj = {};
       this.obj.daily={};
-     this.classes.frequency = "Daily";
+      this.classes.importantNotes=this.quill.root.innerHTML;
+      this.classes.frequency = "Daily";
       this.obj.daily = { 
               startTime: (this.frequencyMetadata.daily.startTimeHH * 60) + this.frequencyMetadata.daily.startTimeMM ,
               endTime: (this.frequencyMetadata.daily.endTimeHH * 60) +  this.frequencyMetadata.daily.endTimeMM
