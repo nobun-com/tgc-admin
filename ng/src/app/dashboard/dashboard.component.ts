@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './dashboard.service';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,21 +13,11 @@ export class DashboardComponent implements OnInit {
 
    single : any[];
    obj : any;
+   role : string;
+   userId : String ;
    isDataAvailable : boolean =false;
-  //  single: any[] = [
-  //   {
-  //     "name": "Germany",
-  //     "value": 300
-  //   },
-  //   {
-  //     "name": "USA",
-  //     "value": 200
-  //   },
-  //   {
-  //     "name": "France",
-  //     "value": 100
-  //   }
-  // ];
+   showCenters : boolean ;
+   shwoEducators : boolean ;
 
   view: any[] = [1000, 400];
 
@@ -63,17 +54,45 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.getDashboardData();
+     this.role  = Cookie.get('role');
+     this.userId  = Cookie.get('userId');  
+     if(this.role=='admin')
+      this.getAdminDashboardData();
+    else
+      this.getEducatorDashboardData(this.userId);
   }
 
   
-  getDashboardData(){
-  this.dashboardService.getDashBoardData().subscribe(
+  getAdminDashboardData(){
+  this.dashboardService.getAdminDashBoardData().subscribe(
       data => { 
          this.activeClassesCount = data.activeClassesCount;
          this.bookingsCount = data.bookingsCount;
          this.centersCount = data.centersCount;
          this.teachersCount = data.teachersCount;
+          this.showCenters = true;
+         this.shwoEducators = true;
+         
+         for(var objectKey in data.barChartData){
+           this.obj={};
+           this.obj.name = objectKey+"";
+           this.obj.value = data.barChartData[objectKey];
+           this.single.push(this.obj);
+         }
+        this.isDataAvailable=true;
+    },
+      err => { console.log("error") }
+  );
+}   
+
+  getEducatorDashboardData(id){
+  this.dashboardService.getEducatorDashboardData(id).subscribe(
+      data => { 
+         this.activeClassesCount = data.activeClassesCount;
+         this.bookingsCount = data.bookingsCount;
+         
+         this.showCenters = false;
+         this.shwoEducators = false;
          
          for(var objectKey in data.barChartData){
            this.obj={};

@@ -20,7 +20,6 @@ createArticle(article) {
   updateArticle(article) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(article);
     return this.http.put(this.globals.SERVERADDRESS+'updateArticle', article, options ).map((res: Response) => res.json());
   }
 

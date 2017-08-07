@@ -25,8 +25,8 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   collapseSidebar: boolean;
   compactSidebar: boolean;
   currentLang = 'en';
-  currentUser : any = JSON.parse(Cookie.get('currentUser'));
-  role : string = Cookie.get('role') 
+  currentUser : any ;
+  role : string ; 
   @ViewChild('sidemenu') sidemenu;
   @ViewChild('root') root;
 
@@ -36,6 +36,9 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
+
+    this.currentUser  = JSON.parse(Cookie.get('currentUser'));
+    this.role  = Cookie.get('role'); 
     const elemSidebar = <HTMLElement>document.querySelector('.app-inner > .sidebar-panel');
     const elemContent = <HTMLElement>document.querySelector('.app-inner > .mat-sidenav-content');
 
@@ -116,7 +119,6 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   logout(){
-    console.log("logout");
     if(this.role=='admin'){
         this.adminLoginService.logout();
         this.router.navigate ( [ 'session/admin-login' ] );

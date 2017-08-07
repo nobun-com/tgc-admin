@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutWrap="wrap">
-  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+  <div *ngIf="showCenters" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
     <md-card class="card-widget mat-teal">
       <div md-card-widget>
         <div md-card-float-icon>
@@ -12,7 +12,7 @@
       </div>
     </md-card>
   </div>
-  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+  <div *ngIf="showEducators" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
     <md-card class="card-widget mat-purple">
       <div md-card-widget>
         <div md-card-float-icon>
