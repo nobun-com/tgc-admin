@@ -1,7 +1,37 @@
 @import "../../../assets/styles/scss/components/upload";
 
 .logo{
-    border-radius: 50px;
-    width: 70px;
-    height: 70px;
+    border-radius: 60px;
+    width: 80px;
+    height: 80px;
+    margin-left:60px; 
+}
+
+.file {
+  position: relative;
+  height: 30px;
+  width: 100px;
+}
+
+.file > input[type="file"] {
+  position: absoulte;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0
+}
+
+.file > label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #666;
+  color: #fff;
+  border-radius: 5px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer
 }

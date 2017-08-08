@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
    userId : String ;
    isDataAvailable : boolean =false;
    showCenters : boolean ;
-   shwoEducators : boolean ;
+   showEducators : boolean ;
 
   view: any[] = [1000, 400];
 
@@ -56,10 +56,15 @@ export class DashboardComponent implements OnInit {
   ngOnInit(){
      this.role  = Cookie.get('role');
      this.userId  = Cookie.get('userId');  
-     if(this.role=='admin')
-      this.getAdminDashboardData();
-    else
-      this.getEducatorDashboardData(this.userId);
+     if(this.role=='admin'){
+       this.showCenters = true;
+       this.showEducators = true;
+       this.getAdminDashboardData();
+     }else{
+       this.showCenters = false;
+       this.showEducators = false;
+       this.getEducatorDashboardData(this.userId);
+     }
   }
 
   
@@ -70,8 +75,6 @@ export class DashboardComponent implements OnInit {
          this.bookingsCount = data.bookingsCount;
          this.centersCount = data.centersCount;
          this.teachersCount = data.teachersCount;
-          this.showCenters = true;
-         this.shwoEducators = true;
          
          for(var objectKey in data.barChartData){
            this.obj={};
@@ -90,10 +93,6 @@ export class DashboardComponent implements OnInit {
       data => { 
          this.activeClassesCount = data.activeClassesCount;
          this.bookingsCount = data.bookingsCount;
-         
-         this.showCenters = false;
-         this.shwoEducators = false;
-         
          for(var objectKey in data.barChartData){
            this.obj={};
            this.obj.name = objectKey+"";

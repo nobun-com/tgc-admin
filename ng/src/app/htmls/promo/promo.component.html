@@ -21,8 +21,12 @@
               <small *ngIf="form.controls['centerOneId'].hasError('required') && form.controls['centerOneId'].touched" class="mat-text-warn">You must include a center.</small>
           </div>  
           <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-            <input type="file" (change)="promoImageOne($event)" [formControl]="form.controls['promoImageOne']">
-            <img *ngIf="uploadPromoImageOne" src="{{promoImageOneUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+            <!--<input type="file" (change)="promoImageOne($event)" [formControl]="form.controls['promoImageOne']">-->
+             <div class="file">
+              <label for="file-input">Select Image </label>
+              <input type="file" id="file-input" (change)="promoImageOne($event)" accept="image/*" [formControl]="form.controls['promoImageOne']">
+            </div>
+            <img *ngIf="uploadPromoImageOne" src="{{promoImageOneUrl}}" class="logo" style="width: 120px;height: 100px;margin-left:60px;"/>
           </div>
         </div>
          <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
@@ -35,8 +39,12 @@
               <small *ngIf="form.controls['centerTwoId'].hasError('required') && form.controls['centerTwoId'].touched" class="mat-text-warn">You must include a center.</small>
           </div>  
          <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-            <input type="file" (change)="promoImageTwo($event)" [formControl]="form.controls['promoImageTwo']">
-            <img *ngIf="uploadPromoImageTwo" src="{{promoImageTwoUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+            <!--<input type="file" (change)="promoImageTwo($event)" [formControl]="form.controls['promoImageTwo']">-->
+            <div class="file">
+              <label for="file-input">Select Image </label>
+              <input type="file" id="file-input" (change)="promoImageTwo($event)" accept="image/*" [formControl]="form.controls['promoImageTwo']">
+            </div>
+            <img *ngIf="uploadPromoImageTwo" src="{{promoImageTwoUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
           </div>
         </div> 
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
@@ -49,8 +57,12 @@
               <small *ngIf="form.controls['centerThreeId'].hasError('required') && form.controls['centerThreeId'].touched" class="mat-text-warn">You must include a center.</small>
           </div>  
          <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-            <input type="file" (change)="promoImageThree($event)" [formControl]="form.controls['promoImageThree']">
-            <img *ngIf="uploadPromoImageThree" src="{{promoImageThreeUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+            <!--<input type="file" (change)="promoImageThree($event)" [formControl]="form.controls['promoImageThree']">-->
+            <div class="file">
+              <label for="file-input">Select Image </label>
+              <input type="file" id="file-input" (change)="promoImageThree($event)" accept="image/*" [formControl]="form.controls['promoImageThree']">
+            </div>
+            <img *ngIf="uploadPromoImageThree" src="{{promoImageThreeUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
           </div>
         </div> 
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
@@ -63,8 +75,12 @@
               <small *ngIf="form.controls['centerFourId'].hasError('required') && form.controls['centerFourId'].touched" class="mat-text-warn">You must include a center.</small>
           </div>  
            <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-            <input type="file" (change)="promoImageFour($event)" [formControl]="form.controls['promoImageFour']">
-            <img *ngIf="uploadPromoImageFour" src="{{promoImageFourUrl}}" class="logo" style="width: 120px;height: 100px;"/>
+            <!--<input type="file" (change)="promoImageFour($event)" [formControl]="form.controls['promoImageFour']">-->
+            <div class="file">
+              <label for="file-input">Select Image </label>
+              <input type="file" id="file-input" (change)="promoImageFour($event)" accept="image/*" [formControl]="form.controls['promoImageFour']"> 
+            </div>
+            <img *ngIf="uploadPromoImageFour" src="{{promoImageFourUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
           </div>
         </div>
       </md-card-content>

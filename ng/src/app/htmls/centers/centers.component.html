@@ -19,7 +19,11 @@
           <small *ngIf="form.controls['centerName'].hasError('required') && form.controls['centerName'].touched" class="mat-text-warn">You must include a center name.</small>
           
           <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-           <input type="file" (change)="fileChangeEvent($event)">
+            <div class="file">
+              <label for="file-input">Select Logo</label>
+              <input type="file" id="file-input" (change)="fileChangeEvent($event)" accept="image/*">
+            </div>
+           <!--<input type="file" (change)="fileChangeEvent($event)">-->
             <img *ngIf="uploadFile" src="{{center.logoUrl}}{{center.logoName}}" class="logo"/>
           </div>
      </div>

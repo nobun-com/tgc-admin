@@ -39,8 +39,12 @@
               <input mdInput placeholder="Thumbnail Url" value="{{article.thumbnailUrl}}" [readonly]="true" [formControl]="form.controls['thumbnailUrl']" [(ngModel)]="article.thumbnailUrl" >
             </md-input-container>
             <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-                <input type="file" (change)="fileChangeEventForThumbnail($event)" [formControl]="form.controls['thumbnail']">
-                <img *ngIf="uploadThumbnail" src="{{thumbnails}}" class="logo" style="width: 120px;height: 100px;"/>
+                <!--<input type="file" (change)="fileChangeEventForThumbnail($event)" [formControl]="form.controls['thumbnail']">-->
+                <div class="file">
+                  <label for="file-input">Select Image </label>
+                  <input type="file" id="file-input" (change)="fileChangeEventForThumbnail($event)" accept="image/*" [formControl]="form.controls['thumbnail']"> 
+                </div>
+                <img *ngIf="uploadThumbnail" src="{{thumbnails}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
             </div>
         </div> 
         <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
@@ -48,8 +52,12 @@
             <input mdInput placeholder="Image Url" value="{{article.imageUrl}}" [readonly]="true" [(ngModel)]="article.imageUrl"  [formControl]="form.controls['imageUrl']" >
             </md-input-container>
             <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-                <input type="file" (change)="fileChangeEventForImage($event)" [formControl]="form.controls['image']">
-                <img *ngIf="uploadImage" src="{{images}}" class="logo" style="width: 120px;height: 100px;"/>
+                <!--<input type="file" (change)="fileChangeEventForImage($event)" [formControl]="form.controls['image']">-->
+                <div class="file">
+                  <label for="file-input">Select Image </label>
+                  <input type="file" id="file-input" (change)="fileChangeEventForImage($event)" accept="image/*" [formControl]="form.controls['image']"> 
+                </div>
+                <img *ngIf="uploadImage" src="{{images}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
               </div>
         </div>
         <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">

@@ -21,7 +21,6 @@ import { Globals } from './common/globals';
 import { ConfirmDialogComponent } from './htmls/confirm-dialog/confirm-dialog.component';
 
 
-
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
 }

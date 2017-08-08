@@ -65,7 +65,7 @@
     </div>
  <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
       <md-input-container class="ml-xs mr-xs" style="width: 20%;" fxLayoutAlign="start center">
-        <input mdInput placeholder="Fees" [formControl]="form.controls['fees']" [(ngModel)]="classes.fee">
+        <input mdInput placeholder="Fees (In HKD)" [formControl]="form.controls['fees']" [(ngModel)]="classes.fee">
       </md-input-container>
      <small *ngIf="form.controls['fees'].hasError('required') && submitAttempt" class="mat-text-warn">You must include a fees.</small>
        

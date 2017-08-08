@@ -18,6 +18,7 @@ import { BookingListRoutes } from './booking-list.routing';
 import { BookingListComponent } from './booking-list.component';
 import { BookingListService } from './booking-list.service';
 import { Globals } from '../../common/globals';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 import 'hammerjs';
@@ -37,7 +38,8 @@ import 'hammerjs';
     TreeModule,
     HttpModule,
     MdDatepickerModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    Ng2SmartTableModule
    ],
   declarations: [   
     BookingListComponent
