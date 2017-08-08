@@ -5,13 +5,13 @@
         <h3 class="mt-0">Bookings</h3>
       </div>
       <div fxFlex.gt-xs="25%" fxFlex="100%" class="text-sm-right text-xs-left">
-        <input mdInput [mdDatepicker]="minDatePicker"  placeholder="From Date" #fromDate >
+        <input  [mdDatepicker]="minDatePicker"  placeholder="From Date" #fromDate >
         <button mdSuffix [mdDatepickerToggle]="minDatePicker"></button>
      </div>
        <md-datepicker #minDatePicker [touchUi]="touch"></md-datepicker>
     
      <div fxFlex.gt-xs="25%" fxFlex="100%" class="text-sm-right text-xs-left">
-        <input mdInput [mdDatepicker]="maxDatePicker" placeholder="To Date" #toDate>
+        <input  [mdDatepicker]="maxDatePicker" placeholder="To Date" #toDate>
         <button mdSuffix [mdDatepickerToggle]="maxDatePicker"></button>
      </div>
         <md-datepicker #maxDatePicker [touchUi]="touch" ></md-datepicker>
