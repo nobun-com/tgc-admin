@@ -19,9 +19,11 @@ constructor(private http:Http,private globals : Globals) {
         }
 
         getBookingsByDate(data){
-console.log(data);
                 let headers = new Headers({ 'Content-Type': 'application/json' });
                 let options = new RequestOptions({ headers: headers });
                 return this.http.post(this.globals.SERVERADDRESS+'getAllBookingsByDate',data,options).map((res:Response) => res.json());
         }
+        refundBooking(id) {
+                return this.http.delete(this.globals.SERVERADDRESS+'refund/' + id);
+         }
 } 

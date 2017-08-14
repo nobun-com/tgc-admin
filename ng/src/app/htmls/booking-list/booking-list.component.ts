@@ -26,15 +26,18 @@ export class BookingListComponent {
       fromDate : '',
       toDate : '',
       userId : '',
-      role : ''
+      role : '',
+      bookingId : ''
     }
     this.booking={
+       id : '',
        className:'',
        bookingDate : '',
        fees : '',
        user : '',
        coupon : '',
-       totalPaid : ''
+       totalPaid : '',
+       center:''
       }
   }
 
@@ -42,12 +45,22 @@ settings = {
  actions: {
       add : false,
       edit : false,
-      delete : false
+      delete : false,
+      position : 'right',
+      custom: [
+        {
+          name: 'refund',
+          title: 'refund '
+        }
+      ],
     },
   columns: {
     // id: {
     //   title: 'ID'
     // },
+    center: {
+      title: 'Center'
+    },
     className: {
       title: 'Class Name'
     },
@@ -85,7 +98,6 @@ applyFilterOnTable(fromDate,toDate){
   this._bookingListService.getBookingsByDate(this.params).subscribe(
       data => {
         for(var i=0; i<data.length;i++){
-        console.log(data[i]);
           this.booking={};
          this.booking.className = data[i][1];
           this.booking.bookingDate = data[i][0];
@@ -93,7 +105,8 @@ applyFilterOnTable(fromDate,toDate){
           this.booking.fees = data[i][5];
           this.booking.coupon = data[i][6];
           this.booking.totalPaid = data[i][7];
-
+          this.booking.center = data[i][8];
+ 	  this.booking.id = data[i][9];
           this.bookings.push(this.booking)
         }
         this.isDataAvailable=true;
@@ -118,7 +131,6 @@ getAllBookings() {
     this._bookingListService.getAllBookings().subscribe(
       data => {
         for(var i=0; i<data.length;i++){
-        console.log(data[i]);
           this.booking={};
           this.booking.className = data[i][1];
           this.booking.bookingDate = data[i][0];
@@ -126,7 +138,8 @@ getAllBookings() {
           this.booking.fees = data[i][5];
           this.booking.coupon = data[i][6];
           this.booking.totalPaid = data[i][7];
-
+          this.booking.center = data[i][8];
+	  this.booking.id = data[i][9];
           this.bookings.push(this.booking)
         }
         this.isDataAvailable=true;
@@ -147,7 +160,8 @@ getAllBookings() {
           this.booking.fees = data[i][5];
           this.booking.coupon = data[i][6];
           this.booking.totalPaid = data[i][7];
-
+          this.booking.center = data[i][8];
+	  this.booking.id = data[i][9];
           this.bookings.push(this.booking)
         }
         this.isDataAvailable=true;
@@ -155,4 +169,25 @@ getAllBookings() {
       err => { console.log("error") }
     );
   }
+
+  onCustom(event) {
+   if(event.action == 'refund'){
+     if (confirm("Are you sure you want to refund ?")) {
+	console.log("id",event.data.id)
+      this._bookingListService.refundBooking(event.data.id).subscribe(
+         data => {
+           alert("Refunded Successfully.");
+           this.getAllBookings();
+           return true;
+         },
+         error => {
+           alert("Can't Refund! It is in use.");
+           console.error("error");
+         }
+      );
+    }
+   }
+    // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
+  }
+
 }
