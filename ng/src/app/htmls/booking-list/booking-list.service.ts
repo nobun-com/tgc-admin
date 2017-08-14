@@ -10,11 +10,16 @@ export class BookingListService {
 constructor(private http:Http,private globals : Globals) {
     }
 
-        getBookings() {
+        getAllBookings() {
                 return this.http.get(this.globals.SERVERADDRESS+'getAllBookings').map((res:Response) => res.json());
         }
 
+        getBookingsByEducator(id) {
+                return this.http.get(this.globals.SERVERADDRESS+'getBookingsByEducator/'+id).map((res:Response) => res.json());
+        }
+
         getBookingsByDate(data){
+console.log(data);
                 let headers = new Headers({ 'Content-Type': 'application/json' });
                 let options = new RequestOptions({ headers: headers });
                 return this.http.post(this.globals.SERVERADDRESS+'getAllBookingsByDate',data,options).map((res:Response) => res.json());

@@ -33,6 +33,12 @@ const EDUCATORMENUITEMS = [
     name: 'Manage Classes',
     icon: 'none',
     type: 'link'
+  },
+  {
+    state: 'booking-list',
+    name: 'Bookings',
+    icon: 'none',
+    type: 'link'
   }
 ];
   const ADMINMENUITEMS = [
@@ -80,7 +86,7 @@ const EDUCATORMENUITEMS = [
   },
   {
     state: 'booking-list',
-    name: 'Manage Bookings',
+    name: 'Bookings',
     icon: 'none',
     type: 'link'
   }

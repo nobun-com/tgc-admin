@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ArticleListService } from './article-list.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'article-list',
@@ -11,9 +11,56 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 export class ArticleListComponent {
   rows = [];
 
-  constructor(private _articleListService: ArticleListService,private _router :Router) {
+  constructor(private datePipe: DatePipe,private _articleListService: ArticleListService,private _router :Router) {
    
   }
+
+
+
+settings = {
+ actions: {
+      add : false,
+      edit : false,
+      delete : false,
+      position : 'right',
+      custom: [
+        {
+          name: 'edit',
+          title: 'Edit '
+        },
+        {
+          name: 'delete',
+          title: 'Delete '
+        }
+      ],
+    },
+  columns: {
+    // id: {
+    //   title: 'ID'
+    // },
+    title: {
+      title: 'Title',
+      filter: false,
+      sort : false
+    },
+    category: {
+      title: 'Category',
+      filter: false,
+      sort : false
+      
+    },
+    postDate: {
+      title: 'Post Date',
+      filter: false,
+      valuePrepareFunction: (postDate) => { 
+        var raw = new Date(postDate);
+
+        var formatted = this.datePipe.transform(raw, 'dd-MM-yyyy');
+        return formatted; 
+      }
+    }
+  }
+};
 
 
 ngOnInit() {
@@ -29,18 +76,15 @@ getArticles() {
     );
   }
 
-
-   editArticle(article) {   
-     this._router.navigate(['/article/edit-article',article.id]);
-  }
-
   createArticle(){
     this._router.navigate(['/article/article']);
   }
  
-  deleteArticle(article) {
-    if (confirm("Are you sure you want to delete " + article.title + "?")) {
-      this._articleListService.deleteArticle(article.id).subscribe(
+
+onCustom(event) {
+   if(event.action == 'delete'){
+     if (confirm("Are you sure you want to delete " + event.data.id + "?")) {
+      this._articleListService.deleteArticle(event.data.id).subscribe(
          data => {
            this.getArticles();
            return true;
@@ -50,5 +94,10 @@ getArticles() {
          }
       );
     }
-  } 
+   }
+  if(event.action == 'edit'){
+      this._router.navigate(['/article/edit-article',event.data.id]);
+   }
+    // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
+  }
 }

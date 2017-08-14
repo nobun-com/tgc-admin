@@ -19,7 +19,6 @@ export class EditPromoComponent {
    pageTitle: any;
    fileToUpload: Array<File>;
    public form: FormGroup;
-   public centers : any;
    uploadPromoImageOne : boolean = false;
    uploadPromoImageTwo :  boolean = false;
    uploadPromoImageThree :  boolean = false;
@@ -36,10 +35,10 @@ export class EditPromoComponent {
  constructor(private fb: FormBuilder,private globals : Globals,private _promoService: PromoService,private activatedRoute: ActivatedRoute,private _router :Router) {
     this.pageTitle = "Update Promo";
      this.promo={
-       centerOneId : '',
-       centerTwoId : '',
-       centerThreeId : '',
-       centerFourId : '',
+       promoUrlOne : '',
+       promoUrlTwo : '',
+       promoUrlThree : '',
+       promoUrlFour : '',
        promoImageOne : '',
        promoImageTwo : '',
        promoImageThree : '',
@@ -49,16 +48,15 @@ export class EditPromoComponent {
    
 
 ngOnInit() {
-    this.getCenters();
     this.activatedRoute.params.subscribe((params: Params) => {
         let promoId = params['id'];
           this.getPromo(promoId);
       });
      this.form = this.fb.group({
-       centerOneId : ['', Validators.required],
-       centerTwoId : ['', Validators.required],
-       centerThreeId : ['', Validators.required],
-       centerFourId : ['', Validators.required],
+       promoUrlOne : [null, Validators.compose([Validators.required])],
+       promoUrlTwo : [null, Validators.compose([Validators.required])],
+       promoUrlThree : [null, Validators.compose([Validators.required])],
+       promoUrlFour : [null, Validators.compose([Validators.required])],
        promoImageOne :[],
        promoImageTwo : [],
        promoImageThree : [],
@@ -95,15 +93,6 @@ getPromo(promoId){
 }
 
 
-
-getCenters(){
-  this._promoService.getCenters().subscribe(
-      data => { 
-        this.centers = data;
-    },
-      err => { console.log("error",err) }
-  );
-}
 createOrUpdatePromo() {
     this._promoService.updatePromo(this.promo).subscribe(
        data => {

@@ -16,6 +16,7 @@ import { EducatorListRoutes } from './educator-list.routing';
 import { EducatorListComponent } from './educator-list.component';
 import { EducatorListService } from './educator-list.service';
 import { Globals } from '../../common/globals';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 import 'hammerjs';
@@ -33,7 +34,8 @@ import 'hammerjs';
     NgxDatatableModule,
     FlexLayoutModule,
     TreeModule,
-    HttpModule
+    HttpModule,
+    Ng2SmartTableModule
    ],
   declarations: [   
     EducatorListComponent

@@ -2,8 +2,8 @@
 @import "../../../assets/styles/scss/components/editor";
 .file {
   position: relative;
-  height: 30px;
-  width: 100px;
+  height: 100%;
+  width: 100%;
 }
 
 .file > input[type="file"] {

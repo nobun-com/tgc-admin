@@ -8,8 +8,9 @@
         <button md-raised-button color="primary"  (click)="createClass()">Create Class</button>
       </div>
     </div>
- 
-
+    </md-card-content >
+</md-card>
+<!--
 <ngx-datatable
   class="material"
   [rows]="rows"
@@ -57,11 +58,10 @@
     </ng-template>
      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
             <button md-mini-fab class="mr-1" color="primary" type="submit" (click)="editClass(row)"><md-icon>edit</md-icon></button>
-            <!--<button md-mini-fab class="mr-1" color="warn" type="submit" (click)="deleteClass(row)"><md-icon>delete</md-icon></button>-->
             <button md-mini-fab class="mr-1" color="warn" type="submit" (click)="getInstances(row)"><md-icon>view_headline</md-icon></button>
       </ng-template>
   </ngx-datatable-column>
  
  </ngx-datatable>
-  </md-card-content>
-</md-card>
+  </md-card-content>-->
+<ng2-smart-table class="table table-bordered" [settings]="settings" [source]="rows" (custom)="onCustom($event)"></ng2-smart-table>

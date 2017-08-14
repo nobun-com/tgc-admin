@@ -19,7 +19,7 @@ import { AdminLoginService } from './session/admin-login/admin-login.service';
 import { EducatorLoginService } from './session/educator-login/educator-login.service';
 import { Globals } from './common/globals';
 import { ConfirmDialogComponent } from './htmls/confirm-dialog/confirm-dialog.component';
-
+import { AlertModule } from 'ngx-bootstrap';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -45,7 +45,8 @@ export function createTranslateLoader(http: Http) {
       deps: [Http]
     }),
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+     AlertModule.forRoot()
   ],
   providers: [ AuthGuard,AdminLoginService,EducatorLoginService,Globals],
   bootstrap: [AppComponent],

@@ -11,7 +11,7 @@
   </md-card-content>
 </md-card>
 
-<ngx-datatable
+<!--<ngx-datatable
   class="material"
   [rows]="rows"
   [columnMode]="'force'"
@@ -64,4 +64,6 @@
       </ng-template>
   </ngx-datatable-column>
  
- </ngx-datatable>
+ </ngx-datatable>-->
+
+ <ng2-smart-table class="table table-bordered" [settings]="settings" [source]="rows" (custom)="onCustom($event)"></ng2-smart-table>

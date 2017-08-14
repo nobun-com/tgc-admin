@@ -17,7 +17,8 @@ import { ClassesListComponent } from './classes-list.component';
 import { ClassesListService } from './classes-list.service';
 import { InstancesListService } from '../instances-list/instances-list.service';
 import { Globals } from '../../common/globals';
-
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { DatePipe } from '@angular/common';
 
 import 'hammerjs';
 
@@ -34,7 +35,8 @@ import 'hammerjs';
     NgxDatatableModule,
     FlexLayoutModule,
     TreeModule,
-    HttpModule
+    HttpModule,
+    Ng2SmartTableModule
    ],
   declarations: [   
     ClassesListComponent
@@ -42,7 +44,8 @@ import 'hammerjs';
   providers: [
     ClassesListService,
     InstancesListService,
-    Globals
+    Globals,
+    DatePipe
   ]
 })
 

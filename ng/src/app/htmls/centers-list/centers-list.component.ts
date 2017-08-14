@@ -9,12 +9,58 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
   styleUrls: ['./centers-list.component.scss']
 })
 export class CentersListComponent {
-  rows = [];
-
+  center : any;
+  centers = [];
+  isDataAvailable : boolean = false;
   constructor(private _centerListService: CentersListService,private _router :Router) {
-   
+   this.center={
+       centerName:'',
+       about : '',
+       addressLine1 : '',
+       addressLine2 : '',
+       area : '',
+       district : '',
+       amenities : '',
+       logoUrl : '',
+       logoName : ''
+      }
   }
 
+settings = {
+ actions: {
+      add : false,
+      edit : false,
+      delete : false,
+      position : 'right',
+      custom: [
+        {
+          name: 'edit',
+          title: 'Edit '
+        },
+        {
+          name: 'delete',
+          title: 'Delete '
+        }
+      ],
+    },
+  columns: {
+    // id: {
+    //   title: 'ID'
+    // },
+    centerName: {
+      title: 'Center Name'
+    },
+    addressLine1: {
+      title: 'Address'
+    },
+    area: {
+      title: 'Area'
+    },
+    district: {
+      title: 'District'
+    }
+  }
+};
 
 ngOnInit() {
     this.getCenters();
@@ -23,24 +69,32 @@ ngOnInit() {
 getCenters() {
     this._centerListService.getCenters().subscribe(
       data => { 
-        this.rows = data;
+        for(var i=0; i<data.length;i++){
+          this.center={};
+          this.center.centerName = data[i].centerName;
+          this.center.addressLine1 = data[i].address.addressLine1;
+          this.center.addressLine2 = data[i].address.addressLine2;
+          this.center.area = data[i].address.area;
+          this.center.district = data[i].address.district;
+          this.centers.push(this.center)
+        }
+        this.isDataAvailable=true;
+        console.log(this.centers);
       },
       err => { console.log("error") }
     );
   }
 
 
-editCenter(center) {     
-     this._router.navigate(['/centers/edit-centers',center.id]);
-}
-
 createCenter(){
   this._router.navigate(['/centers/centers']);
 }
  
-deleteCenter(center) {
-    if (confirm("Are you sure you want to delete " + center.centerName + "?")) {
-      this._centerListService.deleteCenter(center.id).subscribe(
+
+onCustom(event) {
+   if(event.action == 'delete'){
+     if (confirm("Are you sure you want to delete " + event.data.centerName + "?")) {
+      this._centerListService.deleteCenter(event.data.id).subscribe(
          data => {
            this.getCenters();
            return true;
@@ -51,28 +105,11 @@ deleteCenter(center) {
          }
       );
     }
-  } 
+   }
+  if(event.action == 'edit'){
+      this._router.navigate(['/centers/edit-centers',event.data.id]);
+   }
+    // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
+  }
 
-
-  config: any;
-  columns: any;
-  temp = [];
-  temp2 = this.rows; // this the new temp array
-  table = {
-   offset: 0,
-  };
-
-   updateFilter(event) {
-   const val = event.target.value.toLowerCase();
-   this.rows = [...this.temp2]; // and here you have to initialize it with your data
-   this.temp = [...this.rows];
-    // filter our data
-    const temp = this.rows.filter(function(d) {
-      return d.centerName.toLowerCase().indexOf(val) !== -1 || !val;
-    });
-    // update the rows
-    this.rows = temp;
-    // Whenever the filter changes, always go back to the first page
-    this.table.offset = 0;
- }
 }

@@ -13,12 +13,10 @@
   <md-card-content>
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
           <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
-            <md-select  placeholder="Center" [formControl]="form.controls['centerOneId']" [(ngModel)]="promo.centerOneId" required>
-              <md-option *ngFor="let center of centers" [value]="center.id">
-                {{ center.centerName }}
-              </md-option>
-            </md-select>
-              <small *ngIf="form.controls['centerOneId'].hasError('required') && form.controls['centerOneId'].touched" class="mat-text-warn">You must include a center.</small>
+            <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+              <input mdInput placeholder="Promo Url One" value="{{promo.promoUrlOne}}" [formControl]="form.controls['promoUrlOne']" [(ngModel)]="promo.promoUrlOne" >
+            </md-input-container>
+              <small *ngIf="form.controls['promoUrlOne'].hasError('required') && form.controls['promoUrlOne'].touched" class="mat-text-warn">You must include a url.</small>
           </div>  
           <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
             <!--<input type="file" (change)="promoImageOne($event)" [formControl]="form.controls['promoImageOne']">-->
@@ -31,12 +29,10 @@
         </div>
          <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
           <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
-           <md-select  placeholder="Center" [formControl]="form.controls['centerTwoId']" [(ngModel)]="promo.centerTwoId" required>
-              <md-option *ngFor="let center of centers" [value]="center.id">
-                {{ center.centerName }}
-              </md-option>
-            </md-select>
-              <small *ngIf="form.controls['centerTwoId'].hasError('required') && form.controls['centerTwoId'].touched" class="mat-text-warn">You must include a center.</small>
+            <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+              <input mdInput placeholder="Promo Url Two" value="{{promo.promoUrlTwo}}" [formControl]="form.controls['promoUrlTwo']" [(ngModel)]="promo.promoUrlTwo" >
+            </md-input-container>
+              <small *ngIf="form.controls['promoUrlTwo'].hasError('required') && form.controls['promoUrlTwo'].touched" class="mat-text-warn">You must include a url.</small>
           </div>  
          <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
             <!--<input type="file" (change)="promoImageTwo($event)" [formControl]="form.controls['promoImageTwo']">-->
@@ -49,13 +45,11 @@
         </div> 
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
           <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
-            <md-select  placeholder="Center" [formControl]="form.controls['centerThreeId']" [(ngModel)]="promo.centerThreeId" required>
-              <md-option *ngFor="let center of centers" [value]="center.id">
-                {{ center.centerName }}
-              </md-option>
-            </md-select>
-              <small *ngIf="form.controls['centerThreeId'].hasError('required') && form.controls['centerThreeId'].touched" class="mat-text-warn">You must include a center.</small>
-          </div>  
+             <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+              <input mdInput placeholder="Promo Url Three" value="{{promo.promoUrlThree}}" [formControl]="form.controls['promoUrlThree']" [(ngModel)]="promo.promoUrlThree" >
+            </md-input-container>
+              <small *ngIf="form.controls['promoUrlThree'].hasError('required') && form.controls['promoUrlThree'].touched" class="mat-text-warn">You must include a url.</small>
+        </div>  
          <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
             <!--<input type="file" (change)="promoImageThree($event)" [formControl]="form.controls['promoImageThree']">-->
             <div class="file">
@@ -67,13 +61,11 @@
         </div> 
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
           <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
-            <md-select  placeholder="Center" [formControl]="form.controls['centerFourId']" [(ngModel)]="promo.centerFourId" required>
-              <md-option *ngFor="let center of centers" [value]="center.id">
-                {{ center.centerName }}
-              </md-option>
-            </md-select>
-              <small *ngIf="form.controls['centerFourId'].hasError('required') && form.controls['centerFourId'].touched" class="mat-text-warn">You must include a center.</small>
-          </div>  
+           <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+              <input mdInput placeholder="Promo Url Four" value="{{promo.promoUrlFour}}" [formControl]="form.controls['promoUrlFour']" [(ngModel)]="promo.promoUrlFour" >
+            </md-input-container>
+              <small *ngIf="form.controls['promoUrlFour'].hasError('required') && form.controls['promoUrlFour'].touched" class="mat-text-warn">You must include a url.</small>
+        </div>  
            <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
             <!--<input type="file" (change)="promoImageFour($event)" [formControl]="form.controls['promoImageFour']">-->
             <div class="file">

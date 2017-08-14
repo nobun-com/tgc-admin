@@ -23,6 +23,30 @@ ngOnInit() {
       });
   }
   
+  settings = {
+ actions: {
+      add : false,
+      edit : false,
+      delete : false
+    },
+  columns: {
+    // id: {
+    //   title: 'ID'
+    // },
+    date: {
+      title: 'Date',
+    },
+    day: {
+      title: 'Day',
+    },
+    time: {
+      title: 'Time',
+    },
+    slots: {
+      title: 'Slots',
+    }
+  }
+};  
   getInstances(classId){
   this._instancesListService.getInstances(classId).subscribe(
       data=>{

@@ -16,6 +16,8 @@ import { ArticleListRoutes } from './article-list.routing';
 import { ArticleListComponent } from './article-list.component';
 import { ArticleListService } from './article-list.service';
 import { Globals } from '../../common/globals';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { DatePipe } from '@angular/common';
 
 import 'hammerjs';
 
@@ -32,14 +34,16 @@ import 'hammerjs';
     NgxDatatableModule,
     FlexLayoutModule,
     TreeModule,
-    HttpModule
+    HttpModule,
+    Ng2SmartTableModule
    ],
   declarations: [   
     ArticleListComponent
      ],
   providers: [
     ArticleListService,
-    Globals
+    Globals,
+    DatePipe
   ]
 })
 

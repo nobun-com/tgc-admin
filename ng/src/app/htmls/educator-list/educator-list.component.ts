@@ -20,6 +20,46 @@ ngOnInit() {
     this.getEducators();
   }
   
+
+
+settings = {
+ actions: {
+      add : false,
+      edit : false,
+      delete : false,
+      position : 'right',
+      custom: [
+        {
+          name: 'edit',
+          title: 'Edit '
+        },
+        {
+          name: 'delete',
+          title: 'Delete '
+        }
+      ],
+    },
+  columns: {
+    // id: {
+    //   title: 'ID'
+    // },
+    firstName: {
+      title: 'First Name',
+    },
+    lastName: {
+      title: 'Last Name',
+    },
+    email: {
+      title: 'Email',
+    },
+    gender: {
+      title: 'Gender',
+    },
+    phone: {
+      title: 'Phone',
+    },
+  }
+};  
 getEducators() {
     this._educatorListService.getEducators().subscribe(
       data => { 
@@ -30,17 +70,15 @@ getEducators() {
   }
 
 
-   editEducator(educator) {   
-     this._router.navigate(['/educator/edit-educator',educator.id]);
-  }
 
   createEducator(){
     this._router.navigate(['/educator/educator']);
   }
  
-  deleteEducator(educator) {
-    if (confirm("Are you sure you want to delete " + educator.firstName + "?")) {
-      this._educatorListService.deleteEducator(educator.id).subscribe(
+onCustom(event) {
+   if(event.action == 'delete'){
+     if (confirm("Are you sure you want to delete " + event.data.firstName + "?")) {
+      this._educatorListService.deleteEducator(event.data.id).subscribe(
          data => {
            this.getEducators();
            return true;
@@ -51,5 +89,10 @@ getEducators() {
          }
       );
     }
-  } 
+   }
+  if(event.action == 'edit'){
+     this._router.navigate(['/educator/edit-educator',event.data.id]);
+   }
+    // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
+  }
 }

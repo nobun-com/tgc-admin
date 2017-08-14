@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { CouponListService } from './coupon-list.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 export class CouponListComponent {
   rows = [];
 
-  constructor(private _couponListService: CouponListService,private _router :Router) {
+  constructor(private datePipe: DatePipe,private _couponListService: CouponListService,private _router :Router) {
    
   }
 
@@ -19,7 +20,55 @@ export class CouponListComponent {
 ngOnInit() {
     this.getCoupons();
   }
-  
+
+
+settings = {
+ actions: {
+      add : false,
+      edit : false,
+      delete : false,
+      position : 'right',
+      custom: [
+        {
+          name: 'edit',
+          title: 'Edit '
+        },
+        {
+          name: 'delete',
+          title: 'Delete '
+        }
+      ],
+    },
+  columns: {
+    // id: {
+    //   title: 'ID'
+    // },
+    code: {
+      title: 'Code',
+    },
+    value: {
+      title: 'Value (In HKD)',
+    },
+    startDate: {
+      title: 'Start Date',
+       valuePrepareFunction: (startDate) => { 
+        var raw = new Date(startDate);
+
+        var formatted = this.datePipe.transform(raw, 'dd-MM-yyyy');
+        return formatted; 
+      }
+    },
+    expiryDate: {
+      title: 'Expiry Date',
+       valuePrepareFunction: (expiryDate) => { 
+        var raw = new Date(expiryDate);
+
+        var formatted = this.datePipe.transform(raw, 'dd-MM-yyyy');
+        return formatted; 
+      }
+    }
+  }
+};  
 getCoupons() {
     this._couponListService.getCoupons().subscribe(
       data => { 
@@ -29,18 +78,14 @@ getCoupons() {
     );
   }
 
-
-   editCoupon(coupon) {   
-     this._router.navigate(['/coupon/edit-coupon',coupon.code]);
-  }
-
   createCoupon(){
     this._router.navigate(['/coupon/coupon']);
   }
- 
-  deleteCoupon(coupon) {
-    if (confirm("Are you sure you want to delete " + coupon.code + "?")) {
-      this._couponListService.deleteCoupon(coupon.code).subscribe(
+
+  onCustom(event) {
+   if(event.action == 'delete'){
+     if (confirm("Are you sure you want to delete " +event.data.code + "?")) {
+      this._couponListService.deleteCoupon(event.data.code).subscribe(
          data => {
            this.getCoupons();
            return true;
@@ -50,5 +95,10 @@ getCoupons() {
          }
       );
     }
-  } 
+   }
+  if(event.action == 'edit'){
+       this._router.navigate(['/coupon/edit-coupon',event.data.code]);
+   }
+    // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
+  }
 }

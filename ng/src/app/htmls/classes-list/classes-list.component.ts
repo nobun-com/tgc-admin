@@ -5,6 +5,7 @@ import { CustomValidators } from 'ng2-validation';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Observable } from "rxjs/Rx";
 import { ClassesListService } from './classes-list.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { ClassesListService } from './classes-list.service';
 export class ClassesListComponent {
   rows = [];
 
-  constructor(private _classListService: ClassesListService,private _router :Router) {
+  constructor(private datePipe: DatePipe,private _classListService: ClassesListService,private _router :Router) {
    
   }
 
@@ -24,30 +25,86 @@ ngOnInit() {
     this.getClasses();
   }
   
+
+
+settings = {
+ actions: {
+      add : false,
+      edit : false,
+      delete : false,
+      position : 'right',
+      custom: [
+        {
+          name: 'view',
+          title: 'View '
+        },
+        {
+          name: 'edit',
+          title: 'Edit '
+        },
+        {
+          name: 'delete',
+          title: 'Delete '
+        }
+      ],
+    },
+  columns: {
+    // id: {
+    //   title: 'ID'
+    // },
+    // center: {
+    //   title: 'Center',
+    //   valuePrepareFunction: (center) => { 
+    //     return center.centerName; 
+    //   }
+    // },
+    className: {
+      title: 'Name'
+    },
+    startDate: {
+      title: 'Start Date',
+      valuePrepareFunction: (startDate) => { 
+        var raw = new Date(startDate);
+
+        var formatted = this.datePipe.transform(raw, 'dd-MM-yyyy');
+        return formatted; 
+      }
+    },
+    endDate: {
+      title: 'End Date',
+      valuePrepareFunction: (endDate) => { 
+        var raw = new Date(endDate);
+
+        var formatted = this.datePipe.transform(raw, 'dd-MM-yyyy');
+        return formatted; 
+      }
+    },
+    frequency: {
+      title: 'Frequency'
+    }
+  }
+};
+  
 getClasses() {
     this._classListService.getClasses().subscribe(
       data => { 
         this.rows = data;
+        console.log(this.rows)
       },
       err => { console.log("error") }
     );
   }
   
-getInstances(obj: any){
-  this._router.navigate(['/instances-list',obj.id]);
-}
-
-editClass(classes) {     
-     this._router.navigate(['/classes/edit-classes',classes.id]);
-}
 
 createClass(){
   this._router.navigate(['/classes/create-classes']);
 }
  
-deleteClass(obj: any) {
-    if (confirm("Are you sure you want to delete " + obj.className + "?")) {
-      this._classListService.deleteClass(obj.id).subscribe(
+
+  onCustom(event) {
+   if(event.action == 'delete'){
+     if (confirm("Are you sure you want to delete " +event.data.className + "?")) {
+      this._classListService.deleteClass(event.data.id).subscribe(
          data => {
            this.getClasses();
            return true;
@@ -57,5 +114,13 @@ deleteClass(obj: any) {
          }
       );
     }
-  } 
+   }
+  if(event.action == 'view'){
+     this._router.navigate(['/instances-list',event.data.id]);
+   }
+   if(event.action == 'edit'){
+      this._router.navigate(['/classes/edit-classes',event.data.id]);
+   }
+    // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
+  }
 }
