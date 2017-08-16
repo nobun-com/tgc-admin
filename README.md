@@ -14,15 +14,20 @@ $ node --version
 https://www.npmjs.com/package/@angular/cli
 $ sudo npm install -g @angular/cli@latest
 
-4) go to folder /tgc-admin
-$ cd tgc-admin
+4) go to folder /tgc-admin/ng
+$ cd tgc-admin/ng
 
 5) Run npm install
 $ npm install
 Please watch build is successful
 
-6) Go to folder /tgc-admin/ng and run below command
-$ cd tgc-admin/ng
+5a) You may need to install any missing dependencies
+$ sudo npm install @swimlane/ngx-charts
+$ sudo npm install ng2-smart-table
+$ sudo npm install ngx-bootstrap
+$ sudo npm install ng2-cookies
+
+6) Start ng server
 $ ng serve
 
 7) Make sure that tgc-server is running.
