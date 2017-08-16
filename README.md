@@ -14,14 +14,16 @@ $ node --version
 https://www.npmjs.com/package/@angular/cli
 $ sudo npm install -g @angular/cli@latest
 
-4) go to folder tgc-admin
-   cd tgc-admin
+4) go to folder /tgc-admin
+$ cd tgc-admin
 
 5) Run npm install
+$ npm install
 Please watch build is successful
 
-6) Go to folder  tgc-admin/ng/ and run below command
-   ng serve
+6) Go to folder /tgc-admin/ng and run below command
+$ cd tgc-admin/ng
+$ ng serve
 
 7) Make sure that tgc-server is running.
 
