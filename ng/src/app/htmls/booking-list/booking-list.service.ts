@@ -24,6 +24,6 @@ constructor(private http:Http,private globals : Globals) {
                 return this.http.post(this.globals.SERVERADDRESS+'getAllBookingsByDate',data,options).map((res:Response) => res.json());
         }
         refundBooking(id) {
-                return this.http.delete(this.globals.SERVERADDRESS+'refund/' + id);
+                return this.http.get(this.globals.SERVERADDRESS+'refund/' + id).map((res:Response) => res.json());;
          }
 } 

@@ -173,10 +173,10 @@ getAllBookings() {
   onCustom(event) {
    if(event.action == 'refund'){
      if (confirm("Are you sure you want to refund ?")) {
-	console.log("id",event.data.id)
+	
       this._bookingListService.refundBooking(event.data.id).subscribe(
          data => {
-           alert("Refunded Successfully.");
+           alert(data.message);
            this.getAllBookings();
            return true;
          },
