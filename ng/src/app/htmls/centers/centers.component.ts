@@ -41,8 +41,7 @@ export class CentersComponent implements OnInit{
        area : '',
        district : '',
        amenities : '',
-       logoUrl : '',
-       logoName : ''
+       logoUrl : ''
       }
      }
    }
@@ -111,8 +110,8 @@ createOrUpdateCenter() {
   fileChangeEvent(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
-       this.center.logoName = res;
-       this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
+       this.center.logoUrl = res;
+      //  this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
        this.uploadFile = true;
      }, (err) => {
        console.log("error");

@@ -20,6 +20,7 @@ export class BookingListComponent {
   userId : String ;
   booking : any;
   bookings = [];
+  isEducator : boolean =false;
   isDataAvailable : boolean = false;
   constructor(private datePipe: DatePipe,private _bookingListService: BookingListService,private _router :Router) {
     this.params={
@@ -119,17 +120,19 @@ ngOnInit() {
      this.role  = Cookie.get('role');
      this.userId  = Cookie.get('userId');
      if(this.role=='admin'){
+       this.isEducator = false;
        this.getAllBookings();
      }else{
+       this.isEducator=true;
        this.getBookingsByEducator(this.userId);
      }
   }
 
 getAllBookings() {
-      this.bookings=[];
     this.isDataAvailable=false;
     this._bookingListService.getAllBookings().subscribe(
       data => {
+        this.bookings=[];
         for(var i=0; i<data.length;i++){
           this.booking={};
           this.booking.className = data[i][1];
@@ -139,7 +142,7 @@ getAllBookings() {
           this.booking.coupon = data[i][6];
           this.booking.totalPaid = data[i][7];
           this.booking.center = data[i][8];
-	  this.booking.id = data[i][9];
+	        this.booking.id = data[i][9];
           this.bookings.push(this.booking)
         }
         this.isDataAvailable=true;
@@ -148,10 +151,10 @@ getAllBookings() {
     );
   }
   getBookingsByEducator(userId) {
-    this.bookings=[];
     this.isDataAvailable=false;
     this._bookingListService.getBookingsByEducator(userId).subscribe(
       data => {
+        this.bookings=[];
         for(var i=0; i<data.length;i++){
           this.booking={};
           this.booking.className = data[i][1];
@@ -161,7 +164,7 @@ getAllBookings() {
           this.booking.coupon = data[i][6];
           this.booking.totalPaid = data[i][7];
           this.booking.center = data[i][8];
-	  this.booking.id = data[i][9];
+	       this.booking.id = data[i][9];
           this.bookings.push(this.booking)
         }
         this.isDataAvailable=true;

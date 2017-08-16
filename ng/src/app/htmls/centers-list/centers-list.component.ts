@@ -67,10 +67,13 @@ ngOnInit() {
   }
   
 getCenters() {
+    
     this._centerListService.getCenters().subscribe(
       data => { 
+        this.centers = [];
         for(var i=0; i<data.length;i++){
           this.center={};
+          this.center.id = data[i].id;
           this.center.centerName = data[i].centerName;
           this.center.addressLine1 = data[i].address.addressLine1;
           this.center.addressLine2 = data[i].address.addressLine2;
@@ -79,7 +82,6 @@ getCenters() {
           this.centers.push(this.center)
         }
         this.isDataAvailable=true;
-        console.log(this.centers);
       },
       err => { console.log("error") }
     );

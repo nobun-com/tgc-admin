@@ -61,6 +61,7 @@ createOrUpdatePromo() {
     this._promoService.createPromo(this.promo).subscribe(
        data => {
          // refresh the list
+        alert("Succesfully saved.");
          this._router.navigate(['/promo-list']);
          return true;
        },
@@ -76,7 +77,8 @@ createOrUpdatePromo() {
      this._promoService.uploadImage(this.fileToUpload).then((res) => {
        this.uploadPromoImageOne = true;
        this.promo.promoImageOne= res;
-       this.promoImageOneUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.promoImageOneUrl= res+"";
+       //this.promoImageOneUrl= this.globals.SERVERADDRESS+"getImage/"+res;
      }, (err) => {
        console.log("error");
      });
@@ -86,7 +88,8 @@ createOrUpdatePromo() {
      this._promoService.uploadImage(this.fileToUpload).then((res) => {
        this.uploadPromoImageTwo = true;
        this.promo.promoImageTwo= res;
-       this.promoImageTwoUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.promoImageTwoUrl= res+"";
+       //this.promoImageTwoUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        
      }, (err) => {
        console.log("error");
@@ -98,7 +101,8 @@ createOrUpdatePromo() {
      this._promoService.uploadImage(this.fileToUpload).then((res) => {
        this.uploadPromoImageThree = true;
        this.promo.promoImageThree= res;
-       this.promoImageThreeUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.promoImageThreeUrl= res+"";
+       //this.promoImageThreeUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        
      }, (err) => {
        console.log("error");
@@ -110,7 +114,8 @@ createOrUpdatePromo() {
      this._promoService.uploadImage(this.fileToUpload).then((res) => {
        this.uploadPromoImageFour = true;
        this.promo.promoImageFour= res;
-       this.promoImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.promoImageFourUrl= res+"";
+       //this.promoImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        
      }, (err) => {
        console.log("error");

@@ -21,4 +21,9 @@
     </div>
   </md-card-content>
 </md-card>
-  <ng2-smart-table *ngIf="isDataAvailable" class="table table-bordered" [settings]="settings" [source]="bookings" (custom)="onCustom($event)"></ng2-smart-table>
+ <div *ngIf="!isEducator">
+    <ng2-smart-table *ngIf="isDataAvailable" class="table table-bordered" [settings]="settings" [source]="bookings" (custom)="onCustom($event)"></ng2-smart-table>
+ </div>
+  <div *ngIf="isEducator">
+    <ng2-smart-table  class="table table-bordered" [settings]="settings" [source]="bookings"></ng2-smart-table>
+  </div>

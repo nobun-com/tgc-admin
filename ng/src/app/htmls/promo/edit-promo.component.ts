@@ -70,20 +70,24 @@ getPromo(promoId){
         this.promo = data;
 
         if(this.promo.promoImageOne != ''){
-          this.promoImageOneUrl= this.globals.SERVERADDRESS+"getImage/"+this.promo.promoImageOne;
+          //this.promoImageOneUrl= this.globals.SERVERADDRESS+"getImage/"+this.promo.promoImageOne;
           this.uploadPromoImageOne = true;
+          this.promoImageOneUrl=this.promo.promoImageOne;
         }
         if(this.promo.promoImageTwo != ''){
-          this.promoImageTwoUrl= this.globals.SERVERADDRESS+"getImage/"+this.promo.promoImageTwo;
+          //this.promoImageTwoUrl= this.globals.SERVERADDRESS+"getImage/"+this.promo.promoImageTwo;
           this.uploadPromoImageTwo = true;
+          this.promoImageTwoUrl= this.promo.promoImageTwo;
         }
         if(this.promo.promoImageThree != ''){
-          this.promoImageThreeUrl= this.globals.SERVERADDRESS+"getImage/"+this.promo.promoImageThree;
+          //this.promoImageThreeUrl= this.globals.SERVERADDRESS+"getImage/"+this.promo.promoImageThree;
           this.uploadPromoImageThree = true;
+          this.promoImageThreeUrl= this.promo.promoImageThree;
         }
         if(this.promo.promoImageFour != ''){
-          this.promoImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+this.promo.promoImageFour;
+          //this.promoImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+this.promo.promoImageFour;
           this.uploadPromoImageFour = true;
+          this.promoImageFourUrl= this.promo.promoImageFour;
         }
       },
       err =>{
@@ -97,6 +101,7 @@ createOrUpdatePromo() {
     this._promoService.updatePromo(this.promo).subscribe(
        data => {
          // refresh the list
+         alert("Succesfully updated.");
          this._router.navigate(['/promo-list']);
          return true;
        },
@@ -112,7 +117,8 @@ createOrUpdatePromo() {
      this._promoService.uploadImage(this.fileToUpload).then((res) => {
        this.uploadPromoImageOne = true;
        this.promo.promoImageOne= res;
-       this.promoImageOneUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.promoImageOneUrl= res+"";
+       //this.promoImageOneUrl= this.globals.SERVERADDRESS+"getImage/"+res;
      }, (err) => {
        console.log("error");
      });
@@ -122,7 +128,8 @@ createOrUpdatePromo() {
      this._promoService.uploadImage(this.fileToUpload).then((res) => {
        this.uploadPromoImageTwo = true;
        this.promo.promoImageTwo= res;
-       this.promoImageTwoUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.promoImageTwoUrl= res+"";
+       //this.promoImageTwoUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        
      }, (err) => {
        console.log("error");
@@ -134,7 +141,8 @@ createOrUpdatePromo() {
      this._promoService.uploadImage(this.fileToUpload).then((res) => {
        this.uploadPromoImageThree = true;
        this.promo.promoImageThree= res;
-       this.promoImageThreeUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.promoImageThreeUrl= res+"";
+       //this.promoImageThreeUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        
      }, (err) => {
        console.log("error");
@@ -146,7 +154,8 @@ createOrUpdatePromo() {
      this._promoService.uploadImage(this.fileToUpload).then((res) => {
        this.uploadPromoImageFour = true;
        this.promo.promoImageFour= res;
-       this.promoImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.promoImageFourUrl= res+"";
+       //this.promoImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+res;
        
      }, (err) => {
        console.log("error");

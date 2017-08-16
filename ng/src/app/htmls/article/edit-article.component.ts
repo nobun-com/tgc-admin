@@ -85,8 +85,10 @@ getArticle(articleId){
         this.article = data;
          this.uploadThumbnail = true;
          this.uploadImage = true;
-         this.images= this.globals.SERVERADDRESS+"getImage/"+ this.article.imageUrl;
-         this.thumbnails= this.globals.SERVERADDRESS+"getImage/"+ this.article.thumbnailUrl;
+         this.images= this.article.imageUrl;
+         this.thumbnails=this.article.thumbnailUrl;
+        //  this.images= this.globals.SERVERADDRESS+"getImage/"+ this.article.imageUrl;
+        //  this.thumbnails= this.globals.SERVERADDRESS+"getImage/"+ this.article.thumbnailUrl;
          this.quill.root.innerHTML=this.article.body;
         //this.quill.setContents(this.article.body);
       },
@@ -129,7 +131,8 @@ getCategory(){
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.uploadThumbnail = true;
        this.article.thumbnailUrl= res;
-       this.thumbnails= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.thumbnails= res+"";
+      // this.thumbnails= this.globals.SERVERADDRESS+"getImage/"+res;
        
      }, (err) => {
        console.log("error");
@@ -140,7 +143,8 @@ getCategory(){
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
        this.uploadImage = true;
        this.article.imageUrl= res;
-       this.images= this.globals.SERVERADDRESS+"getImage/"+res;
+       this.images= res+"";
+       //this.images= this.globals.SERVERADDRESS+"getImage/"+res;
        
      }, (err) => {
        console.log("error");

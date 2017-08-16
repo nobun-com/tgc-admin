@@ -91,7 +91,9 @@ export class DashboardComponent implements OnInit {
   getEducatorDashboardData(id){
   this.dashboardService.getEducatorDashboardData(id).subscribe(
       data => { 
+        console.log(data.bookingsCount);
          this.activeClassesCount = data.activeClassesCount;
+         if(data.bookingsCount!=null)
          this.bookingsCount = data.bookingsCount;
          for(var objectKey in data.barChartData){
            this.obj={};

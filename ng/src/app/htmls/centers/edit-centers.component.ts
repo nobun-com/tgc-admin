@@ -78,8 +78,10 @@ getCenter(centerId){
   this._centerService.getById(centerId).subscribe(
       data=>{
         this.getDistricts(data.address.area);
-        this.uploadFile = true;
-        this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
+        if(this.center.logoUrl != ''){
+          this.uploadFile = true;
+        }
+  //      this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
 
       setTimeout(()=>{  
           this.center = data;
@@ -128,8 +130,8 @@ getDistricts(selectedArea){
   fileChangeEvent(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
      this._centerService.uploadLogo(this.fileToUpload).then((res) => {
-       this.center.logoName = res;
-       this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
+       this.center.logoUrl= res;
+       //this.center.logoUrl=this.globals.SERVERADDRESS +"getImage/";
        this.uploadFile = true;
      }, (err) => {
        console.log("error");
