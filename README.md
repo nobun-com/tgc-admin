@@ -46,7 +46,7 @@ password : admin123#
 
 2) Uninstall previous CLI using below commands
 $ npm uninstall -g @angular/cli
-$ npm clean cache
+$ npm clean cache --force
 
 3) Reinstall @angular/cli@1.0.0-beta.32.3
 $ npm install -g @angular/cli@1.0.0-beta.32.3
