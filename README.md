@@ -21,7 +21,7 @@ $ cd tgc-admin/ng
 $ npm install
 Please watch build is successful
 
-5) a You may need to install any missing dependencies
+* You may need to install any missing dependencies
 $ sudo npm install @swimlane/ngx-charts
 $ sudo npm install ng2-smart-table
 $ sudo npm install ngx-bootstrap
