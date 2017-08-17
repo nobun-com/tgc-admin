@@ -12,7 +12,7 @@ $ node --version
 
 3) Install angular-cli version 1.0.0-beta.32.3
 https://www.npmjs.com/package/@angular/cli
-$ sudo npm install -g @angular/cli@latest
+$ sudo npm install -g @angular/cli@1.0.0-beta.32.3
 
 4) go to folder /tgc-admin/ng
 $ cd tgc-admin/ng
@@ -38,3 +38,17 @@ The app will automatically reload if you change any of the source files.
 default admin credentials
 username : admin@tgc.com
 password : admin123#
+
+
+
+# uninstall and reinstall if needed
+1) Delete "node_modules" folder from tgc-admin/ng location
+
+2) Uninstall previous CLI using below commands
+$ npm uninstall -g @angular/cli
+$ npm clean cache
+
+3) Reinstall @angular/cli@1.0.0-beta.32.3
+$ npm install -g @angular/cli@1.0.0-beta.32.3
+$ npm install 
+$ ng serve --host 0.0.0.0
