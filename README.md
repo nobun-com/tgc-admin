@@ -1,6 +1,8 @@
 # tgc-admin
 
-1) To change pointing of api from local to server or vice versa .
+git clone https://github.com/nobun-com/tgc-admin.git
+
+1) To change pointing of api from local to server or vice versa
 Uncomment line no 6 and comment line no 7 in
 tgc-admin/ng/src/app/common/global.ts
 
@@ -12,7 +14,7 @@ $ sudo npm install -g npm@latest
 $ npm -v
 $ node -v
 
-3) Install angular-cli version 1.0.0-beta.32.3
+3) Install angular-cli
 https://www.npmjs.com/package/@angular/cli
 $ sudo npm install -g @angular/cli@1.1.3
 
@@ -20,7 +22,7 @@ $ sudo npm install -g @angular/cli@1.1.3
 $ cd tgc-admin/ng
 
 5) Run npm install
-$ npm install
+$ sudo npm install
 Please watch build is successful
 
 * You may need to install any missing dependencies
