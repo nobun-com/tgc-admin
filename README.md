@@ -6,13 +6,15 @@ tgc-admin/ng/src/app/common/global.ts
 
 2) Install latest version of npm and node.
 E.g. npm version 5.3.0, node version 7.9.0 (or above)
+$ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
 $ sudo npm install -g npm@latest
-$ npm --version
-$ node --version
+$ npm -v
+$ node -v
 
 3) Install angular-cli version 1.0.0-beta.32.3
 https://www.npmjs.com/package/@angular/cli
-$ sudo npm install -g @angular/cli@1.0.0-beta.32.3
+$ sudo npm install -g @angular/cli@1.1.3
 
 4) go to folder /tgc-admin/ng
 $ cd tgc-admin/ng
@@ -45,6 +47,7 @@ password : admin123#
 1) Delete "node_modules" folder from tgc-admin/ng location
 
 2) Uninstall previous CLI using below commands
+$ cd /usr/local/lib/node_modules
 $ npm uninstall -g @angular/cli
 $ npm clean cache --force
 
