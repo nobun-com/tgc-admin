@@ -14,7 +14,7 @@ $ npm -v
 $ node -v  
 
 * Install angular-cli  
-https://www.npmjs.com/package/@angular/cli@1.0.3
+https://www.npmjs.com/package/@angular/cli@1.0.3  
 $ sudo npm install -g @angular/cli@1.0.3  
 
 * go to folder /tgc-admin/ng  
