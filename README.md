@@ -10,8 +10,8 @@ Uncomment line #6 and comment line #7 in tgc-admin/ng/src/app/common/global.ts
 * Install latest version of npm and node  
 E.g. npm version 4.2.0, node version 7.9.0 (or above)  
 $ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -  
-$ sudo apt-get install -y nodejs  
-$ sudo npm install -g npm@latest  
+$ sudo npm install -g npm@4.2.0 
+$ sudo apt-get install -y nodejs   
 $ npm -v  
 $ node -v  
 
