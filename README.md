@@ -2,17 +2,16 @@
 
 * git clone https://github.com/nobun-com/tgc-admin.git
 
-* To change pointing of api from local to server or vice versa
-Uncomment line no 6 and comment line no 7 in
-tgc-admin/ng/src/app/common/global.ts
+* To change pointing of api from local to server or vice versa  
+Uncomment line #6 and comment line #7 in tgc-admin/ng/src/app/common/global.ts
 
-* Install latest version of npm and node.
-E.g. npm version 5.3.0, node version 7.9.0 (or above)
-$ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-$ sudo apt-get install -y nodejs
-$ sudo npm install -g npm@latest
-$ npm -v
-$ node -v
+* Install latest version of npm and node  
+E.g. npm version 5.3.0, node version 7.9.0 (or above)  
+$ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -  
+$ sudo apt-get install -y nodejs  
+$ sudo npm install -g npm@latest  
+$ npm -v  
+$ node -v  
 
 * Install angular-cli
 https://www.npmjs.com/package/@angular/cli
