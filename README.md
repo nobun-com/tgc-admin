@@ -1,6 +1,8 @@
 ## tgc-admin
 
-* git clone https://github.com/nobun-com/tgc-admin.git
+* git clone https://github.com/nobun-com/tgc-admin.git  
+$ cd Apps
+$ git clone https://github.com/nobun-com/tgc-admin.git  
 
 * To change pointing of api from local to server or vice versa  
 Uncomment line #6 and comment line #7 in tgc-admin/ng/src/app/common/global.ts
