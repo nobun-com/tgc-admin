@@ -26,12 +26,6 @@ $ cd tgc-admin/ng
 $ sudo npm install  
 Please watch build is successful  
 
-    * You may need to install any missing dependencies  
-    $ sudo npm install @swimlane/ngx-charts  
-    $ sudo npm install ng2-smart-table  
-    $ sudo npm install ngx-bootstrap  
-    $ sudo npm install ng2-cookies  
-
 * Start ng server  
 $ ng serve
 
@@ -58,3 +52,11 @@ $ npm cache clean
 $ npm install -g @angular/cli@1.0.3  
 $ npm install  
 $ ng serve --host 0.0.0.0  
+
+## Install missing dependencies if needed  
+
+* You may need to install any missing dependencies  
+$ sudo npm install @swimlane/ngx-charts  
+$ sudo npm install ng2-smart-table  
+$ sudo npm install ngx-bootstrap  
+$ sudo npm install ng2-cookies  
