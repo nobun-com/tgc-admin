@@ -24,11 +24,11 @@ $ cd tgc-admin/ng
 $ sudo npm install  
 Please watch build is successful  
 
-    * You may need to install any missing dependencies
-    $ sudo npm install @swimlane/ngx-charts
-    $ sudo npm install ng2-smart-table
-    $ sudo npm install ngx-bootstrap
-    $ sudo npm install ng2-cookies
+    * You may need to install any missing dependencies  
+    $ sudo npm install @swimlane/ngx-charts  
+    $ sudo npm install ng2-smart-table  
+    $ sudo npm install ngx-bootstrap  
+    $ sudo npm install ng2-cookies  
 
 * Start ng server  
 $ ng serve
@@ -36,11 +36,11 @@ $ ng serve
 * Make sure that tgc-server is running  
 
 * Navigate to "http://localhost:4200/"  
-The app will automatically reload if you change any of the source files.
+The app will automatically reload if you change any of the source files  
 
-Default admin credentials  
-username : admin@tgc.com  
-password : admin123#  
+    Default admin credentials  
+    username : admin@tgc.com  
+    password : admin123#  
 
 
 ## Uninstall and reinstall if needed
