@@ -1,7 +1,7 @@
 ## tgc-admin
 
 * git clone https://github.com/nobun-com/tgc-admin.git  
-$ cd Apps
+$ cd Apps  
 $ git clone https://github.com/nobun-com/tgc-admin.git  
 
 * To change pointing of api from local to server or vice versa  
