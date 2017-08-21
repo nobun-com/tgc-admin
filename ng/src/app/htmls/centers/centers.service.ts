@@ -50,7 +50,7 @@ createCenter(center) {
               }
           }
           xhr.open("POST", this.globals.SERVERADDRESS+'uploadImage', true);
-          xhr.setRequestHeader("enctype", "multipart/form-data");
+          //xhr.setRequestHeader("enctype", "multipart/form-data");
           //xhr.setRequestHeader("Access-Control-Allow-Headers", "Content-Type");
           xhr.send(formData);
        });
