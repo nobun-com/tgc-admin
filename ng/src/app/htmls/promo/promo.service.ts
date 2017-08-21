@@ -46,7 +46,7 @@ createPromo(promo) {
               }
           }
           xhr.open("POST", this.globals.SERVERADDRESS+'uploadImage', true);
-          xhr.setRequestHeader("enctype", "multipart/form-data");
+          //xhr.setRequestHeader("enctype", "multipart/form-data");
           xhr.send(formData);
        });
   }
