@@ -51,6 +51,12 @@ export const AppRoutes: Routes = [{
     path: 'promo-list',
     loadChildren: './htmls/promo-list/promo-list.module#PromoListModule'
   }, {
+    path: 'social',
+    loadChildren: './htmls/social/social.module#SocialModule'
+  }, {
+    path: 'social-list',
+    loadChildren: './htmls/social-list/social-list.module#SocialListModule'
+  }, {
     path: 'booking-list',
     loadChildren: './htmls/booking-list/booking-list.module#BookingListModule'
   }

@@ -1,0 +1,53 @@
+<md-card>
+   <md-card-content>
+  <div fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h3 class="mt-0" style="text-align: start;">{{pageTitle}}</h3>
+      </div>
+      <!--<div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+        <button md-raised-button color="primary"  (click)="backToSocialList()">Back To List</button>
+      </div>-->
+  </div>
+  </md-card-content>
+  <form [formGroup]="form">
+  <md-card-content>
+        <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+          <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+            <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+              <input mdInput placeholder="Sender Email" value="{{social.senderEmail}}" [formControl]="form.controls['senderEmail']" [(ngModel)]="social.senderEmail" >
+            </md-input-container>
+              <small *ngIf="form.controls['senderEmail'].hasError('required') && form.controls['senderEmail'].touched" class="mat-text-warn">You must include a sender email.</small>
+          </div>  
+        </div>
+         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+          <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+            <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+              <input mdInput placeholder="Contact Email" value="{{social.contactEmail}}" [formControl]="form.controls['contactEmail']" [(ngModel)]="social.contactEmail" >
+            </md-input-container>
+              <small *ngIf="form.controls['contactEmail'].hasError('required') && form.controls['contactEmail'].touched" class="mat-text-warn">You must include a contact email.</small>
+          </div>  
+        </div> 
+        <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+          <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+             <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+              <input mdInput placeholder="Facebook Url" value="{{social.facebookUrl}}" [formControl]="form.controls['facebookUrl']" [(ngModel)]="social.facebookUrl" >
+            </md-input-container>
+              <small *ngIf="form.controls['facebookUrl'].hasError('required') && form.controls['facebookUrl'].touched" class="mat-text-warn">You must include a facebook link.</small>
+        </div>  
+        </div> 
+        <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+          <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
+            <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+                <input mdInput placeholder="Instagram Url" value="{{social.instagramUrl}}" [formControl]="form.controls['instagramUrl']" [(ngModel)]="social.instagramUrl" >
+              </md-input-container>
+            <small *ngIf="form.controls['instagramUrl'].hasError('required') && form.controls['instagramUrl'].touched" class="mat-text-warn">You must include a instagram link.</small>
+          </div>  
+        </div>
+      </md-card-content>
+    <hr>
+      <md-card-actions>
+          <button md-raised-button color="primary" type="submit" (click)="createOrUpdateSocial()" [disabled]="!form.valid">Submit</button>
+        </md-card-actions>
+  </form>
+</md-card>
+   

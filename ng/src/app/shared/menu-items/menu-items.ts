@@ -89,6 +89,12 @@ const EDUCATORMENUITEMS = [
     name: 'Bookings',
     icon: 'none',
     type: 'link'
+  },
+  {
+    state: 'social-list',
+    name: 'Manage Settings',
+    icon: 'none',
+    type: 'link'
   }
 ];
 
