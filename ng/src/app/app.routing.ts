@@ -59,6 +59,12 @@ export const AppRoutes: Routes = [{
   }, {
     path: 'booking-list',
     loadChildren: './htmls/booking-list/booking-list.module#BookingListModule'
+  }, {
+    path: 'slider',
+    loadChildren: './htmls/slider/slider.module#SliderModule'
+  }, {
+    path: 'slider-list',
+    loadChildren: './htmls/slider-list/slider-list.module#SliderListModule'
   }
   ]
 }, {

@@ -84,6 +84,12 @@ const EDUCATORMENUITEMS = [
     icon: 'none',
     type: 'link'
   },
+    {
+    state: 'slider-list',
+    name: 'Manage Slider',
+    icon: 'none',
+    type: 'link'
+  },
   {
     state: 'booking-list',
     name: 'Bookings',
