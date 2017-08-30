@@ -26,6 +26,7 @@ export class EditArticleComponent {
    public form: FormGroup;
    public quill ;
    public editorContents : string;
+   data1 : any ;
    public categories : any;
    thumbnails='';
    images='';
@@ -111,8 +112,12 @@ getCategory(){
    
   //below code returns delta object
   this.editorContents=this.quill.getContents();
+  //console.log("getContents",this.quill.getText());
+  
   //below code retuns html
-  this.article.body=this.quill.root.innerHTML;
+  //this.article.body=this.quill.root.innerHTML;
+//below code retuns data
+  this.article.body=this.quill.getText();
   
     this._articleService.updateArticle(this.article).subscribe(
        data => {

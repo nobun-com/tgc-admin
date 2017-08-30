@@ -30,6 +30,12 @@ createPromo(promo) {
   getCenters() {
       return this.http.get(this.globals.SERVERADDRESS+'getAllCenters').map((res:Response) => res.json());
   }
+  
+  rempovePromo(promo) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+   return this.http.put(this.globals.SERVERADDRESS+'promo', promo, options ).map((res: Response) => res.json());
+  }
 
  uploadImage(files){
      return new Promise((resolve, reject) => {

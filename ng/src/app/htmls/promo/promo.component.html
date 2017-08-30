@@ -26,6 +26,9 @@
             </div>
             <img *ngIf="uploadPromoImageOne" src="{{promoImageOneUrl}}" class="logo" style="width: 120px;height: 100px;margin-left:60px;"/>
           </div>
+          <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+            <button md-raised-button color="red" type="button" (click)="removePromo('promoImageOne')">Remove</button>
+          </div>
         </div>
          <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
           <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
@@ -41,6 +44,9 @@
               <input type="file" id="file-input" (change)="promoImageTwo($event)" accept="image/*" [formControl]="form.controls['promoImageTwo']">
             </div>
             <img *ngIf="uploadPromoImageTwo" src="{{promoImageTwoUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
+          </div>
+          <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+            <button md-raised-button color="red" type="button" (click)="removePromo('promoImageTwo')">Remove</button>
           </div>
         </div> 
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
@@ -58,6 +64,9 @@
             </div>
             <img *ngIf="uploadPromoImageThree" src="{{promoImageThreeUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
           </div>
+          <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+            <button md-raised-button color="red" type="button" (click)="removePromo('promoImageThree')">Remove</button>
+          </div>
         </div> 
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
           <div class="ml-xs mr-xs" style="width: 50%;" fxLayoutAlign="start center">
@@ -73,6 +82,9 @@
               <input type="file" id="file-input" (change)="promoImageFour($event)" accept="image/*" [formControl]="form.controls['promoImageFour']"> 
             </div>
             <img *ngIf="uploadPromoImageFour" src="{{promoImageFourUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
+          </div>
+          <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
+            <button md-raised-button color="red" type="button" (click)="removePromo('promoImageFour')">Remove</button>
           </div>
         </div>
       </md-card-content>

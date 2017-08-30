@@ -28,7 +28,7 @@ export class ArticleComponent implements OnInit{
    public categories : any;
    thumbnails='';
    images='';
-  ngOnInit() {
+   ngOnInit() {
     this.getCategory();
 
 //    const quill = new Quill('#editor-container', {
@@ -41,6 +41,7 @@ export class ArticleComponent implements OnInit{
       placeholder: 'Compose an epic...',
       theme: 'snow'
     });
+    
 
      this.form = this.fb.group({
       title: [null, Validators.compose([Validators.required])],
@@ -83,10 +84,10 @@ getCategory(){
 }
 createOrUpdateArticle() {
 
-  //below code returns delta object
- //this.article.body=JSON.stringify(this.quill.getContents());
-  //below code retuns html
+ //below code retuns html
   this.article.body=this.quill.root.innerHTML;
+//below code retuns data
+this.article.body=this.quill.getText();
   
     this._articleService.createArticle(this.article).subscribe(
        data => {

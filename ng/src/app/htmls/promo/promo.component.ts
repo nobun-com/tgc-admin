@@ -125,5 +125,12 @@ createOrUpdatePromo() {
   backToPromoList(){
     this._router.navigate(['/promo-list']);
   }
+  rempovePromo(promImage: String){
+    alert(promImage);
+    //  this._promoService.rempovePromo(promImage).then((res) => {
+    //  }, (err) => {
+    //    console.log("error");
+    //  });
+  }
 
  }

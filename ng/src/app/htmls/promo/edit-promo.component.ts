@@ -165,5 +165,34 @@ createOrUpdatePromo() {
   backToPromoList(){
     this._router.navigate(['/promo-list']);
   }
+
+  removePromo(promImage: String){
+     if(promImage=='promoImageOne'){
+       this.promo.promoUrlOne='';
+       this.promo.promoImageOne='';
+     }if(promImage=='promoImageTwo'){
+      this.promo.promoUrlTwo='';
+      this.promo.promoImageTwo='';
+    }if(promImage=='promoImageThree'){
+      this.promo.promoUrlThree='';
+      this.promo.promoImageThree='';
+    }if(promImage=='promoImageFour'){
+      this.promo.promoUrlFour='';
+      this.promo.promoImageFour='';
+    } 
+
+    this._promoService.updatePromo(this.promo).subscribe(
+      data => {
+        // refresh the list
+        alert("Succesfully updated.");
+        this._router.navigate(['/promo-list']);
+        return true;
+      },
+      error => {
+        console.error("error");
+        return Observable.throw(error);
+      }
+   );
+ }
  
  }
