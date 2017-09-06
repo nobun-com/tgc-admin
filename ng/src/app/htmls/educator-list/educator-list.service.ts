@@ -12,10 +12,10 @@ constructor(private http:Http,private globals : Globals) {
 
 // Uses http.get() to load a single JSON file
 getEducators() {
-    return this.http.get(this.globals.SERVERADDRESS+'getAllTeachers').map((res:Response) => res.json());
+    return this.http.get(this.globals.SERVERADDRESS+'getAllEducators').map((res:Response) => res.json());
 }
- deleteEducator(teacherId) {
-    return this.http.delete(this.globals.SERVERADDRESS+'deleteTeacher/' + teacherId);
+ deleteEducator(educatorId) {
+    return this.http.delete(this.globals.SERVERADDRESS+'deleteEducator/' + educatorId);
   }
 
 } 

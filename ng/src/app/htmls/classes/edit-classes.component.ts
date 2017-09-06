@@ -19,7 +19,7 @@ export class EditClassesComponent implements OnInit{
    classes : any;
    center_error:Boolean = false;
    title: string;
-   teachers : any;
+   educators : any;
    categories : any;
    occurrences : any;
    centers: any;
@@ -49,7 +49,7 @@ export class EditClassesComponent implements OnInit{
      }
      this.classes={
        className:'',
-       teacherId : '',
+       educatorId : '',
        categoryId : '',
        startDate : '',
        endDate : '',
@@ -68,7 +68,7 @@ export class EditClassesComponent implements OnInit{
 ngOnInit() {
 
    this.getCenters();
-   this.getTeachers();
+   this.getEducators();
    this.getCategories();
    this.occurrences = Array(50).fill('');
    this.miniutes = [0,15,30,45];
@@ -92,7 +92,7 @@ ngOnInit() {
 
     this.form = this.fb.group({
        className:['',Validators.required],
-       teacherId : ['', Validators.required],
+       educatorId : ['', Validators.required],
        centerId : ['', Validators.required],
        categoryId : ['', Validators.required],
        minAge:['',Validators.required],
@@ -489,11 +489,11 @@ getCategories(){
 }
 
 
-getTeachers() {
-    this._classService.getTeachers().subscribe(
+getEducators() {
+    this._classService.getEducators().subscribe(
       data => { 
         console.log(data);
-        this.teachers = data;
+        this.educators = data;
     },
       err => { console.log("error") }
     );

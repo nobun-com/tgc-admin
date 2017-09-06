@@ -27,13 +27,13 @@
     </div>
      <small *ngIf="form.controls['centerId'].hasError('required') && submitAttempt" class="mat-text-warn">You must select center.</small>
      <div class="ml-xs mr-xs" style="width: 30%;" fxLayoutAlign="start center">
-       <md-select  placeholder="Teachers" [formControl]="form.controls['teacherId']" [(ngModel)]="classes.teacherId" >
-          <md-option *ngFor="let teacher of teachers" [value]="teacher.id">
-            {{ teacher.firstName }}  {{ teacher.lastName }}
+       <md-select  placeholder="Educators" [formControl]="form.controls['educatorId']" [(ngModel)]="classes.educatorId" >
+          <md-option *ngFor="let educator of educators" [value]="educator.id">
+            {{ educator.firstName }}  {{ educator.lastName }}
           </md-option>
         </md-select>
     </div>
-     <small *ngIf="form.controls['teacherId'].hasError('required') && submitAttempt" class="mat-text-warn">You must select teacher.</small>
+     <small *ngIf="form.controls['educatorId'].hasError('required') && submitAttempt" class="mat-text-warn">You must select educator.</small>
     </div>
     <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
      <div class="ml-xs mr-xs" style="width: 30%;" fxLayoutAlign="start center">

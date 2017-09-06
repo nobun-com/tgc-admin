@@ -23,7 +23,7 @@ export class CreateClassesComponent implements OnInit{
    center_error:Boolean = false;
    title: string;
    centers: any;
-   teachers : any;
+   educators : any;
    categories : any;
    occurrences : any;
    hrs: any;
@@ -50,7 +50,7 @@ export class CreateClassesComponent implements OnInit{
      }
      this.classes={
        className:'',
-       teacherId : '',
+       educatorId : '',
        categoryId : '',
        startDate : '',
        endDate : '',
@@ -69,7 +69,7 @@ export class CreateClassesComponent implements OnInit{
  public form: FormGroup;
   ngOnInit() {
    this.getCenters();
-   this.getTeachers();
+   this.getEducators();
    this.getCategories();
 
 
@@ -89,7 +89,7 @@ export class CreateClassesComponent implements OnInit{
    this.miniutes = [0,15,30,45];
     this.form = this.fb.group({
        className:['',Validators.required],
-       teacherId : ['', Validators.required],
+       educatorId : ['', Validators.required],
        centerId : ['', Validators.required],
        categoryId : ['', Validators.required],
        minAge:['',Validators.required],
@@ -488,10 +488,10 @@ getCategories(){
 }
 
 
-getTeachers() {
-    this._classesService.getTeachers().subscribe(
+getEducators() {
+    this._classesService.getEducators().subscribe(
       data => { 
-        this.teachers = data;
+        this.educators = data;
     },
       err => { console.log("error",err) }
     );

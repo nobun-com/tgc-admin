@@ -34,8 +34,8 @@ createClasses(classes) {
   getCenters() {
       return this.http.get(this.globals.SERVERADDRESS+'getAllCenters').map((res:Response) => res.json());
   }
-  getTeachers() {
-    return this.http.get(this.globals.SERVERADDRESS+'getAllTeachers').map((res:Response) => res.json());
+  getEducators() {
+    return this.http.get(this.globals.SERVERADDRESS+'getAllEducators').map((res:Response) => res.json());
 }
 
  getCategories() {
