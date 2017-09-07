@@ -1,8 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { SliderListService } from './slider-list.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -13,7 +11,7 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 export class SliderListComponent {
   rows = [];
 
-  constructor(private _sliderListService: SliderListService,private _router :Router,public dialog: MdDialog) {
+  constructor(private _sliderListService: SliderListService,private _router :Router) {
    
   }
 
@@ -22,60 +20,76 @@ ngOnInit() {
     this.getSliders();
   }
   
+
+
+settings = {
+ actions: {
+      add : false,
+      edit : false,
+      delete : false,
+      position : 'right',
+      custom: [
+        {
+          name: 'edit',
+          title: 'Edit '
+        },
+        {
+          name: 'delete',
+          title: 'Delete '
+        }
+      ],
+    },
+  columns: {
+    // id: {
+    //   title: 'ID'
+    // },
+    title: {
+      title: 'Title',
+    },
+    description: {
+      title: 'Description',
+    },
+    urlTitle: {
+      title: 'Url Uitle',
+    },
+    url: {
+      title: 'Url',
+    }
+  }
+};  
 getSliders() {
     this._sliderListService.getSliders().subscribe(
       data => { 
         this.rows = data;
-        if(this.rows.length > 0){
-        var id=data[0].id;
-          this._router.navigate(['/slider/edit-slider',id]);
-        }else{
-          this._router.navigate(['/slider/slider']);
-        }
       },
       err => { console.log("error") }
     );
   }
 
 
-   editSlider(slider) {   
-     this._router.navigate(['/slider/edit-slider',slider.id]);
-  }
 
   createSlider(){
     this._router.navigate(['/slider/slider']);
   }
  
-  dialogRef: MdDialogRef<ConfirmDialogComponent>;
-  config: MdDialogConfig = {
-    disableClose: false,
-    width: '',
-    height: '',
-    position: {
-      top: '',
-      bottom: '',
-      left: '',
-      right: ''
-    }
-  };
-
-
-   deleteSlider(slider) {
-    this.dialogRef = this.dialog.open(ConfirmDialogComponent, this.config);
-    this.dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this._sliderListService.deleteSlider(slider.id).subscribe(
+onCustom(event) {
+   if(event.action == 'delete'){
+     if (confirm("Are you sure you want to deletel?")) {
+      this._sliderListService.deleteSlider(event.data.id).subscribe(
          data => {
            this.getSliders();
            return true;
          },
          error => {
-           console.error("Error deleting food!");
+           alert("Can't Delete! It is in use.");
+           console.error("error");
          }
       );
-      }
-      this.dialogRef = null;
-    });
+    }
+   }
+  if(event.action == 'edit'){
+     this._router.navigate(['/slider/edit-slider',event.data.id]);
+   }
+    // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
   }
-
 }

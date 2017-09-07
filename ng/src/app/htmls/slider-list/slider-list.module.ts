@@ -16,6 +16,7 @@ import { SliderListRoutes } from './slider-list.routing';
 import { SliderListComponent } from './slider-list.component';
 import { SliderListService } from './slider-list.service';
 import { Globals } from '../../common/globals';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 import 'hammerjs';
@@ -33,7 +34,8 @@ import 'hammerjs';
     NgxDatatableModule,
     FlexLayoutModule,
     TreeModule,
-    HttpModule
+    HttpModule,
+    Ng2SmartTableModule
    ],
   declarations: [   
     SliderListComponent

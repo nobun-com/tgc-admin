@@ -4,63 +4,46 @@
       <div fxFlex.gt-xs="50" fxFlex="100">
         <h3 class="mt-0" style="text-align: start;">{{pageTitle}}</h3>
       </div>
-      <!--<div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+     <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
         <button md-raised-button color="primary"  (click)="backToSliderList()">Back To List</button>
-      </div>-->
+      </div>
   </div>
   </md-card-content>
   <form [formGroup]="form">
   <md-card-content>
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
           <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-            <!--<input type="file" (change)="sliderImageOne($event)" [formControl]="form.controls['sliderImageOne']">-->
              <div class="file">
               <label for="file-input">Select Image </label>
-              <input type="file" id="file-input" (change)="sliderImageOne($event)" accept="image/*" [formControl]="form.controls['sliderImageOne']">
+              <input type="file" id="file-input" (change)="sliderImage($event)" accept="image/*" [formControl]="form.controls['imageUrl']">
             </div>
-            <img *ngIf="uploadSliderImageOne" src="{{sliderImageOneUrl}}" class="logo" style="width: 120px;height: 100px;margin-left:60px;"/>
+            <img *ngIf="uploadImage" src="{{imageUrl}}" class="logo" style="width: 120px;height: 100px;margin-left:60px;"/>
           </div>
         </div>
          <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
-         <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-            <!--<input type="file" (change)="sliderImageTwo($event)" [formControl]="form.controls['sliderImageTwo']">-->
-            <div class="file">
-              <label for="file-input">Select Image </label>
-              <input type="file" id="file-input" (change)="sliderImageTwo($event)" accept="image/*" [formControl]="form.controls['sliderImageTwo']">
-            </div>
-            <img *ngIf="uploadSliderImageTwo" src="{{sliderImageTwoUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
-          </div>
+            <md-input-container style="width: 100%" class="ml-xs mr-xs" style="width: 100%;">
+                <input mdInput placeholder="Title"  [(ngModel)]="slider.title" [formControl]="form.controls['title']" type="text" required>
+              </md-input-container>
+              <small *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched" class="mat-text-warn">You must include title.</small>
         </div> 
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
-           <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-            <!--<input type="file" (change)="sliderImageThree($event)" [formControl]="form.controls['sliderImageThree']">-->
-            <div class="file">
-              <label for="file-input">Select Image </label>
-              <input type="file" id="file-input" (change)="sliderImageThree($event)" accept="image/*" [formControl]="form.controls['sliderImageThree']">
-            </div>
-            <img *ngIf="uploadSliderImageThree" src="{{sliderImageThreeUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
-          </div>
-        </div> 
-        <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
-           <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-            <!--<input type="file" (change)="sliderImageFour($event)" [formControl]="form.controls['sliderImageFour']">-->
-            <div class="file">
-              <label for="file-input">Select Image </label>
-              <input type="file" id="file-input" (change)="sliderImageFour($event)" accept="image/*" [formControl]="form.controls['sliderImageFour']"> 
-            </div>
-            <img *ngIf="uploadSliderImageFour" src="{{sliderImageFourUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
-          </div>
+            <md-input-container style="width: 100%" class="ml-xs mr-xs" style="width: 100%;">
+                <input mdInput placeholder="Description"  [(ngModel)]="slider.description" [formControl]="form.controls['description']" type="text" required>
+              </md-input-container>
+              <small *ngIf="form.controls['description'].hasError('required') && form.controls['description'].touched" class="mat-text-warn">You must include description.</small>
         </div>
         <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
-           <div class="ml-xs mr-xs" style="width: 100%;" fxLayoutAlign="start center">
-            <!--<input type="file" (change)="sliderImageFour($event)" [formControl]="form.controls['sliderImageFour']">-->
-            <div class="file">
-              <label for="file-input">Select Image </label>
-              <input type="file" id="file-input" (change)="sliderImageFive($event)" accept="image/*" [formControl]="form.controls['sliderImageFive']"> 
-            </div>
-            <img *ngIf="uploadSliderImageFive" src="{{sliderImageFiveUrl}}" class="logo" style="width: 120px;height: 100px; margin-left:60px;"/>
-          </div>
+            <md-input-container style="width: 100%" class="ml-xs mr-xs" style="width: 100%;">
+                <input mdInput placeholder="Url Title"  [(ngModel)]="slider.urlTitle" [formControl]="form.controls['urlTitle']" type="text" required>
+              </md-input-container>
+              <small *ngIf="form.controls['urlTitle'].hasError('required') && form.controls['urlTitle'].touched" class="mat-text-warn">You must include url title.</small>
         </div>
+        <div fxLayout="row" class="mb-3" fxLayoutAlign="start center">
+            <md-input-container style="width: 100%" class="ml-xs mr-xs" style="width: 100%;">
+                <input mdInput placeholder="Url"  [(ngModel)]="slider.url" [formControl]="form.controls['url']" type="text" required>
+              </md-input-container>
+              <small *ngIf="form.controls['url'].hasError('required') && form.controls['url'].touched" class="mat-text-warn">You must include url.</small>
+         </div>
       </md-card-content>
     <hr>
       <md-card-actions>

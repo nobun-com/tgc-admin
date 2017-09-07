@@ -19,28 +19,19 @@ export class EditSliderComponent {
    pageTitle: any;
    fileToUpload: Array<File>;
    public form: FormGroup;
-   uploadSliderImageOne : boolean = false;
-   uploadSliderImageTwo :  boolean = false;
-   uploadSliderImageThree :  boolean = false;
-   uploadSliderImageFour :  boolean = false;
-   uploadSliderImageFive :  boolean = false;
-   sliderImageOneUrl :String;
-   sliderImageTwoUrl : String;
-   sliderImageThreeUrl : String;
-   sliderImageFourUrl : String;
-   sliderImageFiveUrl : String;
-
+   uploadImage : boolean = false;
+   imageUrl: String ='';
    
 
 // Center CURD Operation  
  constructor(private fb: FormBuilder,private globals : Globals,private _sliderService: SliderService,private activatedRoute: ActivatedRoute,private _router :Router) {
     this.pageTitle = "Update Slider";
      this.slider={
-       sliderImageOne : '',
-       sliderImageTwo : '',
-       sliderImageThree : '',
-       sliderImageFour : '',
-       sliderImageFive : ''
+       imageUrl : '',
+       title : '',
+       description : '',
+       url : '',
+       urlTitle : ''
       }
      }
    
@@ -51,12 +42,11 @@ ngOnInit() {
           this.getSlider(sliderId);
       });
      this.form = this.fb.group({
-       sliderImageOne :[],
-       sliderImageTwo : [],
-       sliderImageThree : [],
-       sliderImageFour : [],
-       sliderImageFive : []
-       
+       imageUrl :[],
+       title : [null, Validators.compose([Validators.required])],
+       url : [null, Validators.compose([Validators.required])],
+       urlTitle : [null, Validators.compose([Validators.required])],
+       description : [null, Validators.compose([Validators.required])]
     });
   }
 
@@ -64,31 +54,9 @@ getSlider(sliderId){
   this._sliderService.getById(sliderId).subscribe(
       data=>{
         this.slider = data;
-
-        if(this.slider.sliderImageOne != ''){
-          //this.sliderImageOneUrl= this.globals.SERVERADDRESS+"getImage/"+this.slider.sliderImageOne;
-          this.uploadSliderImageOne = true;
-          this.sliderImageOneUrl=this.slider.sliderImageOne;
-        }
-        if(this.slider.sliderImageTwo != ''){
-          //this.sliderImageTwoUrl= this.globals.SERVERADDRESS+"getImage/"+this.slider.sliderImageTwo;
-          this.uploadSliderImageTwo = true;
-          this.sliderImageTwoUrl= this.slider.sliderImageTwo;
-        }
-        if(this.slider.sliderImageThree != ''){
-          //this.sliderImageThreeUrl= this.globals.SERVERADDRESS+"getImage/"+this.slider.sliderImageThree;
-          this.uploadSliderImageThree = true;
-          this.sliderImageThreeUrl= this.slider.sliderImageThree;
-        }
-        if(this.slider.sliderImageFour != ''){
-          //this.sliderImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+this.slider.sliderImageFour;
-          this.uploadSliderImageFour = true;
-          this.sliderImageFourUrl= this.slider.sliderImageFour;
-        }
-         if(this.slider.sliderImageFive != ''){
-          //this.sliderImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+this.slider.sliderImageFour;
-          this.uploadSliderImageFive = true;
-          this.sliderImageFiveUrl= this.slider.sliderImageFive;
+        if(this.slider.imageUrl != ''){
+          this.uploadImage = true;
+          this.imageUrl=this.slider.imageUrl;
         }
       },
       err =>{
@@ -113,68 +81,18 @@ createOrUpdateSlider() {
     );
   }
 
-   sliderImageOne(fileInput: any){
+  sliderImage(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
      this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageOne = true;
-       this.slider.sliderImageOne= res;
-       this.sliderImageOneUrl= res+"";
+       this.uploadImage = true;
+       this.slider.imageUrl= res;
+       this.imageUrl= res+"";
        //this.sliderImageOneUrl= this.globals.SERVERADDRESS+"getImage/"+res;
      }, (err) => {
        console.log("error");
      });
   }
-  sliderImageTwo(fileInput: any){
-    this.fileToUpload = <Array<File>> fileInput.target.files;
-     this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageTwo = true;
-       this.slider.sliderImageTwo= res;
-       this.sliderImageTwoUrl= res+"";
-       //this.sliderImageTwoUrl= this.globals.SERVERADDRESS+"getImage/"+res;
-       
-     }, (err) => {
-       console.log("error");
-     });
-  }
-  
-  sliderImageThree(fileInput: any){
-    this.fileToUpload = <Array<File>> fileInput.target.files;
-     this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageThree = true;
-       this.slider.sliderImageThree= res;
-       this.sliderImageThreeUrl= res+"";
-       //this.sliderImageThreeUrl= this.globals.SERVERADDRESS+"getImage/"+res;
-       
-     }, (err) => {
-       console.log("error");
-     });
-  }
-  
-  sliderImageFour(fileInput: any){
-    this.fileToUpload = <Array<File>> fileInput.target.files;
-     this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageFour = true;
-       this.slider.sliderImageFour= res;
-       this.sliderImageFourUrl= res+"";
-       //this.sliderImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+res;
-       
-     }, (err) => {
-       console.log("error");
-     });
-  }
-
-   sliderImageFive(fileInput: any){
-    this.fileToUpload = <Array<File>> fileInput.target.files;
-     this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageFive = true;
-       this.slider.sliderImageFive= res;
-       this.sliderImageFiveUrl= res+"";
-       //this.sliderImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+res;
-       
-     }, (err) => {
-       console.log("error");
-     });
-  }
+ 
 
   backToSliderList(){
     this._router.navigate(['/slider-list']);

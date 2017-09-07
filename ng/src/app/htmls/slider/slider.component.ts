@@ -19,25 +19,16 @@ export class SliderComponent implements OnInit{
    pageTitle: any;
    fileToUpload: Array<File>;
    public form: FormGroup;
-   uploadSliderImageOne : boolean = false;
-   uploadSliderImageTwo :  boolean = false;
-   uploadSliderImageThree :  boolean = false;
-   uploadSliderImageFour :  boolean = false;
-   uploadSliderImageFive :  boolean = false;
-   termsCharLeft : any;
-   sliderImageOneUrl :String;
-   sliderImageTwoUrl : String;
-   sliderImageThreeUrl : String;
-   sliderImageFourUrl : String;
-   sliderImageFiveUrl : String;
+   uploadImage : boolean = false;
+   imageUrl: String ='';
 
   ngOnInit() {
      this.form = this.fb.group({
-       sliderImageOne :[],
-       sliderImageTwo : [],
-       sliderImageThree : [],
-       sliderImageFour : [],
-       sliderImageFive : []
+      imageUrl :[],
+      title : [null, Validators.compose([Validators.required])],
+      url : [null, Validators.compose([Validators.required])],
+      urlTitle : [null, Validators.compose([Validators.required])],
+      description : [null, Validators.compose([Validators.required])]
     });
   }
 
@@ -45,11 +36,11 @@ export class SliderComponent implements OnInit{
   constructor(private fb: FormBuilder,private globals : Globals,private _sliderService: SliderService,private _router :Router) {
      this.pageTitle = "Create New Slider";
      this.slider={
-       sliderImageOne : '',
-       sliderImageTwo : '',
-       sliderImageThree : '',
-       sliderImageFour : '',
-       sliderImageFive : ''
+      imageUrl : '',
+      title : '',
+      description : '',
+      url : '',
+      urlTitle : ''
       }
      }
 
@@ -68,64 +59,13 @@ createOrUpdateSlider() {
     );
   }
 
-   sliderImageOne(fileInput: any){
+  sliderImage(fileInput: any){
     this.fileToUpload = <Array<File>> fileInput.target.files;
      this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageOne = true;
-       this.slider.sliderImageOne= res;
-       this.sliderImageOneUrl= res+"";
+       this.uploadImage = true;
+       this.slider.imageUrl= res;
+       this.imageUrl= res+"";
        //this.sliderImageOneUrl= this.globals.SERVERADDRESS+"getImage/"+res;
-     }, (err) => {
-       console.log("error");
-     });
-  }
-  sliderImageTwo(fileInput: any){
-    this.fileToUpload = <Array<File>> fileInput.target.files;
-     this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageTwo = true;
-       this.slider.sliderImageTwo= res;
-       this.sliderImageTwoUrl= res+"";
-       //this.sliderImageTwoUrl= this.globals.SERVERADDRESS+"getImage/"+res;
-       
-     }, (err) => {
-       console.log("error");
-     });
-  }
-  
-  sliderImageThree(fileInput: any){
-    this.fileToUpload = <Array<File>> fileInput.target.files;
-     this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageThree = true;
-       this.slider.sliderImageThree= res;
-       this.sliderImageThreeUrl= res+"";
-       //this.sliderImageThreeUrl= this.globals.SERVERADDRESS+"getImage/"+res;
-       
-     }, (err) => {
-       console.log("error");
-     });
-  }
-  
-  sliderImageFour(fileInput: any){
-    this.fileToUpload = <Array<File>> fileInput.target.files;
-     this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageFour = true;
-       this.slider.sliderImageFour= res;
-       this.sliderImageFourUrl= res+"";
-       //this.sliderImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+res;
-       
-     }, (err) => {
-       console.log("error");
-     });
-  }
-
-   sliderImageFive(fileInput: any){
-    this.fileToUpload = <Array<File>> fileInput.target.files;
-     this._sliderService.uploadImage(this.fileToUpload).then((res) => {
-       this.uploadSliderImageFive = true;
-       this.slider.sliderImageFive= res;
-       this.sliderImageFiveUrl= res+"";
-       //this.sliderImageFourUrl= this.globals.SERVERADDRESS+"getImage/"+res;
-       
      }, (err) => {
        console.log("error");
      });
