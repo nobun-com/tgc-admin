@@ -27,7 +27,7 @@ export class EducatorComponent implements OnInit{
       fname: [null, Validators.compose([Validators.required])],
       lname: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, CustomValidators.email])],
-      phone: [null, Validators.compose([Validators.required,CustomValidators.number,CustomValidators.rangeLength([10, 10])])],
+      phone: [null, Validators.compose([Validators.required])],
       gender: [null, Validators.required],
       password: password,
       confirmPassword: confirmPassword

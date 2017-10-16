@@ -18,7 +18,7 @@ getClasses() {
    if(this.role=='admin'){
         return this.http.get(this.globals.SERVERADDRESS+'getAllClasses').map((res:Response) => res.json());
    }else{
-        return this.http.get(this.globals.SERVERADDRESS+'getAllClassesByTeacher/'+this.userId).map((res:Response) => res.json());
+        return this.http.get(this.globals.SERVERADDRESS+'getAllClassesByEducator/'+this.userId).map((res:Response) => res.json());
    }
 }
  deleteClass(classId) {

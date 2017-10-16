@@ -19,22 +19,22 @@ export class EducatorLoginService {
         this.token = currentUser && currentUser.token;
     }
 
-    login(teacher): Observable<boolean> {
+    login(educator): Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.globals.SERVERADDRESS+'teacherLogin', teacher, options ).map((response: Response) => {
+    return this.http.post(this.globals.SERVERADDRESS+'educatorLogin', educator, options ).map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
-                teacher = response.json() && response.json().teacher;
+                educator = response.json() && response.json().educator;
                 if (token) {
                     // set token property
                     this.token = token;
 
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     //localStorage.setItem('currentUser', JSON.stringify({ username: user.userName, token: token }));
-                    Cookie.set('currentUser', JSON.stringify({ username: teacher.email, token: token }));    
+                    Cookie.set('currentUser', JSON.stringify({ username: educator.email, token: token }));    
                     Cookie.set('role', 'educator');  
-                    Cookie.set('userId', teacher.id);    
+                    Cookie.set('userId', educator.id);    
                       
 
                     // return true to indicate successful login

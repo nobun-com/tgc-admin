@@ -31,8 +31,6 @@
           <input mdInput placeholder="Phone number"  type="text" required number [(ngModel)]="educator.phone" [formControl]="form.controls['phone']">
         </md-input-container>
         <small *ngIf="form.controls['phone'].hasError('required') && form.controls['phone'].touched" class="mat-text-warn">You must include phone number.</small>
-        <small *ngIf="form.controls['phone'].hasError('rangeLength') && form.controls['phone'].touched" class="mat-text-warn">Phone number should be 10 digit.</small>
-        <small *ngIf="form.controls['phone'].hasError('number') && form.controls['phone'].touched" class="mat-text-warn">Phone number should be only numbers.</small>
  
         <md-input-container class="ml-xs mr-xs" style="width: 100%;">
           <input mdInput placeholder="Email address" [formControl]="form.controls['email']" type="email" [(ngModel)]="educator.email" required>
