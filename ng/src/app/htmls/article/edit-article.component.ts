@@ -90,8 +90,8 @@ getArticle(articleId){
          this.thumbnails=this.article.thumbnailUrl;
         //  this.images= this.globals.SERVERADDRESS+"getImage/"+ this.article.imageUrl;
         //  this.thumbnails= this.globals.SERVERADDRESS+"getImage/"+ this.article.thumbnailUrl;
-         this.quill.root.innerHTML=this.article.body;
-        //this.quill.setContents(this.article.body);
+        //this.quill.root.innerHTML=this.article.body;
+        this.quill.setText(this.article.body);
       },
       err =>{
         console.log("error")

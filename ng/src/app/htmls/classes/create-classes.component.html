@@ -80,7 +80,7 @@
     </div>
     <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
      <md-radio-group [(ngModel)]="classes.endDateType"  [formControl]="form.controls['endDateType']" name="endDateType" [disabled]="isDisabled" [align]="isAlignEnd ? 'end' : 'start'" fxLayout="column" (change)="occAndEndDate(endDateType)">
-          <md-radio-button value="endDate">
+          <md-radio-button value="endDate" [checked]="true">
                 <md-input-container class="ml-xs mr-xs"  fxLayoutAlign="start center">
                   <input mdInput [mdDatepicker]="maxDatePicker" [formControl]="form.controls['endDate']" [(ngModel)]="classes.endDate" placeholder="End Date">
                   <button mdSuffix [mdDatepickerToggle]="maxDatePicker"></button>
@@ -102,7 +102,7 @@
     </div>
 
      <md-radio-group [(ngModel)]="schedule" name="classType"  [formControl]="form.controls['schedule']" [disabled]="isDisabled" [align]="isAlignEnd ? 'end' : 'start'" fxLayout="column" (change)="DailyOrWeek(schedule)">
-          <md-radio-button value="Daily">Daily  
+          <md-radio-button value="Daily" [checked]="true">Daily  
            <div fxLayout="row" class="mb-2">
               <div fxLayout="row" class="mb-2" fxLayoutAlign="start center">
                 <div class="ml-xs mr-xs" style="width:50%;" fxLayoutAlign="start center">

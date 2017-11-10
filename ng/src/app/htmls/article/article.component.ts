@@ -85,7 +85,7 @@ getCategory(){
 createOrUpdateArticle() {
 
  //below code retuns html
-  this.article.body=this.quill.root.innerHTML;
+ //this.article.body=this.quill.root.innerHTML;
 //below code retuns data
 this.article.body=this.quill.getText();
   
